@@ -48,10 +48,17 @@
 
     #pragma region AssinaturaDeFuncoes
 
-        Maquina* CriaMaquina(int id, int tempo); // Assinatura da função para criar uma nova máquina
-        bool VerificaSeExisteMaquina(Maquina* maquinaHeader, int id); // Assinatura da função para verificar se a máquina em questão existe
+        //Assinatura de funções máquinas
+        Maquina* CriaMaquina(int id, int tempo);
+        Maquina* InsereMaquina(Maquina* maquinaHeader, Maquina* novaMaquina);
 
+        //Assinatura de funções operações
+        Operacao* CriaOperacao(int id, Maquina* maquinas);
+        Operacao* InsereOperacao(Operacao* operacaoHeader, Operacao* novaOperacao);
+        Operacao* RemoveOperacao(Operacao* operacaoHeader, int id);
+        Operacao* AlterarOperacoes(Operacao* operacaoHeader);
+        int TempoMinimoOperacao(Operacao* operacaoHeader);
+        
     #pragma endregion
-
 
 #endif

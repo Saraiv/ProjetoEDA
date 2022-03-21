@@ -17,8 +17,8 @@
 
     /**
      * Cria uma máquina
-     * @param [in] id // ID que a máquina vai ficar
-     * @param [in] tempo // Tempo que demora
+     * @param [in] id
+     * @param [in] tempo
      * @param [out] novaMaquina	//Retorna a máquina aqui criada
     */
     Maquina* CriaMaquina(int id, int tempo){
@@ -38,11 +38,11 @@
      * @param [in] novaMaquina
      * @param [out] maquinaHeader	//Retorna o header maquina
     */
-    Maquina* InsereMaquina(Maquina* maquinaHeader, Maquina* novaMaquina) {
+    Maquina* InsereMaquina(Maquina* maquinaHeader, Maquina* novaMaquina){
         if (maquinaHeader == NULL){
             maquinaHeader = novaMaquina;
         }else{
-            novaMaquina->nextMaquina = maquinaHeader;	//aponta para onde "h" est� a apontar
+            novaMaquina->nextMaquina = maquinaHeader;
             maquinaHeader = novaMaquina;
         }
 

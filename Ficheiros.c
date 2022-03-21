@@ -13,18 +13,33 @@
 #include<stdio.h>
 #include"Program.h"
 
-bool gravarJobBinario(char* nomeFicheiro, Job* headJob) {
+bool gravarJobBinario(char* nomeFicheiro, Job* headJob){
 	FILE* fp;
 
 	if (headJob == NULL) return false;
 	if ((fp = fopen(nomeFicheiro, "wb")) == NULL) return false;
-	//grava n registos no ficheiro
 	Job* auxJob = headJob;
-	while (auxJob) {		//while(aux!=NULL)
+	while (auxJob != NULL){
 		fwrite(auxJob, sizeof(Job), 1, fp);
 		auxJob = auxJob->nextJob;
 	}
 	fclose(fp);
+	
 	return true;
 }
 
+Job* lerJobBinario(char* nomeFicheiro){
+	FILE* fp;
+	Job* headJob = NULL;
+	Job* auxJob;
+
+	if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
+	auxJob = (Job*)malloc(sizeof(Job));
+	while (fread(auxJob, sizeof(Job), 1, fp)){
+		headJob = InsereJogoOrdenado(headJob, auxJob);
+		headJob = (Job*)malloc(sizeof(Job));
+	}
+	fclose(fp);
+
+	return headJob;
+}

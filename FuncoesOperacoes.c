@@ -17,8 +17,8 @@
 
     /**
      * Cria uma operacao
-     * @param [in] id // ID que a operação vai ficar
-     * @param [in] nomeDaOperacao // Nome que a operação vai ficar
+     * @param [in] id
+     * @param [in] nomeDaOperacao
      * @param [out] novaOperacao	//Retorna a máquina aqui criada
     */
     Operacao* CriaOperacao(int id, Maquina* maquinas){
@@ -38,7 +38,7 @@
      * @param [in] novaOperacao 
      * @param [out] operacaoHeader	//Retorna a máquina aqui criada
     */
-    Operacao* InsereOperacao(Operacao* operacaoHeader, Operacao* novaOperacao) {
+    Operacao* InsereOperacao(Operacao* operacaoHeader, Operacao* novaOperacao){
         if (operacaoHeader == NULL){
             operacaoHeader = novaOperacao;
         }else{
@@ -54,23 +54,22 @@
      * @param [in] id 
      * @param [out] operacaoHeader	//Retorna a máquina aqui criada
     */
-    Operacao* RemoveOperacao(Operacao* operacaoHeader, int id) {
-
+    Operacao* RemoveOperacao(Operacao* operacaoHeader, int id){
         if (operacaoHeader == NULL) return NULL; //Lista vazia
 
         Operacao* auxOperacao = operacaoHeader;
-        Operacao* auxAnt = NULL;
+        Operacao* auxAnterior = NULL;
 
-        while (auxOperacao && auxOperacao->id != id) {
-            auxAnt = auxOperacao;
+        while (auxOperacao && auxOperacao->id != id){
+            auxAnterior = auxOperacao;
             auxOperacao = auxOperacao->nextOperacao;
         }
-        if (auxAnt == NULL){
+        if (auxAnterior == NULL){ // Se estiver no fim p.e.
             operacaoHeader = operacaoHeader->nextOperacao;
             free(auxOperacao);
         }
-        else{
-            auxAnt->nextOperacao = auxOperacao->nextOperacao;
+        else{ // Se estiver no meio p.e.
+            auxAnterior->nextOperacao = auxOperacao->nextOperacao;
             free(auxOperacao);
         }
         
@@ -80,7 +79,6 @@
     /**
      * Alterar operações
      * @param [in] operacaoHeader 
-     * @param [in] id 
      * @param [out] operacaoHeader	//Retorna a máquina aqui criada
     */
     Operacao* AlterarOperacoes(Operacao* operacaoHeader){
