@@ -16,6 +16,44 @@
 #pragma region FuncoesOperacoes
 
     /**
+     * Procura a operação pretendida
+     * @param [in] operacaoHeader 
+     * @param [in] id
+     * @param [out] aux	//Retorna a operação que era procurada
+    */
+    Operacao* ProcuraOperacao(Operacao* operacaoHeader, int id){
+        if(operacaoHeader == NULL) return NULL; //Lista vazia
+
+        Operacao* aux = operacaoHeader;
+        while(operacaoHeader->nextOperacao != NULL){
+            if(aux->id == id){
+                return aux;
+            }
+        }
+
+        return NULL;
+    }
+
+    /**
+     * Verifica se o jogo existe
+     * @param [in] operacaoHeader 
+     * @param [in] id
+     * @param [out] bool //Retorna se encontrou um jogo existente ou não
+    */
+    bool ExisteOperacao(Operacao *operacaoHeader, int id){
+        if (operacaoHeader == NULL) return false;
+
+        Operacao* aux = operacaoHeader;
+        while (aux != NULL) {
+            if (aux->id == id)
+                return true;
+            aux = aux->nextOperacao;
+        }
+
+        return false;
+    }
+
+    /**
      * Cria uma operacao
      * @param [in] id
      * @param [in] nomeDaOperacao
@@ -39,12 +77,15 @@
      * @param [out] operacaoHeader	//Retorna a máquina aqui criada
     */
     Operacao* InsereOperacao(Operacao* operacaoHeader, Operacao* novaOperacao){
+        if(!ExisteOperacao(operacaoHeader, novaOperacao->id)) return NULL; // Se não exister a operação
+        
         if (operacaoHeader == NULL){
             operacaoHeader = novaOperacao;
         }else{
             novaOperacao->nextOperacao = operacaoHeader;
             operacaoHeader = novaOperacao;
         }
+
         return operacaoHeader;
     }
 
@@ -56,7 +97,8 @@
     */
     Operacao* RemoveOperacao(Operacao* operacaoHeader, int id){
         if (operacaoHeader == NULL) return NULL; //Lista vazia
-
+        if(!ExisteOperacao(operacaoHeader, id)) return NULL; // Se não existir a operação
+        
         Operacao* auxOperacao = operacaoHeader;
         Operacao* auxAnterior = NULL;
 
@@ -79,32 +121,47 @@
     /**
      * Alterar operações
      * @param [in] operacaoHeader 
-     * @param [out] operacaoHeader	//Retorna a máquina aqui criada
+     * @param [in] id
+     * @param [in] tempoAMudar
+     * @param [in] idMaquina
+     * @param [out] operacaoHeader	//Retorna o header das operações alterada
     */
-    Operacao* AlterarOperacoes(Operacao* operacaoHeader){
-        // TODO
+    Operacao* AlterarOperacoes(Operacao* operacaoHeader, int id, int idMaquina, int tempoAMudar){
+        if(operacaoHeader == NULL) return NULL; //Lista vazia
+        if(!ExisteOperacao(operacaoHeader, id)) return NULL; // Se não existir a operação
+
+        Operacao* operacaoPretendida = ProcuraOperacao(operacaoHeader, id);
+        if(operacaoPretendida != NULL){
+            // Maquina* maquinaPretendida = ProcuraMaquina(&operacaoHeader->maquinas[0], idMaquina);
+            // if(maquinaPretendida != NULL){
+            //     maquinaPretendida->tempo = tempoAMudar;
+            // }
+        }
+
+        return operacaoHeader;
     }
 
     /**
+     * TODO
      * Tempo mínimo
      * @param [in] operacaoHeader 
      * @param [in] id 
      * @param [out] operacaoHeader	//Retorna a máquina aqui criada
     */
     int TempoMinimoOperacao(Operacao* operacaoHeader){
+        if (operacaoHeader == NULL) return -1;
         int tempoMinimo, somaTempoMinimo = 0;
-        if (operacaoHeader == NULL) return NULL;
-        Operacao* auxOperacao = operacaoHeader;
 
-        while (auxOperacao != NULL){
-            Maquina* tempAux = auxOperacao->maquinas;
-            while(tempAux->nextMaquina != NULL){
-                tempoMinimo = 100;
-                if (tempAux->tempo == tempoMinimo)
-                    tempoMinimo = tempAux->tempo;
-            }
-            somaTempoMinimo += tempoMinimo;
-            auxOperacao = auxOperacao->nextOperacao;
+        Operacao* auxOperacao = operacaoHeader;
+        while(auxOperacao != NULL){
+            // Maquina* tempAux = auxOperacao->maquinas;
+            // while(tempAux->nextMaquina != NULL){
+            //     tempoMinimo = 100;
+            //     if (tempAux->tempo == tempoMinimo)
+            //         tempoMinimo = tempAux->tempo;
+            // }
+            // somaTempoMinimo += tempoMinimo;
+            // auxOperacao = auxOperacao->nextOperacao;
         }
         
         return somaTempoMinimo;

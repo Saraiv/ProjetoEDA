@@ -49,4 +49,23 @@
         return maquinaHeader;
     }
 
+    /**
+     * Procura a máquina pretendida
+     * @param [in] maquinaHeader 
+     * @param [in] id
+     * @param [out] aux	//Retorna a máquina que estava a procura
+    */
+    Maquina* ProcuraMaquina(Maquina* maquinaHeader, int id){
+        if(maquinaHeader == NULL) return NULL; //Lista vazia
+
+        Maquina* aux = maquinaHeader;
+        while(maquinaHeader->nextMaquina != NULL){
+            if(aux->id == id){
+                return aux;
+            }
+        }
+
+        return NULL;
+    } 
+
 #pragma endregion

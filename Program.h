@@ -12,6 +12,19 @@
 #include<stdlib.h>
 #include<stdio.h>
 
+/*
+NOTAS:
+    Job -> Operações -> Várias Máquinas
+    Cada Job tem:
+        Uma ou mais operações.
+    Cada Operação tem:
+        Um id da operação;
+        Uma ou mais máquinas.
+    Cada Máquina tem:
+        Um id da máquina;
+        Um tempo que a máquina demora a efetuar uma operação.
+*/
+
 #ifndef FEITO
 #define FEITO 1
 
@@ -48,15 +61,22 @@
 
     #pragma region AssinaturaDeFuncoes
 
+        //Assinatura de funções ficheiros
+        bool gravarBinarioMaquina(char* nomeFicheiro, Maquina* headJob);
+
         //Assinatura de funções máquinas
+        Maquina* ProcuraMaquina(Maquina* maquinaHeader, int id);
         Maquina* CriaMaquina(int id, int tempo);
         Maquina* InsereMaquina(Maquina* maquinaHeader, Maquina* novaMaquina);
+        
 
         //Assinatura de funções operações
+        Operacao* ProcuraOperacao(Operacao* operacaoHeader, int id);
+        bool ExisteOperacao(Operacao *operacaoHeader, int id);
         Operacao* CriaOperacao(int id, Maquina* maquinas);
         Operacao* InsereOperacao(Operacao* operacaoHeader, Operacao* novaOperacao);
         Operacao* RemoveOperacao(Operacao* operacaoHeader, int id);
-        Operacao* AlterarOperacoes(Operacao* operacaoHeader);
+        Operacao* AlterarOperacoes(Operacao* operacaoHeader, int id, int idMaquina, int tempoAMudar);
         int TempoMinimoOperacao(Operacao* operacaoHeader);
         
     #pragma endregion

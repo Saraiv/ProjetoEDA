@@ -13,33 +13,33 @@
 #include<stdio.h>
 #include"Program.h"
 
-bool gravarJobBinario(char* nomeFicheiro, Job* headJob){
+bool gravarBinarioMaquina(char* nomeFicheiro, Maquina* headMaquina){
 	FILE* fp;
 
-	if (headJob == NULL) return false;
+	if (headMaquina == NULL) return false;
 	if ((fp = fopen(nomeFicheiro, "wb")) == NULL) return false;
-	Job* auxJob = headJob;
-	while (auxJob != NULL){
-		fwrite(auxJob, sizeof(Job), 1, fp);
-		auxJob = auxJob->nextJob;
+	Maquina* auxMaquina = headMaquina;
+	while (auxMaquina != NULL){
+		fwrite(auxMaquina, sizeof(Maquina), 1, fp);
+		auxMaquina = auxMaquina->nextMaquina;
 	}
 	fclose(fp);
 	
 	return true;
 }
 
-Job* lerJobBinario(char* nomeFicheiro){
+Maquina* lerBinarioMaquina(char* nomeFicheiro){
 	FILE* fp;
-	Job* headJob = NULL;
-	Job* auxJob;
+	Maquina* headMaquina = NULL;
+	Maquina* auxMaquina;
 
 	if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
-	auxJob = (Job*)malloc(sizeof(Job));
-	while (fread(auxJob, sizeof(Job), 1, fp)){
-		headJob = InsereJogoOrdenado(headJob, auxJob);
-		headJob = (Job*)malloc(sizeof(Job));
+	auxMaquina = (Maquina*)malloc(sizeof(Maquina));
+	while (fread(auxMaquina, sizeof(Maquina), 1, fp)){
+		headMaquina = InsereMaquina(headMaquina, auxMaquina);
+		headMaquina = (Maquina*)malloc(sizeof(Maquina));
 	}
 	fclose(fp);
 
-	return headJob;
+	return headMaquina;
 }
