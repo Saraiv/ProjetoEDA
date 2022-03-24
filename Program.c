@@ -27,6 +27,8 @@ void main(){
         Maquina* m11 = CriaMaquina(8, 9);
 
         Maquina* headMaquina = NULL;
+        // Maquina* headMaquinaUm = NULL;
+        // Maquina* headMaquinaDois = NULL;
 
         headMaquina = InsereMaquina(headMaquina, m1);
         headMaquina = InsereMaquina(headMaquina, m2);
@@ -40,6 +42,29 @@ void main(){
         headMaquina = InsereMaquina(headMaquina, m10);
         headMaquina = InsereMaquina(headMaquina, m11);
 
-        bool auxFicheiro = gravarBinarioMaquina("Dados.bin", headMaquina);
+        // headMaquinaUm = InsereMaquina(headMaquinaUm, m1);
+        // headMaquinaUm = InsereMaquina(headMaquinaUm, m4);
+
+        // headMaquinaDois = InsereMaquina(headMaquinaDois, m2);
+        // headMaquinaDois = InsereMaquina(headMaquinaDois, m4);
+
+        Operacao* o1 = CriaOperacao(1, headMaquina);
+        Operacao* o2 = CriaOperacao(2, headMaquina);
+
+        // Operacao* o2 = CriaOperacao(2, headMaquina);
+        // Operacao* o3 = CriaOperacao(3, headMaquina);
+        // Operacao* o4 = CriaOperacao(4, headMaquina);
+
+        Operacao* operacaoHeader = NULL;
+
+        operacaoHeader = InsereOperacao(operacaoHeader, o1);
+        operacaoHeader = InsereOperacao(operacaoHeader, o2);
+        
+        Maquina* auxMaquina = headMaquina;
+        while(auxMaquina != NULL){
+            printf("here? %d\n", auxMaquina->tempo);
+            auxMaquina = auxMaquina->nextMaquina;
+        }
+
     #pragma endregion
 }

@@ -64,7 +64,8 @@
         if (novaOperacao == NULL) return NULL; // Se não há memória
             
         novaOperacao->id;
-        *novaOperacao->maquinas = maquinas;
+        novaOperacao->maquinas = maquinas;
+        // InsereMaquina(*novaOperacao->maquinas, maquinas);
         novaOperacao->nextOperacao = NULL;
 
         return novaOperacao;
@@ -130,43 +131,116 @@
         if(operacaoHeader == NULL) return NULL; //Lista vazia
         if(!ExisteOperacao(operacaoHeader, id)) return NULL; // Se não existir a operação
 
+        int i;
         Operacao* operacaoPretendida = ProcuraOperacao(operacaoHeader, id);
         if(operacaoPretendida != NULL){
-            // Maquina* maquinaPretendida = ProcuraMaquina(&operacaoHeader->maquinas[0], idMaquina);
-            // if(maquinaPretendida != NULL){
-            //     maquinaPretendida->tempo = tempoAMudar;
-            // }
+            i = 0;
+            Maquina* maquinaPretendida = ProcuraMaquina(operacaoHeader->maquinas, idMaquina);
+            if(maquinaPretendida != NULL){
+                maquinaPretendida->tempo = tempoAMudar;
+            }
+            i++;
         }
 
         return operacaoHeader;
     }
 
     /**
-     * TODO
-     * Tempo mínimo
+     * Tempo mínimo da operação
      * @param [in] operacaoHeader 
-     * @param [in] id 
-     * @param [out] operacaoHeader	//Retorna a máquina aqui criada
+     * @param [out] operacaoHeader	//Retorna a soma do tempos minimos
     */
     int TempoMinimoOperacao(Operacao* operacaoHeader){
         if (operacaoHeader == NULL) return -1;
-        int tempoMinimo, somaTempoMinimo = 0;
+        int tempoMinimo, somaTempoMinimo = 0, i;
 
         Operacao* auxOperacao = operacaoHeader;
         while(auxOperacao != NULL){
-            // Maquina* tempAux = auxOperacao->maquinas;
-            // while(tempAux->nextMaquina != NULL){
-            //     tempoMinimo = 100;
-            //     if (tempAux->tempo == tempoMinimo)
-            //         tempoMinimo = tempAux->tempo;
-            // }
-            // somaTempoMinimo += tempoMinimo;
-            // auxOperacao = auxOperacao->nextOperacao;
+            i = 0;
+            Maquina* tempAux = auxOperacao->maquinas;
+            while(tempAux->nextMaquina != NULL){
+                tempoMinimo = 100;
+                if (tempAux->tempo == tempoMinimo)
+                    tempoMinimo = tempAux->tempo;
+            }
+            i++;
+            somaTempoMinimo += tempoMinimo;
+            auxOperacao = auxOperacao->nextOperacao;
         }
         
         return somaTempoMinimo;
     }
 
+    /**
+     * Tempo máximo da operação
+     * @param [in] operacaoHeader
+     * @param [out] operacaoHeader	//Retorna a soma do tempos máximos
+    */
+    int TempoMaximoOperacao(Operacao* operacaoHeader){
+        if (operacaoHeader == NULL) return -1;
+        int tempoMaximo, somaTempoMaximo = 0;
 
+        int i;
+        Operacao* auxOperacao = operacaoHeader;
+        while(auxOperacao != NULL){
+            i = 0;
+            Maquina* tempAux = auxOperacao->maquinas;
+            while(tempAux->nextMaquina != NULL){
+                tempoMaximo = 0;
+                if (tempAux->tempo == tempoMaximo)
+                    tempoMaximo = tempAux->tempo;
+            }
+            i++;
+            somaTempoMaximo += tempoMaximo;
+            auxOperacao = auxOperacao->nextOperacao;
+        }
+        
+        return somaTempoMaximo;
+    }
+
+    /**
+     * Count de quantas máquinas tem cada operação
+     * @param [in] operacaoHeader
+     * @param [out] operacaoHeader	//Retorna quantas máquinas tem todas as operações
+    */
+    int CountMaquinasNaOperacao(Operacao* operacaoHeader){
+        if (operacaoHeader == NULL) return -1;
+        int count = 0, i;
+
+        Operacao* auxOperacao = operacaoHeader;
+        while(auxOperacao != NULL){
+            i = 0;
+            Maquina* tempAux = auxOperacao->maquinas;
+            while(tempAux->nextMaquina != NULL){
+                count++;
+            }
+            auxOperacao = auxOperacao->nextOperacao;
+        }
+        
+        return count;
+    }
+
+    /**
+     * Tempo médio da operação
+     * @param [in] operacaoHeader
+     * @param [out] operacaoHeader	//Retorna o tempo médio do tempo das máquinas
+    */
+    float TempoMedioOperacao(Operacao* operacaoHeader){
+        if (operacaoHeader == NULL) return -1;
+        int soma = 0, i;
+        float count = CountMaquinasNaOperacao(operacaoHeader);
+
+        Operacao* auxOperacao = operacaoHeader;
+        while(auxOperacao != NULL){
+            i = 0;
+            Maquina* tempAux = auxOperacao->maquinas;
+            while(tempAux->nextMaquina != NULL){
+                soma += tempAux->tempo;
+            }
+            auxOperacao = auxOperacao->nextOperacao;
+        }
+        
+        return soma/count;
+    }
 
 #pragma endregion

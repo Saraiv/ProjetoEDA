@@ -23,7 +23,7 @@
     */
     Maquina* CriaMaquina(int id, int tempo){
         Maquina* novaMaquina = (Maquina*)malloc(sizeof(Maquina));
-        if (novaMaquina == NULL) return NULL; // Se não há memória
+        if(novaMaquina == NULL) return NULL; // Se não há memória
             
         novaMaquina->id = id;
         novaMaquina->tempo = tempo;
@@ -39,9 +39,9 @@
      * @param [out] maquinaHeader	//Retorna o header maquina
     */
     Maquina* InsereMaquina(Maquina* maquinaHeader, Maquina* novaMaquina){
-        if (maquinaHeader == NULL){
+        if(maquinaHeader == NULL){
             maquinaHeader = novaMaquina;
-        }else{
+        } else{
             novaMaquina->nextMaquina = maquinaHeader;
             maquinaHeader = novaMaquina;
         }
@@ -66,6 +66,6 @@
         }
 
         return NULL;
-    } 
+    }
 
 #pragma endregion

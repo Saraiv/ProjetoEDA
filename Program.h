@@ -35,7 +35,7 @@ NOTAS:
 
         typedef struct Operacao{
             int id;
-            struct Maquina* maquinas[MAQUINAS];
+            struct Maquina* maquinas;
             struct Operacao* nextOperacao;
         }Operacao;
 
@@ -62,7 +62,12 @@ NOTAS:
     #pragma region AssinaturaDeFuncoes
 
         //Assinatura de funções ficheiros
-        bool gravarBinarioMaquina(char* nomeFicheiro, Maquina* headJob);
+        bool gravarBinario(char* nomeFicheiro, Job* headJob);
+        Job* lerBinario(char* nomeFicheiro);
+
+        //Assinatura de funções job
+        Job* CriaJob(int id, Operacao* operacao);
+        Job* InsereJob(Job* jobHeader, Job* novoJob);
 
         //Assinatura de funções máquinas
         Maquina* ProcuraMaquina(Maquina* maquinaHeader, int id);
@@ -78,7 +83,11 @@ NOTAS:
         Operacao* RemoveOperacao(Operacao* operacaoHeader, int id);
         Operacao* AlterarOperacoes(Operacao* operacaoHeader, int id, int idMaquina, int tempoAMudar);
         int TempoMinimoOperacao(Operacao* operacaoHeader);
-        
+        int TempoMaximoOperacao(Operacao* operacaoHeader);
+        int CountMaquinasNaOperacao(Operacao* operacaoHeader);
+        int TempoMaximoOperacao(Operacao* operacaoHeader);
+        float TempoMedioOperacao(Operacao* operacaoHeader);
+
     #pragma endregion
 
 #endif
