@@ -16,38 +16,19 @@
 #pragma region FuncoesOperacoes
 
     /**
-     * Procura a operação pretendida
-     * @param [in] operacaoHeader 
-     * @param [in] id
-     * @param [out] aux	//Retorna a operação que era procurada
-    */
-    Operacao* ProcuraOperacao(Operacao* operacaoHeader, int id){
-        if(operacaoHeader == NULL) return NULL; //Lista vazia
-
-        Operacao* aux = operacaoHeader;
-        while(operacaoHeader->nextOperacao != NULL){
-            if(aux->id == id){
-                return aux;
-            }
-        }
-
-        return NULL;
-    }
-
-    /**
-     * Verifica se o jogo existe
-     * @param [in] operacaoHeader 
+     * Verifica se a operação existe
+     * @param [in] operacoesHeader 
      * @param [in] id
      * @param [out] bool //Retorna se encontrou um jogo existente ou não
     */
-    bool ExisteOperacao(Operacao *operacaoHeader, int id){
-        if (operacaoHeader == NULL) return false;
+    bool ExisteOperacao(ListaOperacoes *operacoesHeader, int id){
+        if (operacoesHeader == NULL) return false;
 
-        Operacao* aux = operacaoHeader;
-        while (aux != NULL) {
-            if (aux->id == id)
+        ListaOperacoes* auxOperacoes = operacoesHeader;
+        while (auxOperacoes != NULL) {
+            if (auxOperacoes->operacao.id == id)
                 return true;
-            aux = aux->nextOperacao;
+            auxOperacoes = auxOperacoes->nextOperacoes;
         }
 
         return false;
@@ -56,93 +37,126 @@
     /**
      * Cria uma operacao
      * @param [in] id
-     * @param [in] nomeDaOperacao
+     * @param [in] maquinasHeader
      * @param [out] novaOperacao	//Retorna a máquina aqui criada
     */
-    Operacao* CriaOperacao(int id, Maquina* maquinas){
+    Operacao* CriaOperacao(int id, ListaMaquinas* maquinasHeader){
         Operacao* novaOperacao = (Operacao*)malloc(sizeof(Operacao));
         if (novaOperacao == NULL) return NULL; // Se não há memória
             
         novaOperacao->id;
-        novaOperacao->maquinas = maquinas;
-        // InsereMaquina(*novaOperacao->maquinas, maquinas);
+        novaOperacao->maquinas = maquinasHeader;
         novaOperacao->nextOperacao = NULL;
 
         return novaOperacao;
     }
 
     /**
-     * Insere uma operação
-     * @param [in] operacaoHeader 
-     * @param [in] novaOperacao 
-     * @param [out] operacaoHeader	//Retorna a máquina aqui criada
+    * Cria novo nodo para a lista de Operações
+    * @param [in] novaOperacao
+    * @param [out] novaLista para nodo criado
     */
-    Operacao* InsereOperacao(Operacao* operacaoHeader, Operacao* novaOperacao){
-        if(!ExisteOperacao(operacaoHeader, novaOperacao->id)) return NULL; // Se não exister a operação
-        
-        if (operacaoHeader == NULL){
-            operacaoHeader = novaOperacao;
-        }else{
-            novaOperacao->nextOperacao = operacaoHeader;
-            operacaoHeader = novaOperacao;
+    ListaOperacoes* CriaNodoListaOperacoes(Operacao* novaOperacao){
+        ListaOperacoes* novaLista = (ListaOperacoes*)calloc(1, sizeof(ListaOperacoes));
+
+        novaLista->operacao.id = novaOperacao->id;
+        novaLista->operacao.maquinas = novaOperacao->maquinas;
+        novaLista->nextOperacoes = NULL;
+
+        return novaLista;
+    }
+
+    /**
+     * Insere uma operação
+     * @param [in] operacoesHeader 
+     * @param [in] novaOperacao 
+     * @param [out] operacoesHeader	//Retorna a máquina aqui criada
+    */
+    ListaOperacoes* InsereOperacao(ListaOperacoes* operacoesHeader, Operacao* novaOperacao){
+        if(!ExisteOperacao(operacoesHeader, novaOperacao->id)) return NULL; // Se não exister a máquina
+
+        ListaOperacoes* novaOperacaoCriada = CriaNodoListaOperacoes(novaOperacao);
+        if(operacoesHeader == NULL){
+            operacoesHeader = novaOperacaoCriada;
+        } else{
+            novaOperacaoCriada->nextOperacoes = operacoesHeader;
+		    operacoesHeader = novaOperacaoCriada;
         }
 
-        return operacaoHeader;
+        return operacoesHeader;
+    }
+
+    /**
+     * Procura a operação pretendida
+     * @param [in] operacoesHeader 
+     * @param [in] id
+     * @param [out] aux	//Retorna a operação que era procurada
+    */
+    Operacao* ProcuraOperacao(ListaOperacoes* operacoesHeader, int id){
+        if(operacoesHeader == NULL) return NULL; //Lista vazia
+
+        ListaOperacoes* auxOperacoes = operacoesHeader;
+        while(auxOperacoes != NULL){
+            if(auxOperacoes->operacao.id == id){
+                Operacao* newOperacao = CriaOperacao(auxOperacoes->operacao.id, auxOperacoes->operacao.maquinas);
+                return newOperacao;
+            }
+        }
+
+        return NULL;
     }
 
     /**
      * Remover a operação
-     * @param [in] operacaoHeader 
+     * @param [in] operacoesHeader 
      * @param [in] id 
-     * @param [out] operacaoHeader	//Retorna a máquina aqui criada
+     * @param [out] operacoesHeader	//Retorna o header da lista de operações, mas com a operação já removida
     */
-    Operacao* RemoveOperacao(Operacao* operacaoHeader, int id){
-        if (operacaoHeader == NULL) return NULL; //Lista vazia
-        if(!ExisteOperacao(operacaoHeader, id)) return NULL; // Se não existir a operação
-        
-        Operacao* auxOperacao = operacaoHeader;
-        Operacao* auxAnterior = NULL;
+    ListaOperacoes* RemoveOperacao(ListaOperacoes* operacoesHeader, int id){
+        if (operacoesHeader == NULL) return NULL; //Lista vazia
+        if(!ExisteOperacao(operacoesHeader, id)) return NULL; // Se não existir a operação
 
-        while (auxOperacao && auxOperacao->id != id){
-            auxAnterior = auxOperacao;
-            auxOperacao = auxOperacao->nextOperacao;
+        if (operacoesHeader->operacao.id == id){		//remove no inicio da lista
+            ListaOperacoes* auxOperacoes = operacoesHeader;
+            operacoesHeader = operacoesHeader->nextOperacoes;
+            free(auxOperacoes);
         }
-        if (auxAnterior == NULL){ // Se estiver no fim p.e.
-            operacaoHeader = operacaoHeader->nextOperacao;
-            free(auxOperacao);
-        }
-        else{ // Se estiver no meio p.e.
-            auxAnterior->nextOperacao = auxOperacao->nextOperacao;
-            free(auxOperacao);
+        else{
+            ListaOperacoes* auxOperacoes = operacoesHeader;
+            ListaOperacoes* auxAnt = auxOperacoes;
+            while (auxOperacoes && auxOperacoes->operacao.id != id) {	//procura para revover
+                auxAnt = auxOperacoes;
+                auxOperacoes = auxOperacoes->nextOperacoes;
+            }
+            if (auxOperacoes != NULL) {					//se encontrou, remove
+                auxAnt->nextOperacoes = auxOperacoes->nextOperacoes;
+                free(auxOperacoes);
+            }
         }
         
-        return operacaoHeader;
+        return operacoesHeader;
     }
 
     /**
      * Alterar operações
-     * @param [in] operacaoHeader 
+     * @param [in] operacoesHeader 
      * @param [in] id
      * @param [in] tempoAMudar
      * @param [in] idMaquina
-     * @param [out] operacaoHeader	//Retorna o header das operações alterada
+     * @param [out] operacaoHeader	//Retorna o header daa lista de operações alterada
     */
-    Operacao* AlterarOperacoes(Operacao* operacaoHeader, int id, int idMaquina, int tempoAMudar){
-        if(operacaoHeader == NULL) return NULL; //Lista vazia
-        if(!ExisteOperacao(operacaoHeader, id)) return NULL; // Se não existir a operação
+    ListaOperacoes* AlterarOperacoes(ListaOperacoes* operacoesHeader, int idOperacao, int idMaquina, int tempoAMudar){
+        if(operacoesHeader == NULL) return NULL; //Lista vazia
+        if(!ExisteOperacao(operacoesHeader, idOperacao)) return NULL; // Se não existir a operação
 
-        int i;
-        Operacao* operacaoPretendida = ProcuraOperacao(operacaoHeader, id);
-        if(operacaoPretendida != NULL){
-            i = 0;
-            Maquina* maquinaPretendida = ProcuraMaquina(operacaoHeader->maquinas, idMaquina);
-            if(maquinaPretendida != NULL){
-                maquinaPretendida->tempo = tempoAMudar;
-            }
-            i++;
+        Operacao* operacaoPretendida = ProcuraOperacao(operacoesHeader, idOperacao);
+        if(operacaoPretendida != NULL && ExisteMaquina(operacaoPretendida->maquinas, idMaquina)){
+            Maquina* maquinaPretendida = ProcuraMaquina(operacaoPretendida->maquinas, idMaquina);
+            if(maquinaPretendida == NULL) return NULL;
+            maquinaPretendida->tempo = tempoAMudar;
         }
 
-        return operacaoHeader;
+        return operacoesHeader;
     }
 
     /**
@@ -150,25 +164,17 @@
      * @param [in] operacaoHeader 
      * @param [out] operacaoHeader	//Retorna a soma do tempos minimos
     */
-    int TempoMinimoOperacao(Operacao* operacaoHeader){
-        if (operacaoHeader == NULL) return -1;
-        int tempoMinimo, somaTempoMinimo = 0, i;
+    int TempoMinimoOperacao(ListaOperacoes* operacoesHeader){
+        if (operacoesHeader == NULL) return -1;
+        int  soma = 0;
 
-        Operacao* auxOperacao = operacaoHeader;
-        while(auxOperacao != NULL){
-            i = 0;
-            Maquina* tempAux = auxOperacao->maquinas;
-            while(tempAux->nextMaquina != NULL){
-                tempoMinimo = 100;
-                if (tempAux->tempo == tempoMinimo)
-                    tempoMinimo = tempAux->tempo;
-            }
-            i++;
-            somaTempoMinimo += tempoMinimo;
-            auxOperacao = auxOperacao->nextOperacao;
+        ListaOperacoes* auxOperacoes = operacoesHeader;
+        while(auxOperacoes != NULL){
+            soma += TempoMinimoMaquina(auxOperacoes->operacao.maquinas);
+            auxOperacoes = auxOperacoes->nextOperacoes;
         }
         
-        return somaTempoMinimo;
+        return soma;
     }
 
     /**
@@ -176,45 +182,34 @@
      * @param [in] operacaoHeader
      * @param [out] operacaoHeader	//Retorna a soma do tempos máximos
     */
-    int TempoMaximoOperacao(Operacao* operacaoHeader){
-        if (operacaoHeader == NULL) return -1;
-        int tempoMaximo, somaTempoMaximo = 0;
+    int TempoMaximoOperacao(ListaOperacoes* operacoesHeader){
+        if (operacoesHeader == NULL) return -1;
+        int  soma = 0;
 
-        int i;
-        Operacao* auxOperacao = operacaoHeader;
-        while(auxOperacao != NULL){
-            i = 0;
-            Maquina* tempAux = auxOperacao->maquinas;
-            while(tempAux->nextMaquina != NULL){
-                tempoMaximo = 0;
-                if (tempAux->tempo == tempoMaximo)
-                    tempoMaximo = tempAux->tempo;
-            }
-            i++;
-            somaTempoMaximo += tempoMaximo;
-            auxOperacao = auxOperacao->nextOperacao;
+        ListaOperacoes* auxOperacoes = operacoesHeader;
+        while(auxOperacoes != NULL){
+            soma += TempoMaximoMaquina(auxOperacoes->operacao.maquinas);
+            auxOperacoes = auxOperacoes->nextOperacoes;
         }
         
-        return somaTempoMaximo;
+        return soma;
     }
 
     /**
      * Count de quantas máquinas tem cada operação
-     * @param [in] operacaoHeader
-     * @param [out] operacaoHeader	//Retorna quantas máquinas tem todas as operações
+     * @param [in] operacoesHeader
+     * @param [out] operacoesHeader	//Retorna quantas máquinas tem todas as operações
     */
-    int CountMaquinasNaOperacao(Operacao* operacaoHeader){
-        if (operacaoHeader == NULL) return -1;
-        int count = 0, i;
+    int CountMaquinasNaOperacao(ListaOperacoes* operacoesHeader){
+        if (operacoesHeader == NULL) return 0;
+        int count = 0;
 
-        Operacao* auxOperacao = operacaoHeader;
-        while(auxOperacao != NULL){
-            i = 0;
-            Maquina* tempAux = auxOperacao->maquinas;
-            while(tempAux->nextMaquina != NULL){
+        ListaOperacoes* auxOperacoes = operacoesHeader;
+        while(auxOperacoes != NULL){
+            ListaMaquinas* auxMaquinas = auxOperacoes->operacao.maquinas;
+            while(auxMaquinas != NULL){
                 count++;
             }
-            auxOperacao = auxOperacao->nextOperacao;
         }
         
         return count;
@@ -222,22 +217,22 @@
 
     /**
      * Tempo médio da operação
-     * @param [in] operacaoHeader
-     * @param [out] operacaoHeader	//Retorna o tempo médio do tempo das máquinas
+     * @param [in] operacoesHeader
+     * @param [out] media	//Retorna o tempo médio do tempo das máquinas
     */
-    float TempoMedioOperacao(Operacao* operacaoHeader){
-        if (operacaoHeader == NULL) return -1;
-        int soma = 0, i;
-        float count = CountMaquinasNaOperacao(operacaoHeader);
+    float TempoMedioOperacao(ListaOperacoes* operacoesHeader){
+        if (operacoesHeader == NULL) return 0;
+        int soma = 0;
+        float count = CountMaquinasNaOperacao(operacoesHeader);
 
-        Operacao* auxOperacao = operacaoHeader;
-        while(auxOperacao != NULL){
-            i = 0;
-            Maquina* tempAux = auxOperacao->maquinas;
-            while(tempAux->nextMaquina != NULL){
-                soma += tempAux->tempo;
+        ListaOperacoes* auxOperacoes = operacoesHeader;
+        while(auxOperacoes != NULL){
+            ListaMaquinas* auxMaquinas = auxOperacoes->operacao.maquinas;
+            while(auxMaquinas != NULL){
+                soma += auxMaquinas->maquina.tempo;
+                auxMaquinas = auxMaquinas->nextMaquinas;
             }
-            auxOperacao = auxOperacao->nextOperacao;
+            auxOperacoes = auxOperacoes->nextOperacoes;
         }
         
         return soma/count;
