@@ -21,7 +21,7 @@
      * @param [in] operacao
      * @param [out] novoJob	//Retorna o job aqui criado
     */
-    Job* CriaJob(int id, Operacao* operacao){
+    Job* CriaJob(int id, ListaOperacoes* operacao){
         Job* novoJob = (Job*)malloc(sizeof(Job));
         if(novoJob == NULL) return NULL; // Se não há memória
             
@@ -43,7 +43,7 @@
             jobHeader = novoJob;
         } else{
             novoJob->nextJob = jobHeader;
-            jobHeader = novoJob;
+		    jobHeader = novoJob;
         }
 
         return jobHeader;

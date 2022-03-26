@@ -62,7 +62,7 @@ NOTAS:
 
         typedef struct Job{
             int id;
-            struct Operacao* operecao;
+            struct ListaOperacoes* operecao;
             struct Job* nextJob;
         }Job;
 
@@ -77,7 +77,7 @@ NOTAS:
         Job* lerBinario(char* nomeFicheiro);
 
         //Assinatura de funções job
-        Job* CriaJob(int id, Operacao* operacao);
+        Job* CriaJob(int id, ListaOperacoes* operacao);
         Job* InsereJob(Job* jobHeader, Job* novoJob);
 
         //Assinatura de funções máquinas
