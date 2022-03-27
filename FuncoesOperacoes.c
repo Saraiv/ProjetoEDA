@@ -40,12 +40,12 @@
      * @param [in] maquinasHeader
      * @param [out] novaOperacao	//Retorna a máquina aqui criada
     */
-    Operacao* CriaOperacao(int id, ListaMaquinas* maquinasHeader){
+    Operacao* CriaOperacao(int id){
         Operacao* novaOperacao = (Operacao*)malloc(sizeof(Operacao));
         if (novaOperacao == NULL) return NULL; // Se não há memória
             
         novaOperacao->id = id;
-        novaOperacao->maquinas = maquinasHeader;
+        novaOperacao->maquinas = NULL;
 
         return novaOperacao;
     }
@@ -96,7 +96,7 @@
         ListaOperacoes* auxOperacoes = operacoesHeader;
         while(auxOperacoes != NULL){
             if(auxOperacoes->operacao.id == id){
-                Operacao* newOperacao = CriaOperacao(auxOperacoes->operacao.id, auxOperacoes->operacao.maquinas);
+                Operacao* newOperacao = CriaOperacao(auxOperacoes->operacao.id);
                 return newOperacao;
             }
         }
@@ -145,14 +145,19 @@
     */
     ListaOperacoes* AlterarOperacoes(ListaOperacoes* operacoesHeader, int idOperacao, int idMaquina, int tempoAMudar){
         if(operacoesHeader == NULL) return NULL; //Lista vazia
-        if(!ExisteOperacao(operacoesHeader, idOperacao)) return NULL; // Se não existir a operação
+        ListaOperacoes* auxOperacoes = operacoesHeader;
 
-        Operacao* operacaoPretendida = ProcuraOperacao(operacoesHeader, idOperacao);
-        if(operacaoPretendida != NULL){
-            Maquina* maquinaPretendida = ProcuraMaquina(operacaoPretendida->maquinas, idMaquina);
-            if(maquinaPretendida->id == idMaquina){
-                maquinaPretendida->tempo = tempoAMudar;
+        while(auxOperacoes != NULL){
+            if(auxOperacoes->operacao.id == idOperacao){
+                ListaMaquinas* auxMaquinas = auxOperacoes->operacao.maquinas;
+                while(auxMaquinas != NULL){
+                    if(auxMaquinas->maquina.id == idMaquina){
+                        auxMaquinas->maquina.tempo = tempoAMudar;
+                    }
+                    auxMaquinas = auxMaquinas->nextMaquinas;
+                }
             }
+            auxOperacoes = auxOperacoes->nextOperacoes;
         }
 
         return operacoesHeader;
@@ -234,6 +239,10 @@
         return soma/count;
     }
 
+    /**
+     * Mostra a lista de operações e máquinas
+     * @param [in] operacoesHeader
+    */
     void MostraListaOperacoes(ListaOperacoes* operacoesHeader){
         ListaOperacoes* auxOperacoes = operacoesHeader;
         printf("Operacoes:\n");

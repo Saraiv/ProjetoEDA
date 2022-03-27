@@ -99,6 +99,7 @@
                 Maquina* newMaquina = CriaMaquina(auxMaquinas->maquina.id, auxMaquinas->maquina.tempo);
                 return newMaquina;
             }
+            auxMaquinas = auxMaquinas ->nextMaquinas;
         }
 
         return NULL;
@@ -146,6 +147,10 @@
         return tempoMaximo;
     }
 
+    /**
+     * Mostra todas as máquinas
+     * @param [in] maquinasHeader
+    */
     void MostraListaMaquinas(ListaMaquinas* maquinasHeader){
         ListaMaquinas* auxMaquinas = maquinasHeader;
         printf("Maquinas:\n");

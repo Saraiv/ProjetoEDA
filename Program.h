@@ -87,10 +87,9 @@ NOTAS:
 
         //Assinatura de funções operações
         bool ExisteOperacao(ListaOperacoes *operacaoHeader, int id);
-        Operacao* CriaOperacao(int id, ListaMaquinas* maquinasHeader);
+        Operacao* CriaOperacao(int id);
         ListaOperacoes* CriaNodoListaOperacoes(Operacao* novaOperacao);
         ListaOperacoes* InsereNaListaDeOperacoes(ListaOperacoes* operacoesHeader, Operacao* novaOperacao);
-        ListaOperacoes* InsereMaquinaNaListaOperacoes(ListaOperacoes* operacoesHeader, Maquina* novaMaquina);
         Operacao* ProcuraOperacao(ListaOperacoes* operacoesHeader, int id);
         ListaOperacoes* RemoveOperacao(ListaOperacoes* operacoesHeader, int id);
         ListaOperacoes* AlterarOperacoes(ListaOperacoes* operacoesHeader, int idOperacao, int idMaquina, int tempoAMudar);
