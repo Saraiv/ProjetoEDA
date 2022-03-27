@@ -49,4 +49,13 @@
         return jobHeader;
     }
 
+    void MostraListaJobs(Job* jobsHeader){
+        Job* auxJobs = jobsHeader;
+        printf("Jobs:\n");
+        while(auxJobs != NULL){
+            printf("ID: %d\n", auxJobs->id);
+            auxJobs = auxJobs->nextJob;
+        }
+    }
+
 #pragma endregion

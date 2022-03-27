@@ -44,9 +44,8 @@
         Operacao* novaOperacao = (Operacao*)malloc(sizeof(Operacao));
         if (novaOperacao == NULL) return NULL; // Se não há memória
             
-        novaOperacao->id;
+        novaOperacao->id = id;
         novaOperacao->maquinas = maquinasHeader;
-        novaOperacao->nextOperacao = NULL;
 
         return novaOperacao;
     }
@@ -72,10 +71,9 @@
      * @param [in] novaOperacao 
      * @param [out] operacoesHeader	//Retorna a máquina aqui criada
     */
-    ListaOperacoes* InsereOperacao(ListaOperacoes* operacoesHeader, Operacao* novaOperacao){
-        if(!ExisteOperacao(operacoesHeader, novaOperacao->id)) return NULL; // Se não exister a máquina
-
+    ListaOperacoes* InsereNaListaDeOperacoes(ListaOperacoes* operacoesHeader, Operacao* novaOperacao){
         ListaOperacoes* novaOperacaoCriada = CriaNodoListaOperacoes(novaOperacao);
+        
         if(operacoesHeader == NULL){
             operacoesHeader = novaOperacaoCriada;
         } else{
@@ -150,10 +148,11 @@
         if(!ExisteOperacao(operacoesHeader, idOperacao)) return NULL; // Se não existir a operação
 
         Operacao* operacaoPretendida = ProcuraOperacao(operacoesHeader, idOperacao);
-        if(operacaoPretendida != NULL && ExisteMaquina(operacaoPretendida->maquinas, idMaquina)){
+        if(operacaoPretendida != NULL){
             Maquina* maquinaPretendida = ProcuraMaquina(operacaoPretendida->maquinas, idMaquina);
-            if(maquinaPretendida == NULL) return NULL;
-            maquinaPretendida->tempo = tempoAMudar;
+            if(maquinaPretendida->id == idMaquina){
+                maquinaPretendida->tempo = tempoAMudar;
+            }
         }
 
         return operacoesHeader;
@@ -205,11 +204,10 @@
         int count = 0;
 
         ListaOperacoes* auxOperacoes = operacoesHeader;
-        while(auxOperacoes != NULL){
-            ListaMaquinas* auxMaquinas = auxOperacoes->operacao.maquinas;
-            while(auxMaquinas != NULL){
-                count++;
-            }
+        ListaMaquinas* auxMaquinas = auxOperacoes->operacao.maquinas;
+        while(auxMaquinas != NULL){
+            count++;
+            auxMaquinas = auxMaquinas->nextMaquinas;
         }
         
         return count;
@@ -226,16 +224,24 @@
         float count = CountMaquinasNaOperacao(operacoesHeader);
 
         ListaOperacoes* auxOperacoes = operacoesHeader;
-        while(auxOperacoes != NULL){
-            ListaMaquinas* auxMaquinas = auxOperacoes->operacao.maquinas;
-            while(auxMaquinas != NULL){
-                soma += auxMaquinas->maquina.tempo;
-                auxMaquinas = auxMaquinas->nextMaquinas;
-            }
-            auxOperacoes = auxOperacoes->nextOperacoes;
+        ListaMaquinas* auxMaquinas = auxOperacoes->operacao.maquinas;
+        while(auxMaquinas != NULL){
+            soma += auxMaquinas->maquina.tempo;
+            auxMaquinas = auxMaquinas->nextMaquinas;
         }
+        auxOperacoes = auxOperacoes->nextOperacoes;
         
         return soma/count;
+    }
+
+    void MostraListaOperacoes(ListaOperacoes* operacoesHeader){
+        ListaOperacoes* auxOperacoes = operacoesHeader;
+        printf("Operacoes:\n");
+        while(auxOperacoes != NULL){
+            printf("ID: %d\n", auxOperacoes->operacao.id);
+            MostraListaMaquinas(operacoesHeader->operacao.maquinas);
+            auxOperacoes = auxOperacoes->nextOperacoes;
+        }
     }
 
 #pragma endregion

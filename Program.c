@@ -14,57 +14,45 @@ void main(){
 
     #pragma region CriacaoVariaveis
 
-        // Maquina* m1 = CriaMaquina(1, 4);
-        // Maquina* m2 = CriaMaquina(3, 5);
-        // Maquina* m3 = CriaMaquina(2, 4);
-        // Maquina* m4 = CriaMaquina(4, 5);
-        // Maquina* m5 = CriaMaquina(3, 5);
-        // Maquina* m6 = CriaMaquina(5, 6);
-        // Maquina* m7 = CriaMaquina(4, 5);
-        // Maquina* m8 = CriaMaquina(5, 5);
-        // Maquina* m9 = CriaMaquina(6, 4);
-        // Maquina* m10 = CriaMaquina(7, 5);
-        // Maquina* m11 = CriaMaquina(8, 9);
+        //Maquinas
+        Maquina* m1 = CriaMaquina(1, 4);
+        Maquina* m2 = CriaMaquina(3, 5);
 
-        // Maquina* headMaquina = NULL;
-        // // Maquina* headMaquinaUm = NULL;
-        // // Maquina* headMaquinaDois = NULL;
+        ListaMaquinas* maquinasHeader = NULL;
 
-        // headMaquina = InsereMaquina(headMaquina, m1);
-        // headMaquina = InsereMaquina(headMaquina, m2);
-        // headMaquina = InsereMaquina(headMaquina, m3);
-        // headMaquina = InsereMaquina(headMaquina, m4);
-        // headMaquina = InsereMaquina(headMaquina, m5);
-        // headMaquina = InsereMaquina(headMaquina, m6);
-        // headMaquina = InsereMaquina(headMaquina, m7);
-        // headMaquina = InsereMaquina(headMaquina, m8);
-        // headMaquina = InsereMaquina(headMaquina, m9);
-        // headMaquina = InsereMaquina(headMaquina, m10);
-        // headMaquina = InsereMaquina(headMaquina, m11);
+        maquinasHeader = InsereNaListaDeMaquinas(maquinasHeader, m1);
+        maquinasHeader = InsereNaListaDeMaquinas(maquinasHeader, m2);
 
-        // // headMaquinaUm = InsereMaquina(headMaquinaUm, m1);
-        // // headMaquinaUm = InsereMaquina(headMaquinaUm, m4);
+        //Operações
+        Operacao* o1 = CriaOperacao(1, maquinasHeader);
 
-        // // headMaquinaDois = InsereMaquina(headMaquinaDois, m2);
-        // // headMaquinaDois = InsereMaquina(headMaquinaDois, m4);
+        ListaOperacoes* operacoesHeader = NULL;
 
-        // Operacao* o1 = CriaOperacao(1, headMaquina);
-        // Operacao* o2 = CriaOperacao(2, headMaquina);
+        operacoesHeader = InsereNaListaDeOperacoes(operacoesHeader, o1);
 
-        // // Operacao* o2 = CriaOperacao(2, headMaquina);
-        // // Operacao* o3 = CriaOperacao(3, headMaquina);
-        // // Operacao* o4 = CriaOperacao(4, headMaquina);
+        // operacoesHeader = InsereMaquinaNaListaOperacoes(operacoesHeader, m1);
+        // operacoesHeader = InsereMaquinaNaListaOperacoes(operacoesHeader, m1);
 
-        // Operacao* operacaoHeader = NULL;
+        //Mostrar
+        MostraListaOperacoes(operacoesHeader);
 
-        // operacaoHeader = InsereOperacao(operacaoHeader, o1);
-        // operacaoHeader = InsereOperacao(operacaoHeader, o2);
-        
-        // Maquina* auxMaquina = headMaquina;
-        // while(auxMaquina != NULL){
-        //     printf("here? %d\n", auxMaquina->tempo);
-        //     auxMaquina = auxMaquina->nextMaquina;
-        // }
+        //Funções
+
+        // //Remover
+        // operacoesHeader = RemoveOperacao(operacoesHeader, 1);
+        // MostraListaOperacoes(operacoesHeader);
+
+        //Alterar
+        // operacoesHeader = AlterarOperacoes(operacoesHeader, 1, 3, 8);
+
+        //Minimo
+        printf("Tempo Minimo: %d\n", TempoMinimoOperacao(operacoesHeader));
+
+        //Maximo
+        printf("Tempo Maximo: %d\n", TempoMaximoOperacao(operacoesHeader));
+
+        //Media
+        printf("Tempo Medio: %.2f\n", TempoMedioOperacao(operacoesHeader));
 
     #pragma endregion
 }

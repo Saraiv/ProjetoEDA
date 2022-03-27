@@ -46,7 +46,6 @@
             
         novaMaquina->id = id;
         novaMaquina->tempo = tempo;
-        novaMaquina->nextMaquina = NULL;
 
         return novaMaquina;
     }
@@ -72,10 +71,9 @@
      * @param [in] novaMaquina
      * @param [out] maquinasHeader	//Retorna o header da lista de máquinas com a nova máquina inserida
     */
-    ListaMaquinas* InsereMaquina(ListaMaquinas* maquinasHeader, Maquina* novaMaquina){
-        if(!ExisteMaquina(maquinasHeader, novaMaquina->id)) return NULL; // Se não exister a máquina
-
+    ListaMaquinas* InsereNaListaDeMaquinas(ListaMaquinas* maquinasHeader, Maquina* novaMaquina){
         ListaMaquinas* novaMaquinaCriada = CriaNodoListaMaquinas(novaMaquina);
+
         if(maquinasHeader == NULL){
             maquinasHeader = novaMaquinaCriada;
         } else{
@@ -120,6 +118,7 @@
             if(auxMaquinas->maquina.tempo < tempoMinimo){
                 tempoMinimo = auxMaquinas->maquina.tempo;
             }
+            auxMaquinas = auxMaquinas->nextMaquinas;
         }
 
         return tempoMinimo;
@@ -132,16 +131,28 @@
     */
     int TempoMaximoMaquina(ListaMaquinas* maquinasHeader){
         if(maquinasHeader == NULL) return -1; //Lista vazia
+        int id = 0;
 
         ListaMaquinas* auxMaquinas = maquinasHeader;
         int tempoMaximo = 0;
         while(auxMaquinas != NULL){
             if(auxMaquinas->maquina.tempo > tempoMaximo){
                 tempoMaximo = auxMaquinas->maquina.tempo;
+                id = auxMaquinas->maquina.id;
             }
+            auxMaquinas = auxMaquinas->nextMaquinas;
         }
 
         return tempoMaximo;
+    }
+
+    void MostraListaMaquinas(ListaMaquinas* maquinasHeader){
+        ListaMaquinas* auxMaquinas = maquinasHeader;
+        printf("Maquinas:\n");
+        while(auxMaquinas != NULL){
+            printf("ID: %d - Tempo: %d\n", auxMaquinas->maquina.id, auxMaquinas->maquina.tempo);
+            auxMaquinas = auxMaquinas->nextMaquinas;
+        }
     }
 
 #pragma endregion

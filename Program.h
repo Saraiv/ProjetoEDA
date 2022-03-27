@@ -33,32 +33,26 @@ NOTAS:
         typedef struct Maquina{
             int id;
             int tempo;
-            struct Maquina* nextMaquina;
         }Maquina;
-
-        extern Maquina* headMaquina;
 
         typedef struct ListaMaquinas{
             struct Maquina maquina;
             struct ListaMaquinas* nextMaquinas;
         }ListaMaquinas;
 
-        extern ListaMaquinas* headMaquinas;
+        extern ListaMaquinas* maquinasHeader;
 
         typedef struct Operacao{
             int id;
             struct ListaMaquinas* maquinas;
-            struct Operacao* nextOperacao;
         }Operacao;
-
-        extern Operacao* headOperacao;
 
         typedef struct ListaOperacoes{
             struct Operacao operacao;
             struct ListaOperacoes* nextOperacoes;
         }ListaOperacoes;
 
-        extern ListaOperacoes* headOperacoes;
+        extern ListaOperacoes* operacoesHeader;
 
         typedef struct Job{
             int id;
@@ -66,7 +60,7 @@ NOTAS:
             struct Job* nextJob;
         }Job;
 
-        extern Job* headJob;
+        extern Job* jobsHeader;
 
     #pragma endregion
 
@@ -79,28 +73,32 @@ NOTAS:
         //Assinatura de funções job
         Job* CriaJob(int id, ListaOperacoes* operacao);
         Job* InsereJob(Job* jobHeader, Job* novoJob);
+        void MostraListaJobs(Job* jobsHeader);
 
         //Assinatura de funções máquinas
         bool ExisteMaquina(ListaMaquinas *maquinasHeader, int id);
         Maquina* CriaMaquina(int id, int tempo);
         ListaMaquinas* CriaNodoListaMaquinas(Maquina* novaMaquina);
-        ListaMaquinas* InsereMaquina(ListaMaquinas* maquinaHeader, Maquina* novaMaquina);
+        ListaMaquinas* InsereNaListaDeMaquinas(ListaMaquinas* maquinaHeader, Maquina* novaMaquina);
         Maquina* ProcuraMaquina(ListaMaquinas* maquinaHeader, int id);
         int TempoMinimoMaquina(ListaMaquinas* maquinasHeader);
         int TempoMaximoMaquina(ListaMaquinas* maquinasHeader);
+        void MostraListaMaquinas(ListaMaquinas* maquinasHeader);
 
         //Assinatura de funções operações
         bool ExisteOperacao(ListaOperacoes *operacaoHeader, int id);
         Operacao* CriaOperacao(int id, ListaMaquinas* maquinasHeader);
         ListaOperacoes* CriaNodoListaOperacoes(Operacao* novaOperacao);
-        ListaOperacoes* InsereOperacao(ListaOperacoes* operacoesHeader, Operacao* novaOperacao);
-        Operacao* ProcuraOperacao(ListaOperacoes* operacaoHeader, int id);
+        ListaOperacoes* InsereNaListaDeOperacoes(ListaOperacoes* operacoesHeader, Operacao* novaOperacao);
+        ListaOperacoes* InsereMaquinaNaListaOperacoes(ListaOperacoes* operacoesHeader, Maquina* novaMaquina);
+        Operacao* ProcuraOperacao(ListaOperacoes* operacoesHeader, int id);
         ListaOperacoes* RemoveOperacao(ListaOperacoes* operacoesHeader, int id);
         ListaOperacoes* AlterarOperacoes(ListaOperacoes* operacoesHeader, int idOperacao, int idMaquina, int tempoAMudar);
         int TempoMinimoOperacao(ListaOperacoes* operacoesHeader);
         int TempoMaximoOperacao(ListaOperacoes* operacoesHeader);
         int CountMaquinasNaOperacao(ListaOperacoes* operacoesHeader);
-        float TempoMedioOperacao(ListaOperacoes* operacaoHeader);
+        float TempoMedioOperacao(ListaOperacoes* operacoesHeader);
+        void MostraListaOperacoes(ListaOperacoes* operacoesHeader);
 
     #pragma endregion
 
