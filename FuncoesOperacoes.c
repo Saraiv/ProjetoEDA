@@ -74,11 +74,24 @@
     ListaOperacoes* InsereNaListaDeOperacoes(ListaOperacoes* operacoesHeader, Operacao* novaOperacao){
         ListaOperacoes* novaOperacaoCriada = CriaNodoListaOperacoes(novaOperacao);
         
-        if(operacoesHeader == NULL){
+        if (operacoesHeader == NULL){
             operacoesHeader = novaOperacaoCriada;
-        } else{
-            novaOperacaoCriada->nextOperacoes = operacoesHeader;
-		    operacoesHeader = novaOperacaoCriada;
+        }
+        else{
+            ListaOperacoes* auxOperacoes = operacoesHeader;
+            ListaOperacoes* auxAnt = NULL;
+            while(auxOperacoes && auxOperacoes->operacao.id < novaOperacaoCriada->operacao.id){
+                auxAnt = auxOperacoes;
+                auxOperacoes = auxOperacoes->nextOperacoes;
+            }
+            if(auxAnt == NULL){
+                novaOperacaoCriada->nextOperacoes = operacoesHeader;
+                operacoesHeader = novaOperacaoCriada;
+            }
+            else{
+                auxAnt->nextOperacoes = novaOperacaoCriada;
+                novaOperacaoCriada->nextOperacoes = auxOperacoes;
+            }
         }
 
         return operacoesHeader;

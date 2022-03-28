@@ -21,12 +21,12 @@
      * @param [in] operacao
      * @param [out] novoJob	//Retorna o job aqui criado
     */
-    Job* CriaJob(int id, ListaOperacoes* operacao){
+    Job* CriaJob(int id){
         Job* novoJob = (Job*)malloc(sizeof(Job));
         if(novoJob == NULL) return NULL; // Se não há memória
             
         novoJob->id = id;
-        novoJob->operecao = operacao;
+        novoJob->operacoes = NULL;
         novoJob->nextJob = NULL;
 
         return novoJob;
@@ -34,26 +34,44 @@
 
     /**
      * Insere um job
-     * @param [in] jobHeader 
+     * @param [in] jobsHeader 
      * @param [in] novoJob
-     * @param [out] jobHeader	//Retorna o header job
+     * @param [out] jobsHeader	//Retorna o header job
     */
-    Job* InsereJob(Job* jobHeader, Job* novoJob){
-        if(jobHeader == NULL){
-            jobHeader = novoJob;
-        } else{
-            novoJob->nextJob = jobHeader;
-		    jobHeader = novoJob;
+    Job* InsereJob(Job* jobsHeader, Job* novoJob){
+        if (jobsHeader == NULL){
+            jobsHeader = novoJob;
+        }
+        else{
+            Job* auxJobs = jobsHeader;
+            Job* auxAnt = NULL;
+            while(auxJobs && auxJobs->id < novoJob->id){
+                auxAnt = auxJobs;
+                auxJobs = auxJobs->nextJob;
+            }
+            if(auxAnt == NULL){
+                novoJob->nextJob = jobsHeader;
+                jobsHeader = novoJob;
+            }
+            else{
+                auxAnt->nextJob = novoJob;
+                novoJob->nextJob = auxJobs;
+            }
         }
 
-        return jobHeader;
+        return jobsHeader;
     }
 
+    /**
+     * Mostra a lista de jobs e operações e máquinas
+     * @param [in] jobsHeader
+    */
     void MostraListaJobs(Job* jobsHeader){
         Job* auxJobs = jobsHeader;
         printf("Jobs:\n");
         while(auxJobs != NULL){
             printf("ID: %d\n", auxJobs->id);
+            MostraListaOperacoes(jobsHeader->operacoes);
             auxJobs = auxJobs->nextJob;
         }
     }

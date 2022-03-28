@@ -14,17 +14,20 @@
 #include"Program.h"
 
 bool gravarBinario(char* nomeFicheiro, Job* headJob){
-	FILE* fp;
-
 	if (headJob == NULL) return false;
+	FILE* fp;
 	if ((fp = fopen(nomeFicheiro, "wb")) == NULL) return false;
-	Job* auxMaquina = headJob;
-	while (auxMaquina != NULL){
-		fwrite(auxMaquina, sizeof(Job), 1, fp);
-		headJob = headJob->nextJob;
+	
+	Job* auxJob = headJob;
+	JobFile auxFileJogo;
+
+	while (auxJob != NULL){
+		auxFileJogo.id = auxJob->id;
+		fwrite(&auxFileJogo, sizeof(JobFile), 1, fp);
+		auxJob = auxJob->nextJob;
 	}
 	fclose(fp);
-	
+
 	return true;
 }
 
@@ -34,10 +37,10 @@ Job* lerBinario(char* nomeFicheiro){
 	Job* auxJob;
 
 	if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
-	auxJob = (Job*)malloc(sizeof(Job));
-	while (fread(auxJob, sizeof(Job), 1, fp)){
+	JobFile auxFileJob;
+	while (fread(&auxFileJob, sizeof(Job), 1, fp)){
+		auxJob = CriaJob(auxFileJob.id);
 		headJob = InsereJob(headJob, auxJob);
-		headJob = (Job*)malloc(sizeof(Job));
 	}
 	fclose(fp);
 

@@ -56,11 +56,15 @@ NOTAS:
 
         typedef struct Job{
             int id;
-            struct ListaOperacoes* operecao;
+            struct ListaOperacoes* operacoes;
             struct Job* nextJob;
         }Job;
 
         extern Job* jobsHeader;
+
+        typedef struct JobFile{
+            int id;
+        }JobFile;
 
     #pragma endregion
 
@@ -71,7 +75,7 @@ NOTAS:
         Job* lerBinario(char* nomeFicheiro);
 
         //Assinatura de funções job
-        Job* CriaJob(int id, ListaOperacoes* operacao);
+        Job* CriaJob(int id);
         Job* InsereJob(Job* jobHeader, Job* novoJob);
         void MostraListaJobs(Job* jobsHeader);
 

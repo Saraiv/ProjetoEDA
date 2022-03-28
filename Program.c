@@ -13,49 +13,62 @@
 void main(){
 
     #pragma region CriacaoVariaveis
+    
+        Job* jobsHeader = NULL;
 
-        //Maquinas
+        // Maquinas
         Maquina* m1 = CriaMaquina(1, 4);
         Maquina* m2 = CriaMaquina(3, 5);
 
         //Operações
         Operacao* o1 = CriaOperacao(1);
 
-        ListaOperacoes* operacoesHeader = NULL;
-
         o1->maquinas = InsereNaListaDeMaquinas(o1->maquinas, m1);
         o1->maquinas = InsereNaListaDeMaquinas(o1->maquinas, m2);
-        
-        operacoesHeader = InsereNaListaDeOperacoes(operacoesHeader, o1);
 
+        //Jobs
+        Job* j1 = CriaJob(1);
+        
+        j1->operacoes = InsereNaListaDeOperacoes(j1->operacoes, o1);
+
+        jobsHeader = InsereJob(jobsHeader, j1);
+
+        // bool ficheiro = gravarBinario("Dados.bin", jobsHeader);
+
+        // jobsHeader = lerBinario("Dados.bin");
+
+    #pragma endregion
+
+    #pragma region Printfs
 
         //Mostrar
         printf("\n\n-----------------------------------------\n");
-        MostraListaOperacoes(operacoesHeader);
+        MostraListaJobs(jobsHeader);
         printf("\n\n-----------------------------------------\n");
 
         //Funções
         //Alterar
-        operacoesHeader = AlterarOperacoes(operacoesHeader, 1, 3, 8);
-        MostraListaOperacoes(operacoesHeader);
+        jobsHeader->operacoes = AlterarOperacoes(jobsHeader->operacoes, 1, 3, 8);
+        MostraListaJobs(jobsHeader);
         printf("\n\n-----------------------------------------\n");
 
         //Minimo
-        printf("Tempo Minimo: %d\n", TempoMinimoOperacao(operacoesHeader));
+        printf("Tempo Minimo: %d\n", TempoMinimoOperacao(jobsHeader->operacoes));
         printf("\n\n-----------------------------------------\n");
 
         //Maximo
-        printf("Tempo Maximo: %d\n", TempoMaximoOperacao(operacoesHeader));
+        printf("Tempo Maximo: %d\n", TempoMaximoOperacao(jobsHeader->operacoes));
         printf("\n\n-----------------------------------------\n");
 
         //Media
-        printf("Tempo Medio: %.2f\n", TempoMedioOperacao(operacoesHeader));
+        printf("Tempo Medio: %.2f\n", TempoMedioOperacao(jobsHeader->operacoes));
         printf("\n\n-----------------------------------------\n");
 
         //Remover
-        operacoesHeader = RemoveOperacao(operacoesHeader, 1);
-        MostraListaOperacoes(operacoesHeader);
+        jobsHeader->operacoes = RemoveOperacao(jobsHeader->operacoes, 1);
+        MostraListaJobs(jobsHeader);
         printf("\n\n-----------------------------------------\n");
 
     #pragma endregion
+    
 }

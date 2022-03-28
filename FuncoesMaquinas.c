@@ -74,13 +74,26 @@
     ListaMaquinas* InsereNaListaDeMaquinas(ListaMaquinas* maquinasHeader, Maquina* novaMaquina){
         ListaMaquinas* novaMaquinaCriada = CriaNodoListaMaquinas(novaMaquina);
 
-        if(maquinasHeader == NULL){
+        if (maquinasHeader == NULL){
             maquinasHeader = novaMaquinaCriada;
-        } else{
-            novaMaquinaCriada->nextMaquinas = maquinasHeader;
-		    maquinasHeader = novaMaquinaCriada;
         }
-
+        else{
+            ListaMaquinas* auxMaquinas = maquinasHeader;
+            ListaMaquinas* auxAnt = NULL;
+            while(auxMaquinas && auxMaquinas->maquina.id < novaMaquinaCriada->maquina.id){
+                auxAnt = auxMaquinas;
+                auxMaquinas = auxMaquinas->nextMaquinas;
+            }
+            if(auxAnt == NULL){
+                novaMaquinaCriada->nextMaquinas = maquinasHeader;
+                maquinasHeader = novaMaquinaCriada;
+            }
+            else{
+                auxAnt->nextMaquinas = novaMaquinaCriada;
+                novaMaquinaCriada->nextMaquinas = auxMaquinas;
+            }
+        }
+        
         return maquinasHeader;
     }
 
