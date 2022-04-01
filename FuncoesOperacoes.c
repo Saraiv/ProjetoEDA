@@ -125,7 +125,7 @@
     */
     ListaOperacoes* RemoveOperacao(ListaOperacoes* operacoesHeader, int id){
         if (operacoesHeader == NULL) return NULL; //Lista vazia
-        if(!ExisteOperacao(operacoesHeader, id)) return NULL; // Se não existir a operação
+        // if(!ExisteOperacao(operacoesHeader, id)) return NULL; // Se não existir a operação
 
         if (operacoesHeader->operacao.id == id){		//remove no inicio da lista
             ListaOperacoes* auxOperacoes = operacoesHeader;

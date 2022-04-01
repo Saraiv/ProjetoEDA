@@ -63,7 +63,10 @@ NOTAS:
         extern Job* jobsHeader;
 
         typedef struct JobFile{
-            int id;
+            int idJob;
+            int idOperacao;
+            int idMaquina;
+            int tempo;
         }JobFile;
 
     #pragma endregion
@@ -71,13 +74,13 @@ NOTAS:
     #pragma region AssinaturaDeFuncoes
 
         //Assinatura de funções ficheiros
-        bool gravarBinario(char* nomeFicheiro, Job* headJob);
-        Job* lerBinario(char* nomeFicheiro);
 
         //Assinatura de funções job
         Job* CriaJob(int id);
         Job* InsereJob(Job* jobHeader, Job* novoJob);
         void MostraListaJobs(Job* jobsHeader);
+        bool GravarBinario(char* nomeFicheiro, Job* headJob);
+        Job* LerBinario(char* nomeFicheiro);
 
         //Assinatura de funções máquinas
         bool ExisteMaquina(ListaMaquinas *maquinasHeader, int id);

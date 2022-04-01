@@ -33,9 +33,9 @@ void main(){
 
         jobsHeader = InsereJob(jobsHeader, j1);
 
-        // bool ficheiro = gravarBinario("Dados.bin", jobsHeader);
+        // bool ficheiro = GravarBinario("Dados.bin", jobsHeader);
 
-        // jobsHeader = lerBinario("Dados.bin");
+        // jobsHeader = LerBinario("Dados.bin");
 
     #pragma endregion
 
