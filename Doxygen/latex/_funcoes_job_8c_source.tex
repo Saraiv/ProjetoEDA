@@ -1,0 +1,117 @@
+\hypertarget{_funcoes_job_8c_source}{}\doxysection{Funcoes\+Job.\+c}
+\mbox{\hyperlink{_funcoes_job_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00011}00011 \textcolor{preprocessor}{\#include<stdbool.h>}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00012}00012 \textcolor{preprocessor}{\#include<stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00013}00013 \textcolor{preprocessor}{\#include<stdio.h>}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00014}00014 \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{_program_8h}{Program.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00016}00016 \textcolor{preprocessor}{\#pragma region FuncoesJobs}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00024}\mbox{\hyperlink{_funcoes_job_8c_a00a37b9691794bac6995f5b4be7d187c}{00024}}     \mbox{\hyperlink{struct_job}{Job}}* \mbox{\hyperlink{_funcoes_job_8c_a00a37b9691794bac6995f5b4be7d187c}{CriaJob}}(\textcolor{keywordtype}{int} \textcolor{keywordtype}{id})\{}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00025}00025         \mbox{\hyperlink{struct_job}{Job}}* novoJob = (\mbox{\hyperlink{struct_job}{Job}}*)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_job}{Job}}));}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00026}00026         \textcolor{keywordflow}{if}(novoJob == NULL) \textcolor{keywordflow}{return} NULL; \textcolor{comment}{// Se não há memória}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00027}00027             }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00028}00028         novoJob-\/>\mbox{\hyperlink{struct_job_a7441ef0865bcb3db9b8064dd7375c1ea}{id}} = id;}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00029}00029         novoJob-\/>\mbox{\hyperlink{struct_job_a886d0b1715ff6981218d668fcefa4508}{operacoes}} = NULL;}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00030}00030         novoJob-\/>\mbox{\hyperlink{struct_job_a4ad98026db8d8f61b65be82e199bf53e}{nextJob}} = NULL;}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00032}00032         \textcolor{keywordflow}{return} novoJob;}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00033}00033     \}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00041}\mbox{\hyperlink{_funcoes_job_8c_a6fbc1517cb52ad68cfb65ab9ffa35654}{00041}}     \mbox{\hyperlink{struct_job}{Job}}* \mbox{\hyperlink{_funcoes_job_8c_a6fbc1517cb52ad68cfb65ab9ffa35654}{InsereJob}}(\mbox{\hyperlink{struct_job}{Job}}* \mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobsHeader}}, \mbox{\hyperlink{struct_job}{Job}}* novoJob)\{}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00042}00042         \textcolor{keywordflow}{if} (\mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobsHeader}} == NULL)\{}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00043}00043             \mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobsHeader}} = novoJob;}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00044}00044         \}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00045}00045         \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00046}00046             \mbox{\hyperlink{struct_job}{Job}}* auxJobs = \mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobsHeader}};}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00047}00047             \mbox{\hyperlink{struct_job}{Job}}* auxAnt = NULL;}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00048}00048             \textcolor{keywordflow}{while}(auxJobs \&\& auxJobs-\/>\mbox{\hyperlink{struct_job_a7441ef0865bcb3db9b8064dd7375c1ea}{id}} < novoJob-\/>\mbox{\hyperlink{struct_job_a7441ef0865bcb3db9b8064dd7375c1ea}{id}})\{}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00049}00049                 auxAnt = auxJobs;}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00050}00050                 auxJobs = auxJobs-\/>\mbox{\hyperlink{struct_job_a4ad98026db8d8f61b65be82e199bf53e}{nextJob}};}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00051}00051             \}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00052}00052             \textcolor{keywordflow}{if}(auxAnt == NULL)\{}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00053}00053                 novoJob-\/>\mbox{\hyperlink{struct_job_a4ad98026db8d8f61b65be82e199bf53e}{nextJob}} = \mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobsHeader}};}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00054}00054                 \mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobsHeader}} = novoJob;}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00055}00055             \}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00056}00056             \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00057}00057                 auxAnt-\/>\mbox{\hyperlink{struct_job_a4ad98026db8d8f61b65be82e199bf53e}{nextJob}} = novoJob;}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00058}00058                 novoJob-\/>\mbox{\hyperlink{struct_job_a4ad98026db8d8f61b65be82e199bf53e}{nextJob}} = auxJobs;}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00059}00059             \}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00060}00060         \}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00062}00062         \textcolor{keywordflow}{return} \mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobsHeader}};}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00063}00063     \}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00069}\mbox{\hyperlink{_funcoes_job_8c_ac157e9024db0a2445bee1fe5c4ed0c3e}{00069}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{_funcoes_job_8c_ac157e9024db0a2445bee1fe5c4ed0c3e}{MostraListaJobs}}(\mbox{\hyperlink{struct_job}{Job}}* \mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobsHeader}})\{}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00070}00070         \mbox{\hyperlink{struct_job}{Job}}* auxJobs = \mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobsHeader}};}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00071}00071         printf(\textcolor{stringliteral}{"{}Jobs:\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00072}00072         \textcolor{keywordflow}{while}(auxJobs != NULL)\{}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00073}00073             printf(\textcolor{stringliteral}{"{}ID: \%d\(\backslash\)n"{}}, auxJobs-\/>\mbox{\hyperlink{struct_job_a7441ef0865bcb3db9b8064dd7375c1ea}{id}});}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00074}00074             \mbox{\hyperlink{_funcoes_operacoes_8c_aefa252e8e17e9bd4a02308398763e8bf}{MostraListaOperacoes}}(\mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobsHeader}}-\/>\mbox{\hyperlink{struct_job_a886d0b1715ff6981218d668fcefa4508}{operacoes}});}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00075}00075             auxJobs = auxJobs-\/>\mbox{\hyperlink{struct_job_a4ad98026db8d8f61b65be82e199bf53e}{nextJob}};}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00076}00076         \}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00077}00077     \}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00079}00079 \textcolor{preprocessor}{\#pragma endregion}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00081}00081 \textcolor{preprocessor}{\#pragma region FicheirosJobs}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00089}\mbox{\hyperlink{_funcoes_job_8c_ac31374c16d1423a80b7996e3a4d3eb2f}{00089}}     \textcolor{keywordtype}{bool} \mbox{\hyperlink{_funcoes_job_8c_ac31374c16d1423a80b7996e3a4d3eb2f}{GravarBinario}}(\textcolor{keywordtype}{char}* nomeFicheiro, \mbox{\hyperlink{struct_job}{Job}}* \mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobsHeader}})\{}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00090}00090         \textcolor{keywordflow}{if} (\mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobsHeader}} == NULL) \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00091}00091         FILE* fp;}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00092}00092         \textcolor{keywordflow}{if} ((fp = fopen(nomeFicheiro, \textcolor{stringliteral}{"{}wb"{}})) == NULL) \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00093}00093         }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00094}00094         \mbox{\hyperlink{struct_job}{Job}}* auxJob = \mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobsHeader}};}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00095}00095         \mbox{\hyperlink{struct_job_file}{JobFile}} auxFileJob;}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00097}00097         \textcolor{keywordflow}{while} (auxJob != NULL)\{}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00098}00098             auxFileJob.\mbox{\hyperlink{struct_job_file_a0228e1ffede29424d4f2adef9fca48ef}{idJob}} = auxJob-\/>\mbox{\hyperlink{struct_job_a7441ef0865bcb3db9b8064dd7375c1ea}{id}};}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00099}00099             \mbox{\hyperlink{struct_lista_operacoes}{ListaOperacoes}}* auxOperacoes = auxJob-\/>\mbox{\hyperlink{struct_job_a886d0b1715ff6981218d668fcefa4508}{operacoes}};}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00100}00100             \textcolor{keywordflow}{while}(auxOperacoes != NULL)\{}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00101}00101                 auxFileJob.\mbox{\hyperlink{struct_job_file_abde9b237162dea121eb333f9a68f35e3}{idOperacao}} = auxOperacoes-\/>\mbox{\hyperlink{struct_lista_operacoes_a091212a1c15f18cee58b4ea093ec3357}{operacao}}.\mbox{\hyperlink{struct_operacao_a7441ef0865bcb3db9b8064dd7375c1ea}{id}};}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00102}00102                 \mbox{\hyperlink{struct_lista_maquinas}{ListaMaquinas}}* auxMaquinas = auxOperacoes-\/>\mbox{\hyperlink{struct_lista_operacoes_a091212a1c15f18cee58b4ea093ec3357}{operacao}}.\mbox{\hyperlink{struct_operacao_a7724c68c92755970156233e01697d289}{maquinas}};}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00103}00103                 \textcolor{keywordflow}{while}(auxMaquinas != NULL)\{}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00104}00104                     auxFileJob.\mbox{\hyperlink{struct_job_file_ac1f823f8604185a8c36bc3e500f03be1}{idMaquina}} = auxMaquinas-\/>\mbox{\hyperlink{struct_lista_maquinas_a6806edb96b970e93384af5dfd59b6b7e}{maquina}}.\mbox{\hyperlink{struct_maquina_a7441ef0865bcb3db9b8064dd7375c1ea}{id}};}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00105}00105                     auxFileJob.\mbox{\hyperlink{struct_job_file_a516115750e956e7c851392eeb95d7dcb}{tempo}} = auxMaquinas-\/>\mbox{\hyperlink{struct_lista_maquinas_a6806edb96b970e93384af5dfd59b6b7e}{maquina}}.\mbox{\hyperlink{struct_maquina_a516115750e956e7c851392eeb95d7dcb}{tempo}};}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00106}00106                     fwrite(\&auxFileJob, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_job_file}{JobFile}}), 1, fp);}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00107}00107                     auxMaquinas = auxMaquinas-\/>\mbox{\hyperlink{struct_lista_maquinas_acb54576d5b5e611438085ffa2a317262}{nextMaquinas}};}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00108}00108                 \}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00109}00109                 auxOperacoes = auxOperacoes-\/>\mbox{\hyperlink{struct_lista_operacoes_a7584ff56f0173e5a76cb68e025a3aae1}{nextOperacoes}};}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00110}00110             \}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00111}00111             auxJob = auxJob-\/>\mbox{\hyperlink{struct_job_a4ad98026db8d8f61b65be82e199bf53e}{nextJob}};}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00112}00112         \}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00113}00113         fclose(fp);}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00115}00115         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00116}00116     \}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00117}00117 }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00118}\mbox{\hyperlink{_funcoes_job_8c_a8b4200714317d7b50fe59e90ecb6517b}{00118}}     \mbox{\hyperlink{struct_job}{Job}}* \mbox{\hyperlink{_funcoes_job_8c_a8b4200714317d7b50fe59e90ecb6517b}{LerBinario}}(\textcolor{keywordtype}{char}* nomeFicheiro)\{}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00119}00119         FILE* fp;}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00120}00120         \mbox{\hyperlink{struct_job}{Job}}* \mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobsHeader}} = NULL;}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00121}00121         \mbox{\hyperlink{struct_maquina}{Maquina}}* auxMaquina = NULL;}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00122}00122         \mbox{\hyperlink{struct_operacao}{Operacao}}* auxOperacao = NULL;}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00123}00123 }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00124}00124         \mbox{\hyperlink{struct_job}{Job}}* auxJob;}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00126}00126         \textcolor{keywordflow}{if} ((fp = fopen(nomeFicheiro, \textcolor{stringliteral}{"{}rb"{}})) == NULL) \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00127}00127         \mbox{\hyperlink{struct_job_file}{JobFile}} auxFileJob;}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00128}00128         \textcolor{keywordflow}{while} (fread(\&auxFileJob, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_job}{Job}}), 1, fp))\{}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00129}00129             auxMaquina = \mbox{\hyperlink{_funcoes_maquinas_8c_a45eb8101a544932879a349a981dff4cb}{CriaMaquina}}(auxFileJob.\mbox{\hyperlink{struct_job_file_ac1f823f8604185a8c36bc3e500f03be1}{idMaquina}}, auxFileJob.\mbox{\hyperlink{struct_job_file_a516115750e956e7c851392eeb95d7dcb}{tempo}});}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00130}00130             auxOperacao = \mbox{\hyperlink{_funcoes_operacoes_8c_ab8c25b16d152e5c6f4caa00e9407997a}{CriaOperacao}}(auxFileJob.\mbox{\hyperlink{struct_job_file_abde9b237162dea121eb333f9a68f35e3}{idOperacao}});}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00131}00131             auxOperacao-\/>\mbox{\hyperlink{struct_operacao_a7724c68c92755970156233e01697d289}{maquinas}} = \mbox{\hyperlink{_funcoes_maquinas_8c_a576135298c8947fece596b55508be455}{InsereNaListaDeMaquinas}}(auxOperacao-\/>\mbox{\hyperlink{struct_operacao_a7724c68c92755970156233e01697d289}{maquinas}}, auxMaquina);            }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00132}00132             auxJob = \mbox{\hyperlink{_funcoes_job_8c_a00a37b9691794bac6995f5b4be7d187c}{CriaJob}}(auxFileJob.\mbox{\hyperlink{struct_job_file_a0228e1ffede29424d4f2adef9fca48ef}{idJob}});}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00133}00133 }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00134}00134             auxJob-\/>\mbox{\hyperlink{struct_job_a886d0b1715ff6981218d668fcefa4508}{operacoes}} = \mbox{\hyperlink{_funcoes_operacoes_8c_a1dd581ab52f00026d8b3307d362f5ee5}{InsereNaListaDeOperacoes}}(auxJob-\/>\mbox{\hyperlink{struct_job_a886d0b1715ff6981218d668fcefa4508}{operacoes}}, auxOperacao);}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00135}00135 }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00136}00136             \mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobsHeader}} = \mbox{\hyperlink{_funcoes_job_8c_a6fbc1517cb52ad68cfb65ab9ffa35654}{InsereJob}}(\mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobsHeader}}, auxJob);}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00137}00137         \}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00138}00138         fclose(fp);}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00139}00139 }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00140}00140         \textcolor{keywordflow}{return} \mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobsHeader}};}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00141}00141     \}}
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00142}00142 }
+\DoxyCodeLine{\Hypertarget{_funcoes_job_8c_source_l00143}00143 \textcolor{preprocessor}{\#pragma endregion}}
+
+\end{DoxyCode}

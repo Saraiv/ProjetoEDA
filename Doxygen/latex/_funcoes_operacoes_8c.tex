@@ -1,0 +1,254 @@
+\hypertarget{_funcoes_operacoes_8c}{}\doxysection{Funcoes\+Operacoes.\+c File Reference}
+\label{_funcoes_operacoes_8c}\index{FuncoesOperacoes.c@{FuncoesOperacoes.c}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Program.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{_funcoes_operacoes_8c_af4463346593afe2704465665b37a4ef6}{Existe\+Operacao}} (\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$\mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoes\+Header}}, int id)
+\item 
+\mbox{\hyperlink{struct_operacao}{Operacao}} $\ast$ \mbox{\hyperlink{_funcoes_operacoes_8c_ab8c25b16d152e5c6f4caa00e9407997a}{Cria\+Operacao}} (int id)
+\item 
+\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$ \mbox{\hyperlink{_funcoes_operacoes_8c_a79d32dfcc9665c5cf8902203af3dcd0e}{Cria\+Nodo\+Lista\+Operacoes}} (\mbox{\hyperlink{struct_operacao}{Operacao}} $\ast$nova\+Operacao)
+\item 
+\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$ \mbox{\hyperlink{_funcoes_operacoes_8c_a1dd581ab52f00026d8b3307d362f5ee5}{Insere\+Na\+Lista\+De\+Operacoes}} (\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$\mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoes\+Header}}, \mbox{\hyperlink{struct_operacao}{Operacao}} $\ast$nova\+Operacao)
+\item 
+\mbox{\hyperlink{struct_operacao}{Operacao}} $\ast$ \mbox{\hyperlink{_funcoes_operacoes_8c_a2c0001bb3fda9c31e0f788d7f7dc658e}{Procura\+Operacao}} (\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$\mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoes\+Header}}, int id)
+\item 
+\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$ \mbox{\hyperlink{_funcoes_operacoes_8c_a3496100166bc50090e39a51270dcbd22}{Remove\+Operacao}} (\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$\mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoes\+Header}}, int id)
+\item 
+\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$ \mbox{\hyperlink{_funcoes_operacoes_8c_a2c762396c81aec5964c2bc9a913d4d49}{Alterar\+Operacoes}} (\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$\mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoes\+Header}}, int id\+Operacao, int id\+Maquina, int tempo\+AMudar)
+\item 
+int \mbox{\hyperlink{_funcoes_operacoes_8c_a9d57b3c9084f1794f9656d1885164564}{Tempo\+Minimo\+Operacao}} (\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$\mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoes\+Header}})
+\item 
+int \mbox{\hyperlink{_funcoes_operacoes_8c_a66c48a45f05a97b4e8a144105e34e0e8}{Tempo\+Maximo\+Operacao}} (\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$\mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoes\+Header}})
+\item 
+int \mbox{\hyperlink{_funcoes_operacoes_8c_a6f82ef30ef25a2d33d8d3a3b8409f326}{Count\+Maquinas\+Na\+Operacao}} (\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$\mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoes\+Header}})
+\item 
+float \mbox{\hyperlink{_funcoes_operacoes_8c_af0197d098bf2cf1e723095c83a037018}{Tempo\+Medio\+Operacao}} (\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$\mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoes\+Header}})
+\item 
+void \mbox{\hyperlink{_funcoes_operacoes_8c_aefa252e8e17e9bd4a02308398763e8bf}{Mostra\+Lista\+Operacoes}} (\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$\mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoes\+Header}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_funcoes_operacoes_8c_a2c762396c81aec5964c2bc9a913d4d49}\label{_funcoes_operacoes_8c_a2c762396c81aec5964c2bc9a913d4d49}} 
+\index{FuncoesOperacoes.c@{FuncoesOperacoes.c}!AlterarOperacoes@{AlterarOperacoes}}
+\index{AlterarOperacoes@{AlterarOperacoes}!FuncoesOperacoes.c@{FuncoesOperacoes.c}}
+\doxysubsubsection{\texorpdfstring{AlterarOperacoes()}{AlterarOperacoes()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$ Alterar\+Operacoes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$}]{operacoes\+Header,  }\item[{int}]{id\+Operacao,  }\item[{int}]{id\+Maquina,  }\item[{int}]{tempo\+AMudar }\end{DoxyParamCaption})}
+
+Alterar operações 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em operacoes\+Header} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em id} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em tempo\+AMudar} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em id\+Maquina} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em operacao\+Header} & //\+Retorna o header daa lista de operações alterada \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00159}{159}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_funcoes_operacoes_8c_a6f82ef30ef25a2d33d8d3a3b8409f326}\label{_funcoes_operacoes_8c_a6f82ef30ef25a2d33d8d3a3b8409f326}} 
+\index{FuncoesOperacoes.c@{FuncoesOperacoes.c}!CountMaquinasNaOperacao@{CountMaquinasNaOperacao}}
+\index{CountMaquinasNaOperacao@{CountMaquinasNaOperacao}!FuncoesOperacoes.c@{FuncoesOperacoes.c}}
+\doxysubsubsection{\texorpdfstring{CountMaquinasNaOperacao()}{CountMaquinasNaOperacao()}}
+{\footnotesize\ttfamily int Count\+Maquinas\+Na\+Operacao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$}]{operacoes\+Header }\end{DoxyParamCaption})}
+
+Count de quantas máquinas tem cada operação 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em operacoes\+Header} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em operacoes\+Header} & //\+Retorna quantas máquinas tem todas as operações \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00220}{220}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_funcoes_operacoes_8c_a79d32dfcc9665c5cf8902203af3dcd0e}\label{_funcoes_operacoes_8c_a79d32dfcc9665c5cf8902203af3dcd0e}} 
+\index{FuncoesOperacoes.c@{FuncoesOperacoes.c}!CriaNodoListaOperacoes@{CriaNodoListaOperacoes}}
+\index{CriaNodoListaOperacoes@{CriaNodoListaOperacoes}!FuncoesOperacoes.c@{FuncoesOperacoes.c}}
+\doxysubsubsection{\texorpdfstring{CriaNodoListaOperacoes()}{CriaNodoListaOperacoes()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$ Cria\+Nodo\+Lista\+Operacoes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_operacao}{Operacao}} $\ast$}]{nova\+Operacao }\end{DoxyParamCaption})}
+
+Cria novo nodo para a lista de Operações 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nova\+Operacao} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em nova\+Lista} & para nodo criado \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00058}{58}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_funcoes_operacoes_8c_ab8c25b16d152e5c6f4caa00e9407997a}\label{_funcoes_operacoes_8c_ab8c25b16d152e5c6f4caa00e9407997a}} 
+\index{FuncoesOperacoes.c@{FuncoesOperacoes.c}!CriaOperacao@{CriaOperacao}}
+\index{CriaOperacao@{CriaOperacao}!FuncoesOperacoes.c@{FuncoesOperacoes.c}}
+\doxysubsubsection{\texorpdfstring{CriaOperacao()}{CriaOperacao()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_operacao}{Operacao}} $\ast$ Cria\+Operacao (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+Cria uma operacao 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em id} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em maquinas\+Header} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em nova\+Operacao} & //\+Retorna a máquina aqui criada \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00043}{43}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_funcoes_operacoes_8c_af4463346593afe2704465665b37a4ef6}\label{_funcoes_operacoes_8c_af4463346593afe2704465665b37a4ef6}} 
+\index{FuncoesOperacoes.c@{FuncoesOperacoes.c}!ExisteOperacao@{ExisteOperacao}}
+\index{ExisteOperacao@{ExisteOperacao}!FuncoesOperacoes.c@{FuncoesOperacoes.c}}
+\doxysubsubsection{\texorpdfstring{ExisteOperacao()}{ExisteOperacao()}}
+{\footnotesize\ttfamily bool Existe\+Operacao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$}]{operacoes\+Header,  }\item[{int}]{id }\end{DoxyParamCaption})}
+
+Author\+: Saraiva Email\+: \href{mailto:mainsaraiva@gmail.com}{\texttt{ mainsaraiva@gmail.\+com}} Github\+: Saraiv Date\+: 18/03/2022 Description\+: Módulo de implementação do trabalho prático 1. Trabalho prático 1 -\/ EDA. Class\+: x Verifica se a operação existe 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em operacoes\+Header} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em id} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em bool} & //\+Retorna se encontrou um jogo existente ou não \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00024}{24}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_funcoes_operacoes_8c_a1dd581ab52f00026d8b3307d362f5ee5}\label{_funcoes_operacoes_8c_a1dd581ab52f00026d8b3307d362f5ee5}} 
+\index{FuncoesOperacoes.c@{FuncoesOperacoes.c}!InsereNaListaDeOperacoes@{InsereNaListaDeOperacoes}}
+\index{InsereNaListaDeOperacoes@{InsereNaListaDeOperacoes}!FuncoesOperacoes.c@{FuncoesOperacoes.c}}
+\doxysubsubsection{\texorpdfstring{InsereNaListaDeOperacoes()}{InsereNaListaDeOperacoes()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$ Insere\+Na\+Lista\+De\+Operacoes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$}]{operacoes\+Header,  }\item[{\mbox{\hyperlink{struct_operacao}{Operacao}} $\ast$}]{nova\+Operacao }\end{DoxyParamCaption})}
+
+Insere uma operação 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em operacoes\+Header} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em nova\+Operacao} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em operacoes\+Header} & //\+Retorna a máquina aqui criada \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00074}{74}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_funcoes_operacoes_8c_aefa252e8e17e9bd4a02308398763e8bf}\label{_funcoes_operacoes_8c_aefa252e8e17e9bd4a02308398763e8bf}} 
+\index{FuncoesOperacoes.c@{FuncoesOperacoes.c}!MostraListaOperacoes@{MostraListaOperacoes}}
+\index{MostraListaOperacoes@{MostraListaOperacoes}!FuncoesOperacoes.c@{FuncoesOperacoes.c}}
+\doxysubsubsection{\texorpdfstring{MostraListaOperacoes()}{MostraListaOperacoes()}}
+{\footnotesize\ttfamily void Mostra\+Lista\+Operacoes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$}]{operacoes\+Header }\end{DoxyParamCaption})}
+
+Mostra a lista de operações e máquinas 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em operacoes\+Header} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00259}{259}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_funcoes_operacoes_8c_a2c0001bb3fda9c31e0f788d7f7dc658e}\label{_funcoes_operacoes_8c_a2c0001bb3fda9c31e0f788d7f7dc658e}} 
+\index{FuncoesOperacoes.c@{FuncoesOperacoes.c}!ProcuraOperacao@{ProcuraOperacao}}
+\index{ProcuraOperacao@{ProcuraOperacao}!FuncoesOperacoes.c@{FuncoesOperacoes.c}}
+\doxysubsubsection{\texorpdfstring{ProcuraOperacao()}{ProcuraOperacao()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_operacao}{Operacao}} $\ast$ Procura\+Operacao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$}]{operacoes\+Header,  }\item[{int}]{id }\end{DoxyParamCaption})}
+
+Procura a operação pretendida 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em operacoes\+Header} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em id} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em aux} & //\+Retorna a operação que era procurada \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00106}{106}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_funcoes_operacoes_8c_a3496100166bc50090e39a51270dcbd22}\label{_funcoes_operacoes_8c_a3496100166bc50090e39a51270dcbd22}} 
+\index{FuncoesOperacoes.c@{FuncoesOperacoes.c}!RemoveOperacao@{RemoveOperacao}}
+\index{RemoveOperacao@{RemoveOperacao}!FuncoesOperacoes.c@{FuncoesOperacoes.c}}
+\doxysubsubsection{\texorpdfstring{RemoveOperacao()}{RemoveOperacao()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$ Remove\+Operacao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$}]{operacoes\+Header,  }\item[{int}]{id }\end{DoxyParamCaption})}
+
+Remover a operação 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em operacoes\+Header} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em id} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em operacoes\+Header} & //\+Retorna o header da lista de operações, mas com a operação já removida \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00126}{126}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_funcoes_operacoes_8c_a66c48a45f05a97b4e8a144105e34e0e8}\label{_funcoes_operacoes_8c_a66c48a45f05a97b4e8a144105e34e0e8}} 
+\index{FuncoesOperacoes.c@{FuncoesOperacoes.c}!TempoMaximoOperacao@{TempoMaximoOperacao}}
+\index{TempoMaximoOperacao@{TempoMaximoOperacao}!FuncoesOperacoes.c@{FuncoesOperacoes.c}}
+\doxysubsubsection{\texorpdfstring{TempoMaximoOperacao()}{TempoMaximoOperacao()}}
+{\footnotesize\ttfamily int Tempo\+Maximo\+Operacao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$}]{operacoes\+Header }\end{DoxyParamCaption})}
+
+Tempo máximo da operação 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em operacao\+Header} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em operacao\+Header} & //\+Retorna a soma do tempos máximos \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00202}{202}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_funcoes_operacoes_8c_af0197d098bf2cf1e723095c83a037018}\label{_funcoes_operacoes_8c_af0197d098bf2cf1e723095c83a037018}} 
+\index{FuncoesOperacoes.c@{FuncoesOperacoes.c}!TempoMedioOperacao@{TempoMedioOperacao}}
+\index{TempoMedioOperacao@{TempoMedioOperacao}!FuncoesOperacoes.c@{FuncoesOperacoes.c}}
+\doxysubsubsection{\texorpdfstring{TempoMedioOperacao()}{TempoMedioOperacao()}}
+{\footnotesize\ttfamily float Tempo\+Medio\+Operacao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$}]{operacoes\+Header }\end{DoxyParamCaption})}
+
+Tempo médio da operação 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em operacoes\+Header} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em media} & //\+Retorna o tempo médio do tempo das máquinas \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00239}{239}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_funcoes_operacoes_8c_a9d57b3c9084f1794f9656d1885164564}\label{_funcoes_operacoes_8c_a9d57b3c9084f1794f9656d1885164564}} 
+\index{FuncoesOperacoes.c@{FuncoesOperacoes.c}!TempoMinimoOperacao@{TempoMinimoOperacao}}
+\index{TempoMinimoOperacao@{TempoMinimoOperacao}!FuncoesOperacoes.c@{FuncoesOperacoes.c}}
+\doxysubsubsection{\texorpdfstring{TempoMinimoOperacao()}{TempoMinimoOperacao()}}
+{\footnotesize\ttfamily int Tempo\+Minimo\+Operacao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$}]{operacoes\+Header }\end{DoxyParamCaption})}
+
+Tempo mínimo da operação 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em operacao\+Header} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em operacao\+Header} & //\+Retorna a soma do tempos minimos \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00184}{184}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+

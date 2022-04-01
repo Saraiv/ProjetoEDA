@@ -1,0 +1,602 @@
+\hypertarget{_program_8h}{}\doxysection{Program.\+h File Reference}
+\label{_program_8h}\index{Program.h@{Program.h}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_maquina}{Maquina}}
+\item 
+struct \mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}}
+\item 
+struct \mbox{\hyperlink{struct_operacao}{Operacao}}
+\item 
+struct \mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}}
+\item 
+struct \mbox{\hyperlink{struct_job}{Job}}
+\item 
+struct \mbox{\hyperlink{struct_job_file}{Job\+File}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_maquina}{Maquina}} \mbox{\hyperlink{_program_8h_a9cf752acb85e5524c5da46e853b7e9cd}{Maquina}}
+\item 
+typedef struct \mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}} \mbox{\hyperlink{_program_8h_a6c52ed34c6d454cb36372acaa269219d}{Lista\+Maquinas}}
+\item 
+typedef struct \mbox{\hyperlink{struct_operacao}{Operacao}} \mbox{\hyperlink{_program_8h_abe9e0e280b37dffadb9164c18310462d}{Operacao}}
+\item 
+typedef struct \mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} \mbox{\hyperlink{_program_8h_a59f6f68940c56e4f79cd57769199c1aa}{Lista\+Operacoes}}
+\item 
+typedef struct \mbox{\hyperlink{struct_job}{Job}} \mbox{\hyperlink{_program_8h_a7f678ed7503a7b4211821d14323751d8}{Job}}
+\item 
+typedef struct \mbox{\hyperlink{struct_job_file}{Job\+File}} \mbox{\hyperlink{_program_8h_a26c88d957828aee55329497a30aff969}{Job\+File}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_job}{Job}} $\ast$ \mbox{\hyperlink{_program_8h_a00a37b9691794bac6995f5b4be7d187c}{Cria\+Job}} (int id)
+\item 
+\mbox{\hyperlink{struct_job}{Job}} $\ast$ \mbox{\hyperlink{_program_8h_ade14f066443c1ba0c4009528feaff6d0}{Insere\+Job}} (\mbox{\hyperlink{struct_job}{Job}} $\ast$job\+Header, \mbox{\hyperlink{struct_job}{Job}} $\ast$novo\+Job)
+\item 
+void \mbox{\hyperlink{_program_8h_ac157e9024db0a2445bee1fe5c4ed0c3e}{Mostra\+Lista\+Jobs}} (\mbox{\hyperlink{struct_job}{Job}} $\ast$\mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobs\+Header}})
+\item 
+bool \mbox{\hyperlink{_program_8h_a437df11594e99065df7c4fda1e0aece0}{Gravar\+Binario}} (char $\ast$nome\+Ficheiro, \mbox{\hyperlink{struct_job}{Job}} $\ast$head\+Job)
+\item 
+\mbox{\hyperlink{struct_job}{Job}} $\ast$ \mbox{\hyperlink{_program_8h_a8b4200714317d7b50fe59e90ecb6517b}{Ler\+Binario}} (char $\ast$nome\+Ficheiro)
+\item 
+bool \mbox{\hyperlink{_program_8h_a588b8543e4596b8c11d78f3d01a94b0f}{Existe\+Maquina}} (\mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}} $\ast$\mbox{\hyperlink{_program_8h_a805da4d748705416f2be450ed13b33e4}{maquinas\+Header}}, int id)
+\item 
+\mbox{\hyperlink{struct_maquina}{Maquina}} $\ast$ \mbox{\hyperlink{_program_8h_a45eb8101a544932879a349a981dff4cb}{Cria\+Maquina}} (int id, int tempo)
+\item 
+\mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}} $\ast$ \mbox{\hyperlink{_program_8h_a14ff7f6d164e29bae228d021b67b484b}{Cria\+Nodo\+Lista\+Maquinas}} (\mbox{\hyperlink{struct_maquina}{Maquina}} $\ast$nova\+Maquina)
+\item 
+\mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}} $\ast$ \mbox{\hyperlink{_program_8h_a965b2592e004469d6bdc077e289f858d}{Insere\+Na\+Lista\+De\+Maquinas}} (\mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}} $\ast$maquina\+Header, \mbox{\hyperlink{struct_maquina}{Maquina}} $\ast$nova\+Maquina)
+\item 
+\mbox{\hyperlink{struct_maquina}{Maquina}} $\ast$ \mbox{\hyperlink{_program_8h_ad6f3adc17b32e86edde5fb7b58ce1297}{Procura\+Maquina}} (\mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}} $\ast$maquina\+Header, int id)
+\item 
+int \mbox{\hyperlink{_program_8h_a0a1a9b8fe12cbf96990d029214373a9a}{Tempo\+Minimo\+Maquina}} (\mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}} $\ast$\mbox{\hyperlink{_program_8h_a805da4d748705416f2be450ed13b33e4}{maquinas\+Header}})
+\item 
+int \mbox{\hyperlink{_program_8h_a143429eae172d2752d63e657de03bbd0}{Tempo\+Maximo\+Maquina}} (\mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}} $\ast$\mbox{\hyperlink{_program_8h_a805da4d748705416f2be450ed13b33e4}{maquinas\+Header}})
+\item 
+void \mbox{\hyperlink{_program_8h_a62e461d3ab5f4481cf1d1fbee9554102}{Mostra\+Lista\+Maquinas}} (\mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}} $\ast$\mbox{\hyperlink{_program_8h_a805da4d748705416f2be450ed13b33e4}{maquinas\+Header}})
+\item 
+bool \mbox{\hyperlink{_program_8h_a66b6600ab79f44be75ec1f3925112355}{Existe\+Operacao}} (\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$operacao\+Header, int id)
+\item 
+\mbox{\hyperlink{struct_operacao}{Operacao}} $\ast$ \mbox{\hyperlink{_program_8h_ab8c25b16d152e5c6f4caa00e9407997a}{Cria\+Operacao}} (int id)
+\item 
+\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$ \mbox{\hyperlink{_program_8h_a79d32dfcc9665c5cf8902203af3dcd0e}{Cria\+Nodo\+Lista\+Operacoes}} (\mbox{\hyperlink{struct_operacao}{Operacao}} $\ast$nova\+Operacao)
+\item 
+\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$ \mbox{\hyperlink{_program_8h_a1dd581ab52f00026d8b3307d362f5ee5}{Insere\+Na\+Lista\+De\+Operacoes}} (\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$\mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoes\+Header}}, \mbox{\hyperlink{struct_operacao}{Operacao}} $\ast$nova\+Operacao)
+\item 
+\mbox{\hyperlink{struct_operacao}{Operacao}} $\ast$ \mbox{\hyperlink{_program_8h_a2c0001bb3fda9c31e0f788d7f7dc658e}{Procura\+Operacao}} (\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$\mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoes\+Header}}, int id)
+\item 
+\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$ \mbox{\hyperlink{_program_8h_a3496100166bc50090e39a51270dcbd22}{Remove\+Operacao}} (\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$\mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoes\+Header}}, int id)
+\item 
+\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$ \mbox{\hyperlink{_program_8h_a2c762396c81aec5964c2bc9a913d4d49}{Alterar\+Operacoes}} (\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$\mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoes\+Header}}, int id\+Operacao, int id\+Maquina, int tempo\+AMudar)
+\item 
+int \mbox{\hyperlink{_program_8h_a9d57b3c9084f1794f9656d1885164564}{Tempo\+Minimo\+Operacao}} (\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$\mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoes\+Header}})
+\item 
+int \mbox{\hyperlink{_program_8h_a66c48a45f05a97b4e8a144105e34e0e8}{Tempo\+Maximo\+Operacao}} (\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$\mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoes\+Header}})
+\item 
+int \mbox{\hyperlink{_program_8h_a6f82ef30ef25a2d33d8d3a3b8409f326}{Count\+Maquinas\+Na\+Operacao}} (\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$\mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoes\+Header}})
+\item 
+float \mbox{\hyperlink{_program_8h_af0197d098bf2cf1e723095c83a037018}{Tempo\+Medio\+Operacao}} (\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$\mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoes\+Header}})
+\item 
+void \mbox{\hyperlink{_program_8h_aefa252e8e17e9bd4a02308398763e8bf}{Mostra\+Lista\+Operacoes}} (\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$\mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoes\+Header}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}} $\ast$ \mbox{\hyperlink{_program_8h_a805da4d748705416f2be450ed13b33e4}{maquinas\+Header}}
+\item 
+\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$ \mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoes\+Header}}
+\item 
+\mbox{\hyperlink{struct_job}{Job}} $\ast$ \mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobs\+Header}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{_program_8h_a7f678ed7503a7b4211821d14323751d8}\label{_program_8h_a7f678ed7503a7b4211821d14323751d8}} 
+\index{Program.h@{Program.h}!Job@{Job}}
+\index{Job@{Job}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{Job}{Job}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_job}{Job}} \mbox{\hyperlink{struct_job}{Job}}}
+
+\mbox{\Hypertarget{_program_8h_a26c88d957828aee55329497a30aff969}\label{_program_8h_a26c88d957828aee55329497a30aff969}} 
+\index{Program.h@{Program.h}!JobFile@{JobFile}}
+\index{JobFile@{JobFile}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{JobFile}{JobFile}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_job_file}{Job\+File}} \mbox{\hyperlink{struct_job_file}{Job\+File}}}
+
+\mbox{\Hypertarget{_program_8h_a6c52ed34c6d454cb36372acaa269219d}\label{_program_8h_a6c52ed34c6d454cb36372acaa269219d}} 
+\index{Program.h@{Program.h}!ListaMaquinas@{ListaMaquinas}}
+\index{ListaMaquinas@{ListaMaquinas}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{ListaMaquinas}{ListaMaquinas}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}} \mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}}}
+
+\mbox{\Hypertarget{_program_8h_a59f6f68940c56e4f79cd57769199c1aa}\label{_program_8h_a59f6f68940c56e4f79cd57769199c1aa}} 
+\index{Program.h@{Program.h}!ListaOperacoes@{ListaOperacoes}}
+\index{ListaOperacoes@{ListaOperacoes}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{ListaOperacoes}{ListaOperacoes}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} \mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}}}
+
+\mbox{\Hypertarget{_program_8h_a9cf752acb85e5524c5da46e853b7e9cd}\label{_program_8h_a9cf752acb85e5524c5da46e853b7e9cd}} 
+\index{Program.h@{Program.h}!Maquina@{Maquina}}
+\index{Maquina@{Maquina}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{Maquina}{Maquina}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_maquina}{Maquina}} \mbox{\hyperlink{struct_maquina}{Maquina}}}
+
+Author\+: Saraiva Email\+: \href{mailto:mainsaraiva@gmail.com}{\texttt{ mainsaraiva@gmail.\+com}} Github\+: Saraiv Date\+: 18/03/2022 Description\+: Assinatura de funções e structs. Trabalho prático 1 -\/ EDA. Class\+: x \mbox{\Hypertarget{_program_8h_abe9e0e280b37dffadb9164c18310462d}\label{_program_8h_abe9e0e280b37dffadb9164c18310462d}} 
+\index{Program.h@{Program.h}!Operacao@{Operacao}}
+\index{Operacao@{Operacao}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{Operacao}{Operacao}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_operacao}{Operacao}} \mbox{\hyperlink{struct_operacao}{Operacao}}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_program_8h_a2c762396c81aec5964c2bc9a913d4d49}\label{_program_8h_a2c762396c81aec5964c2bc9a913d4d49}} 
+\index{Program.h@{Program.h}!AlterarOperacoes@{AlterarOperacoes}}
+\index{AlterarOperacoes@{AlterarOperacoes}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{AlterarOperacoes()}{AlterarOperacoes()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$ Alterar\+Operacoes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$}]{operacoes\+Header,  }\item[{int}]{id\+Operacao,  }\item[{int}]{id\+Maquina,  }\item[{int}]{tempo\+AMudar }\end{DoxyParamCaption})}
+
+Alterar operações 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em operacoes\+Header} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em id} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em tempo\+AMudar} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em id\+Maquina} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em operacao\+Header} & //\+Retorna o header daa lista de operações alterada \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00159}{159}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_a6f82ef30ef25a2d33d8d3a3b8409f326}\label{_program_8h_a6f82ef30ef25a2d33d8d3a3b8409f326}} 
+\index{Program.h@{Program.h}!CountMaquinasNaOperacao@{CountMaquinasNaOperacao}}
+\index{CountMaquinasNaOperacao@{CountMaquinasNaOperacao}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{CountMaquinasNaOperacao()}{CountMaquinasNaOperacao()}}
+{\footnotesize\ttfamily int Count\+Maquinas\+Na\+Operacao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$}]{operacoes\+Header }\end{DoxyParamCaption})}
+
+Count de quantas máquinas tem cada operação 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em operacoes\+Header} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em operacoes\+Header} & //\+Retorna quantas máquinas tem todas as operações \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00220}{220}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_a00a37b9691794bac6995f5b4be7d187c}\label{_program_8h_a00a37b9691794bac6995f5b4be7d187c}} 
+\index{Program.h@{Program.h}!CriaJob@{CriaJob}}
+\index{CriaJob@{CriaJob}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{CriaJob()}{CriaJob()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_job}{Job}} $\ast$ Cria\+Job (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+Author\+: Saraiva Email\+: \href{mailto:mainsaraiva@gmail.com}{\texttt{ mainsaraiva@gmail.\+com}} Github\+: Saraiv Date\+: 18/03/2022 Description\+: Módulo de implementação do trabalho prático 1. Trabalho prático 1 -\/ EDA. Class\+: x Cria um job 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em id} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em operacao} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em novo\+Job} & //\+Retorna o job aqui criado \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_job_8c_source_l00024}{24}} of file \mbox{\hyperlink{_funcoes_job_8c_source}{Funcoes\+Job.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_a45eb8101a544932879a349a981dff4cb}\label{_program_8h_a45eb8101a544932879a349a981dff4cb}} 
+\index{Program.h@{Program.h}!CriaMaquina@{CriaMaquina}}
+\index{CriaMaquina@{CriaMaquina}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{CriaMaquina()}{CriaMaquina()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_maquina}{Maquina}} $\ast$ Cria\+Maquina (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{tempo }\end{DoxyParamCaption})}
+
+Cria uma máquina 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em id} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em tempo} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em nova\+Maquina} & //\+Retorna a máquina aqui criada \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_maquinas_8c_source_l00043}{43}} of file \mbox{\hyperlink{_funcoes_maquinas_8c_source}{Funcoes\+Maquinas.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_a14ff7f6d164e29bae228d021b67b484b}\label{_program_8h_a14ff7f6d164e29bae228d021b67b484b}} 
+\index{Program.h@{Program.h}!CriaNodoListaMaquinas@{CriaNodoListaMaquinas}}
+\index{CriaNodoListaMaquinas@{CriaNodoListaMaquinas}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{CriaNodoListaMaquinas()}{CriaNodoListaMaquinas()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}} $\ast$ Cria\+Nodo\+Lista\+Maquinas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_maquina}{Maquina}} $\ast$}]{nova\+Maquina }\end{DoxyParamCaption})}
+
+Cria novo nodo para a lista de Maquinas 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nova\+Maquina} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em nova\+Lista} & //\+Retorna uma nova lista para nodo criado \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_maquinas_8c_source_l00058}{58}} of file \mbox{\hyperlink{_funcoes_maquinas_8c_source}{Funcoes\+Maquinas.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_a79d32dfcc9665c5cf8902203af3dcd0e}\label{_program_8h_a79d32dfcc9665c5cf8902203af3dcd0e}} 
+\index{Program.h@{Program.h}!CriaNodoListaOperacoes@{CriaNodoListaOperacoes}}
+\index{CriaNodoListaOperacoes@{CriaNodoListaOperacoes}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{CriaNodoListaOperacoes()}{CriaNodoListaOperacoes()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$ Cria\+Nodo\+Lista\+Operacoes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_operacao}{Operacao}} $\ast$}]{nova\+Operacao }\end{DoxyParamCaption})}
+
+Cria novo nodo para a lista de Operações 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nova\+Operacao} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em nova\+Lista} & para nodo criado \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00058}{58}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_ab8c25b16d152e5c6f4caa00e9407997a}\label{_program_8h_ab8c25b16d152e5c6f4caa00e9407997a}} 
+\index{Program.h@{Program.h}!CriaOperacao@{CriaOperacao}}
+\index{CriaOperacao@{CriaOperacao}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{CriaOperacao()}{CriaOperacao()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_operacao}{Operacao}} $\ast$ Cria\+Operacao (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+Cria uma operacao 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em id} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em maquinas\+Header} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em nova\+Operacao} & //\+Retorna a máquina aqui criada \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00043}{43}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_a588b8543e4596b8c11d78f3d01a94b0f}\label{_program_8h_a588b8543e4596b8c11d78f3d01a94b0f}} 
+\index{Program.h@{Program.h}!ExisteMaquina@{ExisteMaquina}}
+\index{ExisteMaquina@{ExisteMaquina}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{ExisteMaquina()}{ExisteMaquina()}}
+{\footnotesize\ttfamily bool Existe\+Maquina (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}} $\ast$}]{maquinas\+Header,  }\item[{int}]{id }\end{DoxyParamCaption})}
+
+Author\+: Saraiva Email\+: \href{mailto:mainsaraiva@gmail.com}{\texttt{ mainsaraiva@gmail.\+com}} Github\+: Saraiv Date\+: 18/03/2022 Description\+: Módulo de implementação do trabalho prático 1. Trabalho prático 1 -\/ EDA. Class\+: x Verifica se a maquina existe 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em maquinas\+Header} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em id} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em bool} & //\+Retorna se encontrou um jogo existente ou não \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_maquinas_8c_source_l00024}{24}} of file \mbox{\hyperlink{_funcoes_maquinas_8c_source}{Funcoes\+Maquinas.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_a66b6600ab79f44be75ec1f3925112355}\label{_program_8h_a66b6600ab79f44be75ec1f3925112355}} 
+\index{Program.h@{Program.h}!ExisteOperacao@{ExisteOperacao}}
+\index{ExisteOperacao@{ExisteOperacao}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{ExisteOperacao()}{ExisteOperacao()}}
+{\footnotesize\ttfamily bool Existe\+Operacao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$}]{operacoes\+Header,  }\item[{int}]{id }\end{DoxyParamCaption})}
+
+Author\+: Saraiva Email\+: \href{mailto:mainsaraiva@gmail.com}{\texttt{ mainsaraiva@gmail.\+com}} Github\+: Saraiv Date\+: 18/03/2022 Description\+: Módulo de implementação do trabalho prático 1. Trabalho prático 1 -\/ EDA. Class\+: x Verifica se a operação existe 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em operacoes\+Header} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em id} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em bool} & //\+Retorna se encontrou um jogo existente ou não \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00024}{24}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_a437df11594e99065df7c4fda1e0aece0}\label{_program_8h_a437df11594e99065df7c4fda1e0aece0}} 
+\index{Program.h@{Program.h}!GravarBinario@{GravarBinario}}
+\index{GravarBinario@{GravarBinario}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{GravarBinario()}{GravarBinario()}}
+{\footnotesize\ttfamily bool Gravar\+Binario (\begin{DoxyParamCaption}\item[{char $\ast$}]{nome\+Ficheiro,  }\item[{\mbox{\hyperlink{struct_job}{Job}} $\ast$}]{jobs\+Header }\end{DoxyParamCaption})}
+
+Escreve num ficheiro .bin a estrutura job 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nome\+Ficheiro} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em jobs\+Header} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em bool} & //\+Retorna se a ação foi bem sucessida ou não \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_job_8c_source_l00089}{89}} of file \mbox{\hyperlink{_funcoes_job_8c_source}{Funcoes\+Job.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_ade14f066443c1ba0c4009528feaff6d0}\label{_program_8h_ade14f066443c1ba0c4009528feaff6d0}} 
+\index{Program.h@{Program.h}!InsereJob@{InsereJob}}
+\index{InsereJob@{InsereJob}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{InsereJob()}{InsereJob()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_job}{Job}} $\ast$ Insere\+Job (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_job}{Job}} $\ast$}]{jobs\+Header,  }\item[{\mbox{\hyperlink{struct_job}{Job}} $\ast$}]{novo\+Job }\end{DoxyParamCaption})}
+
+Insere um job 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em jobs\+Header} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em novo\+Job} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em jobs\+Header} & //\+Retorna o header job \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_job_8c_source_l00041}{41}} of file \mbox{\hyperlink{_funcoes_job_8c_source}{Funcoes\+Job.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_a965b2592e004469d6bdc077e289f858d}\label{_program_8h_a965b2592e004469d6bdc077e289f858d}} 
+\index{Program.h@{Program.h}!InsereNaListaDeMaquinas@{InsereNaListaDeMaquinas}}
+\index{InsereNaListaDeMaquinas@{InsereNaListaDeMaquinas}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{InsereNaListaDeMaquinas()}{InsereNaListaDeMaquinas()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}} $\ast$ Insere\+Na\+Lista\+De\+Maquinas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}} $\ast$}]{maquinas\+Header,  }\item[{\mbox{\hyperlink{struct_maquina}{Maquina}} $\ast$}]{nova\+Maquina }\end{DoxyParamCaption})}
+
+Insere uma máquina 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em maquinas\+Header} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em nova\+Maquina} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em maquinas\+Header} & //\+Retorna o header da lista de máquinas com a nova máquina inserida \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_maquinas_8c_source_l00074}{74}} of file \mbox{\hyperlink{_funcoes_maquinas_8c_source}{Funcoes\+Maquinas.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_a1dd581ab52f00026d8b3307d362f5ee5}\label{_program_8h_a1dd581ab52f00026d8b3307d362f5ee5}} 
+\index{Program.h@{Program.h}!InsereNaListaDeOperacoes@{InsereNaListaDeOperacoes}}
+\index{InsereNaListaDeOperacoes@{InsereNaListaDeOperacoes}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{InsereNaListaDeOperacoes()}{InsereNaListaDeOperacoes()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$ Insere\+Na\+Lista\+De\+Operacoes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$}]{operacoes\+Header,  }\item[{\mbox{\hyperlink{struct_operacao}{Operacao}} $\ast$}]{nova\+Operacao }\end{DoxyParamCaption})}
+
+Insere uma operação 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em operacoes\+Header} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em nova\+Operacao} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em operacoes\+Header} & //\+Retorna a máquina aqui criada \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00074}{74}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_a8b4200714317d7b50fe59e90ecb6517b}\label{_program_8h_a8b4200714317d7b50fe59e90ecb6517b}} 
+\index{Program.h@{Program.h}!LerBinario@{LerBinario}}
+\index{LerBinario@{LerBinario}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{LerBinario()}{LerBinario()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_job}{Job}} $\ast$ Ler\+Binario (\begin{DoxyParamCaption}\item[{char $\ast$}]{nome\+Ficheiro }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_funcoes_job_8c_source_l00118}{118}} of file \mbox{\hyperlink{_funcoes_job_8c_source}{Funcoes\+Job.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_ac157e9024db0a2445bee1fe5c4ed0c3e}\label{_program_8h_ac157e9024db0a2445bee1fe5c4ed0c3e}} 
+\index{Program.h@{Program.h}!MostraListaJobs@{MostraListaJobs}}
+\index{MostraListaJobs@{MostraListaJobs}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{MostraListaJobs()}{MostraListaJobs()}}
+{\footnotesize\ttfamily void Mostra\+Lista\+Jobs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_job}{Job}} $\ast$}]{jobs\+Header }\end{DoxyParamCaption})}
+
+Mostra a lista de jobs e operações e máquinas 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em jobs\+Header} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_job_8c_source_l00069}{69}} of file \mbox{\hyperlink{_funcoes_job_8c_source}{Funcoes\+Job.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_a62e461d3ab5f4481cf1d1fbee9554102}\label{_program_8h_a62e461d3ab5f4481cf1d1fbee9554102}} 
+\index{Program.h@{Program.h}!MostraListaMaquinas@{MostraListaMaquinas}}
+\index{MostraListaMaquinas@{MostraListaMaquinas}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{MostraListaMaquinas()}{MostraListaMaquinas()}}
+{\footnotesize\ttfamily void Mostra\+Lista\+Maquinas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}} $\ast$}]{maquinas\+Header }\end{DoxyParamCaption})}
+
+Mostra todas as máquinas 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em maquinas\+Header} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_maquinas_8c_source_l00167}{167}} of file \mbox{\hyperlink{_funcoes_maquinas_8c_source}{Funcoes\+Maquinas.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_aefa252e8e17e9bd4a02308398763e8bf}\label{_program_8h_aefa252e8e17e9bd4a02308398763e8bf}} 
+\index{Program.h@{Program.h}!MostraListaOperacoes@{MostraListaOperacoes}}
+\index{MostraListaOperacoes@{MostraListaOperacoes}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{MostraListaOperacoes()}{MostraListaOperacoes()}}
+{\footnotesize\ttfamily void Mostra\+Lista\+Operacoes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$}]{operacoes\+Header }\end{DoxyParamCaption})}
+
+Mostra a lista de operações e máquinas 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em operacoes\+Header} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00259}{259}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_ad6f3adc17b32e86edde5fb7b58ce1297}\label{_program_8h_ad6f3adc17b32e86edde5fb7b58ce1297}} 
+\index{Program.h@{Program.h}!ProcuraMaquina@{ProcuraMaquina}}
+\index{ProcuraMaquina@{ProcuraMaquina}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{ProcuraMaquina()}{ProcuraMaquina()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_maquina}{Maquina}} $\ast$ Procura\+Maquina (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}} $\ast$}]{maquinas\+Header,  }\item[{int}]{id }\end{DoxyParamCaption})}
+
+Procura a máquina pretendida 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em maquinas\+Header} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em id} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em new\+Maquina} & //\+Retorna a cópia de uma nova máquina que estava a procura \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_maquinas_8c_source_l00106}{106}} of file \mbox{\hyperlink{_funcoes_maquinas_8c_source}{Funcoes\+Maquinas.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_a2c0001bb3fda9c31e0f788d7f7dc658e}\label{_program_8h_a2c0001bb3fda9c31e0f788d7f7dc658e}} 
+\index{Program.h@{Program.h}!ProcuraOperacao@{ProcuraOperacao}}
+\index{ProcuraOperacao@{ProcuraOperacao}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{ProcuraOperacao()}{ProcuraOperacao()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_operacao}{Operacao}} $\ast$ Procura\+Operacao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$}]{operacoes\+Header,  }\item[{int}]{id }\end{DoxyParamCaption})}
+
+Procura a operação pretendida 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em operacoes\+Header} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em id} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em aux} & //\+Retorna a operação que era procurada \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00106}{106}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_a3496100166bc50090e39a51270dcbd22}\label{_program_8h_a3496100166bc50090e39a51270dcbd22}} 
+\index{Program.h@{Program.h}!RemoveOperacao@{RemoveOperacao}}
+\index{RemoveOperacao@{RemoveOperacao}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{RemoveOperacao()}{RemoveOperacao()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$ Remove\+Operacao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$}]{operacoes\+Header,  }\item[{int}]{id }\end{DoxyParamCaption})}
+
+Remover a operação 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em operacoes\+Header} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em id} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em operacoes\+Header} & //\+Retorna o header da lista de operações, mas com a operação já removida \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00126}{126}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_a143429eae172d2752d63e657de03bbd0}\label{_program_8h_a143429eae172d2752d63e657de03bbd0}} 
+\index{Program.h@{Program.h}!TempoMaximoMaquina@{TempoMaximoMaquina}}
+\index{TempoMaximoMaquina@{TempoMaximoMaquina}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{TempoMaximoMaquina()}{TempoMaximoMaquina()}}
+{\footnotesize\ttfamily int Tempo\+Maximo\+Maquina (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}} $\ast$}]{maquinas\+Header }\end{DoxyParamCaption})}
+
+Tempo maximo de cada máquina em cada operação 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em maquinas\+Header} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em tempo\+Maximo} & //\+Retorna o tempo maximo \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_maquinas_8c_source_l00146}{146}} of file \mbox{\hyperlink{_funcoes_maquinas_8c_source}{Funcoes\+Maquinas.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_a66c48a45f05a97b4e8a144105e34e0e8}\label{_program_8h_a66c48a45f05a97b4e8a144105e34e0e8}} 
+\index{Program.h@{Program.h}!TempoMaximoOperacao@{TempoMaximoOperacao}}
+\index{TempoMaximoOperacao@{TempoMaximoOperacao}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{TempoMaximoOperacao()}{TempoMaximoOperacao()}}
+{\footnotesize\ttfamily int Tempo\+Maximo\+Operacao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$}]{operacoes\+Header }\end{DoxyParamCaption})}
+
+Tempo máximo da operação 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em operacao\+Header} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em operacao\+Header} & //\+Retorna a soma do tempos máximos \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00202}{202}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_af0197d098bf2cf1e723095c83a037018}\label{_program_8h_af0197d098bf2cf1e723095c83a037018}} 
+\index{Program.h@{Program.h}!TempoMedioOperacao@{TempoMedioOperacao}}
+\index{TempoMedioOperacao@{TempoMedioOperacao}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{TempoMedioOperacao()}{TempoMedioOperacao()}}
+{\footnotesize\ttfamily float Tempo\+Medio\+Operacao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$}]{operacoes\+Header }\end{DoxyParamCaption})}
+
+Tempo médio da operação 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em operacoes\+Header} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em media} & //\+Retorna o tempo médio do tempo das máquinas \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00239}{239}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_a0a1a9b8fe12cbf96990d029214373a9a}\label{_program_8h_a0a1a9b8fe12cbf96990d029214373a9a}} 
+\index{Program.h@{Program.h}!TempoMinimoMaquina@{TempoMinimoMaquina}}
+\index{TempoMinimoMaquina@{TempoMinimoMaquina}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{TempoMinimoMaquina()}{TempoMinimoMaquina()}}
+{\footnotesize\ttfamily int Tempo\+Minimo\+Maquina (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}} $\ast$}]{maquinas\+Header }\end{DoxyParamCaption})}
+
+Tempo mínimo de cada máquina em cada operação 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em maquinas\+Header} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em tempo\+Minimo} & //\+Retorna o tempo mínimo \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_maquinas_8c_source_l00126}{126}} of file \mbox{\hyperlink{_funcoes_maquinas_8c_source}{Funcoes\+Maquinas.\+c}}.
+
+\mbox{\Hypertarget{_program_8h_a9d57b3c9084f1794f9656d1885164564}\label{_program_8h_a9d57b3c9084f1794f9656d1885164564}} 
+\index{Program.h@{Program.h}!TempoMinimoOperacao@{TempoMinimoOperacao}}
+\index{TempoMinimoOperacao@{TempoMinimoOperacao}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{TempoMinimoOperacao()}{TempoMinimoOperacao()}}
+{\footnotesize\ttfamily int Tempo\+Minimo\+Operacao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}} $\ast$}]{operacoes\+Header }\end{DoxyParamCaption})}
+
+Tempo mínimo da operação 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em operacao\+Header} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em operacao\+Header} & //\+Retorna a soma do tempos minimos \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_operacoes_8c_source_l00184}{184}} of file \mbox{\hyperlink{_funcoes_operacoes_8c_source}{Funcoes\+Operacoes.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_program_8h_a084c104399541e8d2c9efedd3246a91f}\label{_program_8h_a084c104399541e8d2c9efedd3246a91f}} 
+\index{Program.h@{Program.h}!jobsHeader@{jobsHeader}}
+\index{jobsHeader@{jobsHeader}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{jobsHeader}{jobsHeader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_job}{Job}}$\ast$ jobs\+Header\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{_program_8h_a805da4d748705416f2be450ed13b33e4}\label{_program_8h_a805da4d748705416f2be450ed13b33e4}} 
+\index{Program.h@{Program.h}!maquinasHeader@{maquinasHeader}}
+\index{maquinasHeader@{maquinasHeader}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{maquinasHeader}{maquinasHeader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_lista_maquinas}{Lista\+Maquinas}}$\ast$ maquinas\+Header\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{_program_8h_ad863c798f28c62c11da64394df78e1ab}\label{_program_8h_ad863c798f28c62c11da64394df78e1ab}} 
+\index{Program.h@{Program.h}!operacoesHeader@{operacoesHeader}}
+\index{operacoesHeader@{operacoesHeader}!Program.h@{Program.h}}
+\doxysubsubsection{\texorpdfstring{operacoesHeader}{operacoesHeader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_lista_operacoes}{Lista\+Operacoes}}$\ast$ operacoes\+Header\hspace{0.3cm}{\ttfamily [extern]}}
+

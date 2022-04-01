@@ -1,0 +1,104 @@
+\hypertarget{_funcoes_job_8c}{}\doxysection{Funcoes\+Job.\+c File Reference}
+\label{_funcoes_job_8c}\index{FuncoesJob.c@{FuncoesJob.c}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Program.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_job}{Job}} $\ast$ \mbox{\hyperlink{_funcoes_job_8c_a00a37b9691794bac6995f5b4be7d187c}{Cria\+Job}} (int id)
+\item 
+\mbox{\hyperlink{struct_job}{Job}} $\ast$ \mbox{\hyperlink{_funcoes_job_8c_a6fbc1517cb52ad68cfb65ab9ffa35654}{Insere\+Job}} (\mbox{\hyperlink{struct_job}{Job}} $\ast$\mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobs\+Header}}, \mbox{\hyperlink{struct_job}{Job}} $\ast$novo\+Job)
+\item 
+void \mbox{\hyperlink{_funcoes_job_8c_ac157e9024db0a2445bee1fe5c4ed0c3e}{Mostra\+Lista\+Jobs}} (\mbox{\hyperlink{struct_job}{Job}} $\ast$\mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobs\+Header}})
+\item 
+bool \mbox{\hyperlink{_funcoes_job_8c_ac31374c16d1423a80b7996e3a4d3eb2f}{Gravar\+Binario}} (char $\ast$nome\+Ficheiro, \mbox{\hyperlink{struct_job}{Job}} $\ast$\mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobs\+Header}})
+\item 
+\mbox{\hyperlink{struct_job}{Job}} $\ast$ \mbox{\hyperlink{_funcoes_job_8c_a8b4200714317d7b50fe59e90ecb6517b}{Ler\+Binario}} (char $\ast$nome\+Ficheiro)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_funcoes_job_8c_a00a37b9691794bac6995f5b4be7d187c}\label{_funcoes_job_8c_a00a37b9691794bac6995f5b4be7d187c}} 
+\index{FuncoesJob.c@{FuncoesJob.c}!CriaJob@{CriaJob}}
+\index{CriaJob@{CriaJob}!FuncoesJob.c@{FuncoesJob.c}}
+\doxysubsubsection{\texorpdfstring{CriaJob()}{CriaJob()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_job}{Job}} $\ast$ Cria\+Job (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+Author\+: Saraiva Email\+: \href{mailto:mainsaraiva@gmail.com}{\texttt{ mainsaraiva@gmail.\+com}} Github\+: Saraiv Date\+: 18/03/2022 Description\+: Módulo de implementação do trabalho prático 1. Trabalho prático 1 -\/ EDA. Class\+: x Cria um job 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em id} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em operacao} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em novo\+Job} & //\+Retorna o job aqui criado \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_job_8c_source_l00024}{24}} of file \mbox{\hyperlink{_funcoes_job_8c_source}{Funcoes\+Job.\+c}}.
+
+\mbox{\Hypertarget{_funcoes_job_8c_ac31374c16d1423a80b7996e3a4d3eb2f}\label{_funcoes_job_8c_ac31374c16d1423a80b7996e3a4d3eb2f}} 
+\index{FuncoesJob.c@{FuncoesJob.c}!GravarBinario@{GravarBinario}}
+\index{GravarBinario@{GravarBinario}!FuncoesJob.c@{FuncoesJob.c}}
+\doxysubsubsection{\texorpdfstring{GravarBinario()}{GravarBinario()}}
+{\footnotesize\ttfamily bool Gravar\+Binario (\begin{DoxyParamCaption}\item[{char $\ast$}]{nome\+Ficheiro,  }\item[{\mbox{\hyperlink{struct_job}{Job}} $\ast$}]{jobs\+Header }\end{DoxyParamCaption})}
+
+Escreve num ficheiro .bin a estrutura job 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nome\+Ficheiro} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em jobs\+Header} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em bool} & //\+Retorna se a ação foi bem sucessida ou não \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_job_8c_source_l00089}{89}} of file \mbox{\hyperlink{_funcoes_job_8c_source}{Funcoes\+Job.\+c}}.
+
+\mbox{\Hypertarget{_funcoes_job_8c_a6fbc1517cb52ad68cfb65ab9ffa35654}\label{_funcoes_job_8c_a6fbc1517cb52ad68cfb65ab9ffa35654}} 
+\index{FuncoesJob.c@{FuncoesJob.c}!InsereJob@{InsereJob}}
+\index{InsereJob@{InsereJob}!FuncoesJob.c@{FuncoesJob.c}}
+\doxysubsubsection{\texorpdfstring{InsereJob()}{InsereJob()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_job}{Job}} $\ast$ Insere\+Job (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_job}{Job}} $\ast$}]{jobs\+Header,  }\item[{\mbox{\hyperlink{struct_job}{Job}} $\ast$}]{novo\+Job }\end{DoxyParamCaption})}
+
+Insere um job 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em jobs\+Header} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em novo\+Job} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em jobs\+Header} & //\+Retorna o header job \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_job_8c_source_l00041}{41}} of file \mbox{\hyperlink{_funcoes_job_8c_source}{Funcoes\+Job.\+c}}.
+
+\mbox{\Hypertarget{_funcoes_job_8c_a8b4200714317d7b50fe59e90ecb6517b}\label{_funcoes_job_8c_a8b4200714317d7b50fe59e90ecb6517b}} 
+\index{FuncoesJob.c@{FuncoesJob.c}!LerBinario@{LerBinario}}
+\index{LerBinario@{LerBinario}!FuncoesJob.c@{FuncoesJob.c}}
+\doxysubsubsection{\texorpdfstring{LerBinario()}{LerBinario()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_job}{Job}} $\ast$ Ler\+Binario (\begin{DoxyParamCaption}\item[{char $\ast$}]{nome\+Ficheiro }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_funcoes_job_8c_source_l00118}{118}} of file \mbox{\hyperlink{_funcoes_job_8c_source}{Funcoes\+Job.\+c}}.
+
+\mbox{\Hypertarget{_funcoes_job_8c_ac157e9024db0a2445bee1fe5c4ed0c3e}\label{_funcoes_job_8c_ac157e9024db0a2445bee1fe5c4ed0c3e}} 
+\index{FuncoesJob.c@{FuncoesJob.c}!MostraListaJobs@{MostraListaJobs}}
+\index{MostraListaJobs@{MostraListaJobs}!FuncoesJob.c@{FuncoesJob.c}}
+\doxysubsubsection{\texorpdfstring{MostraListaJobs()}{MostraListaJobs()}}
+{\footnotesize\ttfamily void Mostra\+Lista\+Jobs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_job}{Job}} $\ast$}]{jobs\+Header }\end{DoxyParamCaption})}
+
+Mostra a lista de jobs e operações e máquinas 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em jobs\+Header} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_funcoes_job_8c_source_l00069}{69}} of file \mbox{\hyperlink{_funcoes_job_8c_source}{Funcoes\+Job.\+c}}.
+

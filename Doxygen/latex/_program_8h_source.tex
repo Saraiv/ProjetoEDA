@@ -1,0 +1,107 @@
+\hypertarget{_program_8h_source}{}\doxysection{Program.\+h}
+\mbox{\hyperlink{_program_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00011}00011 \textcolor{preprocessor}{\#include<stdbool.h>}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00012}00012 \textcolor{preprocessor}{\#include<stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00013}00013 \textcolor{preprocessor}{\#include<stdio.h>}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00015}00015 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00016}00016 \textcolor{comment}{NOTAS:}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00017}00017 \textcolor{comment}{    Job -\/> Operações -\/> Várias Máquinas}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00018}00018 \textcolor{comment}{    Cada Job tem:}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00019}00019 \textcolor{comment}{        Uma ou mais operações.}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00020}00020 \textcolor{comment}{    Cada Operação tem:}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00021}00021 \textcolor{comment}{        Um id da operação;}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00022}00022 \textcolor{comment}{        Uma ou mais máquinas.}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00023}00023 \textcolor{comment}{    Cada Máquina tem:}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00024}00024 \textcolor{comment}{        Um id da máquina;}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00025}00025 \textcolor{comment}{        Um tempo que a máquina demora a efetuar uma operação.}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00026}00026 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00028}00028 \textcolor{preprocessor}{\#ifndef FEITO}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00029}00029 \textcolor{preprocessor}{\#define FEITO 1}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00031}00031 \textcolor{preprocessor}{    \#pragma region Structs}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00033}\mbox{\hyperlink{struct_maquina}{00033}}         \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_maquina}{Maquina}}\{}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00034}\mbox{\hyperlink{struct_maquina_a7441ef0865bcb3db9b8064dd7375c1ea}{00034}}             \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_maquina_a7441ef0865bcb3db9b8064dd7375c1ea}{id}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00035}\mbox{\hyperlink{struct_maquina_a516115750e956e7c851392eeb95d7dcb}{00035}}             \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_maquina_a516115750e956e7c851392eeb95d7dcb}{tempo}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00036}\mbox{\hyperlink{_program_8h_a9cf752acb85e5524c5da46e853b7e9cd}{00036}}         \}\mbox{\hyperlink{_program_8h_a9cf752acb85e5524c5da46e853b7e9cd}{Maquina}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00038}\mbox{\hyperlink{struct_lista_maquinas}{00038}}         \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_lista_maquinas}{ListaMaquinas}}\{}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00039}\mbox{\hyperlink{struct_lista_maquinas_a6806edb96b970e93384af5dfd59b6b7e}{00039}}             \textcolor{keyword}{struct }\mbox{\hyperlink{struct_maquina}{Maquina}} \mbox{\hyperlink{struct_lista_maquinas_a6806edb96b970e93384af5dfd59b6b7e}{maquina}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00040}\mbox{\hyperlink{struct_lista_maquinas_acb54576d5b5e611438085ffa2a317262}{00040}}             \textcolor{keyword}{struct }\mbox{\hyperlink{struct_lista_maquinas}{ListaMaquinas}}* \mbox{\hyperlink{struct_lista_maquinas_acb54576d5b5e611438085ffa2a317262}{nextMaquinas}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00041}\mbox{\hyperlink{_program_8h_a6c52ed34c6d454cb36372acaa269219d}{00041}}         \}\mbox{\hyperlink{_program_8h_a6c52ed34c6d454cb36372acaa269219d}{ListaMaquinas}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00043}00043         \textcolor{keyword}{extern} \mbox{\hyperlink{struct_lista_maquinas}{ListaMaquinas}}* \mbox{\hyperlink{_program_8h_a805da4d748705416f2be450ed13b33e4}{maquinasHeader}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00045}\mbox{\hyperlink{struct_operacao}{00045}}         \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_operacao}{Operacao}}\{}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00046}\mbox{\hyperlink{struct_operacao_a7441ef0865bcb3db9b8064dd7375c1ea}{00046}}             \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_operacao_a7441ef0865bcb3db9b8064dd7375c1ea}{id}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00047}\mbox{\hyperlink{struct_operacao_a7724c68c92755970156233e01697d289}{00047}}             \textcolor{keyword}{struct }\mbox{\hyperlink{struct_lista_maquinas}{ListaMaquinas}}* \mbox{\hyperlink{struct_operacao_a7724c68c92755970156233e01697d289}{maquinas}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00048}\mbox{\hyperlink{_program_8h_abe9e0e280b37dffadb9164c18310462d}{00048}}         \}\mbox{\hyperlink{_program_8h_abe9e0e280b37dffadb9164c18310462d}{Operacao}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00050}\mbox{\hyperlink{struct_lista_operacoes}{00050}}         \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_lista_operacoes}{ListaOperacoes}}\{}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00051}\mbox{\hyperlink{struct_lista_operacoes_a091212a1c15f18cee58b4ea093ec3357}{00051}}             \textcolor{keyword}{struct }\mbox{\hyperlink{struct_operacao}{Operacao}} \mbox{\hyperlink{struct_lista_operacoes_a091212a1c15f18cee58b4ea093ec3357}{operacao}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00052}\mbox{\hyperlink{struct_lista_operacoes_a7584ff56f0173e5a76cb68e025a3aae1}{00052}}             \textcolor{keyword}{struct }\mbox{\hyperlink{struct_lista_operacoes}{ListaOperacoes}}* \mbox{\hyperlink{struct_lista_operacoes_a7584ff56f0173e5a76cb68e025a3aae1}{nextOperacoes}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00053}\mbox{\hyperlink{_program_8h_a59f6f68940c56e4f79cd57769199c1aa}{00053}}         \}\mbox{\hyperlink{_program_8h_a59f6f68940c56e4f79cd57769199c1aa}{ListaOperacoes}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00055}00055         \textcolor{keyword}{extern} \mbox{\hyperlink{struct_lista_operacoes}{ListaOperacoes}}* \mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoesHeader}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00057}\mbox{\hyperlink{struct_job}{00057}}         \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_job}{Job}}\{}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00058}\mbox{\hyperlink{struct_job_a7441ef0865bcb3db9b8064dd7375c1ea}{00058}}             \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_job_a7441ef0865bcb3db9b8064dd7375c1ea}{id}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00059}\mbox{\hyperlink{struct_job_a886d0b1715ff6981218d668fcefa4508}{00059}}             \textcolor{keyword}{struct }\mbox{\hyperlink{struct_lista_operacoes}{ListaOperacoes}}* \mbox{\hyperlink{struct_job_a886d0b1715ff6981218d668fcefa4508}{operacoes}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00060}\mbox{\hyperlink{struct_job_a4ad98026db8d8f61b65be82e199bf53e}{00060}}             \textcolor{keyword}{struct }\mbox{\hyperlink{struct_job}{Job}}* \mbox{\hyperlink{struct_job_a4ad98026db8d8f61b65be82e199bf53e}{nextJob}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00061}\mbox{\hyperlink{_program_8h_a7f678ed7503a7b4211821d14323751d8}{00061}}         \}\mbox{\hyperlink{_program_8h_a7f678ed7503a7b4211821d14323751d8}{Job}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00063}00063         \textcolor{keyword}{extern} \mbox{\hyperlink{struct_job}{Job}}* \mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobsHeader}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00065}\mbox{\hyperlink{struct_job_file}{00065}}         \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_job_file}{JobFile}}\{}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00066}\mbox{\hyperlink{struct_job_file_a0228e1ffede29424d4f2adef9fca48ef}{00066}}             \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_job_file_a0228e1ffede29424d4f2adef9fca48ef}{idJob}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00067}\mbox{\hyperlink{struct_job_file_abde9b237162dea121eb333f9a68f35e3}{00067}}             \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_job_file_abde9b237162dea121eb333f9a68f35e3}{idOperacao}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00068}\mbox{\hyperlink{struct_job_file_ac1f823f8604185a8c36bc3e500f03be1}{00068}}             \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_job_file_ac1f823f8604185a8c36bc3e500f03be1}{idMaquina}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00069}\mbox{\hyperlink{struct_job_file_a516115750e956e7c851392eeb95d7dcb}{00069}}             \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_job_file_a516115750e956e7c851392eeb95d7dcb}{tempo}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00070}\mbox{\hyperlink{_program_8h_a26c88d957828aee55329497a30aff969}{00070}}         \}\mbox{\hyperlink{_program_8h_a26c88d957828aee55329497a30aff969}{JobFile}};}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00072}00072 \textcolor{preprocessor}{    \#pragma endregion}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00074}00074 \textcolor{preprocessor}{    \#pragma region AssinaturaDeFuncoes}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00076}00076         \textcolor{comment}{//Assinatura de funções ficheiros}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00078}00078         \textcolor{comment}{//Assinatura de funções job}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00079}00079         \mbox{\hyperlink{struct_job}{Job}}* \mbox{\hyperlink{_program_8h_a00a37b9691794bac6995f5b4be7d187c}{CriaJob}}(\textcolor{keywordtype}{int} \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00080}00080         \mbox{\hyperlink{struct_job}{Job}}* \mbox{\hyperlink{_program_8h_ade14f066443c1ba0c4009528feaff6d0}{InsereJob}}(\mbox{\hyperlink{struct_job}{Job}}* jobHeader, \mbox{\hyperlink{struct_job}{Job}}* novoJob);}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00081}00081         \textcolor{keywordtype}{void} \mbox{\hyperlink{_program_8h_ac157e9024db0a2445bee1fe5c4ed0c3e}{MostraListaJobs}}(\mbox{\hyperlink{struct_job}{Job}}* \mbox{\hyperlink{_program_8h_a084c104399541e8d2c9efedd3246a91f}{jobsHeader}});}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00082}00082         \textcolor{keywordtype}{bool} \mbox{\hyperlink{_program_8h_a437df11594e99065df7c4fda1e0aece0}{GravarBinario}}(\textcolor{keywordtype}{char}* nomeFicheiro, \mbox{\hyperlink{struct_job}{Job}}* headJob);}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00083}00083         \mbox{\hyperlink{struct_job}{Job}}* \mbox{\hyperlink{_program_8h_a8b4200714317d7b50fe59e90ecb6517b}{LerBinario}}(\textcolor{keywordtype}{char}* nomeFicheiro);}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00085}00085         \textcolor{comment}{//Assinatura de funções máquinas}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00086}00086         \textcolor{keywordtype}{bool} \mbox{\hyperlink{_program_8h_a588b8543e4596b8c11d78f3d01a94b0f}{ExisteMaquina}}(\mbox{\hyperlink{struct_lista_maquinas}{ListaMaquinas}} *\mbox{\hyperlink{_program_8h_a805da4d748705416f2be450ed13b33e4}{maquinasHeader}}, \textcolor{keywordtype}{int} \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00087}00087         \mbox{\hyperlink{struct_maquina}{Maquina}}* \mbox{\hyperlink{_program_8h_a45eb8101a544932879a349a981dff4cb}{CriaMaquina}}(\textcolor{keywordtype}{int} \textcolor{keywordtype}{id}, \textcolor{keywordtype}{int} tempo);}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00088}00088         \mbox{\hyperlink{struct_lista_maquinas}{ListaMaquinas}}* \mbox{\hyperlink{_program_8h_a14ff7f6d164e29bae228d021b67b484b}{CriaNodoListaMaquinas}}(\mbox{\hyperlink{struct_maquina}{Maquina}}* novaMaquina);}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00089}00089         \mbox{\hyperlink{struct_lista_maquinas}{ListaMaquinas}}* \mbox{\hyperlink{_program_8h_a965b2592e004469d6bdc077e289f858d}{InsereNaListaDeMaquinas}}(\mbox{\hyperlink{struct_lista_maquinas}{ListaMaquinas}}* maquinaHeader, \mbox{\hyperlink{struct_maquina}{Maquina}}* novaMaquina);}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00090}00090         \mbox{\hyperlink{struct_maquina}{Maquina}}* \mbox{\hyperlink{_program_8h_ad6f3adc17b32e86edde5fb7b58ce1297}{ProcuraMaquina}}(\mbox{\hyperlink{struct_lista_maquinas}{ListaMaquinas}}* maquinaHeader, \textcolor{keywordtype}{int} \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00091}00091         \textcolor{keywordtype}{int} \mbox{\hyperlink{_program_8h_a0a1a9b8fe12cbf96990d029214373a9a}{TempoMinimoMaquina}}(\mbox{\hyperlink{struct_lista_maquinas}{ListaMaquinas}}* \mbox{\hyperlink{_program_8h_a805da4d748705416f2be450ed13b33e4}{maquinasHeader}});}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00092}00092         \textcolor{keywordtype}{int} \mbox{\hyperlink{_program_8h_a143429eae172d2752d63e657de03bbd0}{TempoMaximoMaquina}}(\mbox{\hyperlink{struct_lista_maquinas}{ListaMaquinas}}* \mbox{\hyperlink{_program_8h_a805da4d748705416f2be450ed13b33e4}{maquinasHeader}});}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00093}00093         \textcolor{keywordtype}{void} \mbox{\hyperlink{_program_8h_a62e461d3ab5f4481cf1d1fbee9554102}{MostraListaMaquinas}}(\mbox{\hyperlink{struct_lista_maquinas}{ListaMaquinas}}* \mbox{\hyperlink{_program_8h_a805da4d748705416f2be450ed13b33e4}{maquinasHeader}});}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00095}00095         \textcolor{comment}{//Assinatura de funções operações}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00096}00096         \textcolor{keywordtype}{bool} \mbox{\hyperlink{_program_8h_a66b6600ab79f44be75ec1f3925112355}{ExisteOperacao}}(\mbox{\hyperlink{struct_lista_operacoes}{ListaOperacoes}} *operacaoHeader, \textcolor{keywordtype}{int} \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00097}00097         \mbox{\hyperlink{struct_operacao}{Operacao}}* \mbox{\hyperlink{_program_8h_ab8c25b16d152e5c6f4caa00e9407997a}{CriaOperacao}}(\textcolor{keywordtype}{int} \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00098}00098         \mbox{\hyperlink{struct_lista_operacoes}{ListaOperacoes}}* \mbox{\hyperlink{_program_8h_a79d32dfcc9665c5cf8902203af3dcd0e}{CriaNodoListaOperacoes}}(\mbox{\hyperlink{struct_operacao}{Operacao}}* novaOperacao);}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00099}00099         \mbox{\hyperlink{struct_lista_operacoes}{ListaOperacoes}}* \mbox{\hyperlink{_program_8h_a1dd581ab52f00026d8b3307d362f5ee5}{InsereNaListaDeOperacoes}}(\mbox{\hyperlink{struct_lista_operacoes}{ListaOperacoes}}* \mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoesHeader}}, \mbox{\hyperlink{struct_operacao}{Operacao}}* novaOperacao);}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00100}00100         \mbox{\hyperlink{struct_operacao}{Operacao}}* \mbox{\hyperlink{_program_8h_a2c0001bb3fda9c31e0f788d7f7dc658e}{ProcuraOperacao}}(\mbox{\hyperlink{struct_lista_operacoes}{ListaOperacoes}}* \mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoesHeader}}, \textcolor{keywordtype}{int} \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00101}00101         \mbox{\hyperlink{struct_lista_operacoes}{ListaOperacoes}}* \mbox{\hyperlink{_program_8h_a3496100166bc50090e39a51270dcbd22}{RemoveOperacao}}(\mbox{\hyperlink{struct_lista_operacoes}{ListaOperacoes}}* \mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoesHeader}}, \textcolor{keywordtype}{int} \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00102}00102         \mbox{\hyperlink{struct_lista_operacoes}{ListaOperacoes}}* \mbox{\hyperlink{_program_8h_a2c762396c81aec5964c2bc9a913d4d49}{AlterarOperacoes}}(\mbox{\hyperlink{struct_lista_operacoes}{ListaOperacoes}}* \mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoesHeader}}, \textcolor{keywordtype}{int} idOperacao, \textcolor{keywordtype}{int} idMaquina, \textcolor{keywordtype}{int} tempoAMudar);}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00103}00103         \textcolor{keywordtype}{int} \mbox{\hyperlink{_program_8h_a9d57b3c9084f1794f9656d1885164564}{TempoMinimoOperacao}}(\mbox{\hyperlink{struct_lista_operacoes}{ListaOperacoes}}* \mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoesHeader}});}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00104}00104         \textcolor{keywordtype}{int} \mbox{\hyperlink{_program_8h_a66c48a45f05a97b4e8a144105e34e0e8}{TempoMaximoOperacao}}(\mbox{\hyperlink{struct_lista_operacoes}{ListaOperacoes}}* \mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoesHeader}});}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00105}00105         \textcolor{keywordtype}{int} \mbox{\hyperlink{_program_8h_a6f82ef30ef25a2d33d8d3a3b8409f326}{CountMaquinasNaOperacao}}(\mbox{\hyperlink{struct_lista_operacoes}{ListaOperacoes}}* \mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoesHeader}});}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00106}00106         \textcolor{keywordtype}{float} \mbox{\hyperlink{_program_8h_af0197d098bf2cf1e723095c83a037018}{TempoMedioOperacao}}(\mbox{\hyperlink{struct_lista_operacoes}{ListaOperacoes}}* \mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoesHeader}});}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00107}00107         \textcolor{keywordtype}{void} \mbox{\hyperlink{_program_8h_aefa252e8e17e9bd4a02308398763e8bf}{MostraListaOperacoes}}(\mbox{\hyperlink{struct_lista_operacoes}{ListaOperacoes}}* \mbox{\hyperlink{_program_8h_ad863c798f28c62c11da64394df78e1ab}{operacoesHeader}});}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00109}00109 \textcolor{preprocessor}{    \#pragma endregion}}
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00110}00110 }
+\DoxyCodeLine{\Hypertarget{_program_8h_source_l00111}00111 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

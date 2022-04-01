@@ -118,20 +118,22 @@
     Job* LerBinario(char* nomeFicheiro){
         FILE* fp;
         Job* jobsHeader = NULL;
+        Maquina* auxMaquina = NULL;
+        Operacao* auxOperacao = NULL;
+
         Job* auxJob;
 
         if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
         JobFile auxFileJob;
         while (fread(&auxFileJob, sizeof(Job), 1, fp)){
-            Maquina* auxMaquina = CriaMaquina(auxFileJob.idMaquina, auxFileJob.tempo);
-            Operacao* auxOperacao = CriaOperacao(auxFileJob.idOperacao);
+            auxMaquina = CriaMaquina(auxFileJob.idMaquina, auxFileJob.tempo);
+            auxOperacao = CriaOperacao(auxFileJob.idOperacao);
             auxOperacao->maquinas = InsereNaListaDeMaquinas(auxOperacao->maquinas, auxMaquina);            
-            auxJob = CriaJob(auxFileJob.idMaquina);
+            auxJob = CriaJob(auxFileJob.idJob);
 
             auxJob->operacoes = InsereNaListaDeOperacoes(auxJob->operacoes, auxOperacao);
 
             jobsHeader = InsereJob(jobsHeader, auxJob);
-            
         }
         fclose(fp);
 
