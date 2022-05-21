@@ -28,6 +28,8 @@ NOTAS:
 #ifndef FEITO
 #define FEITO 1
 
+#define MAX 3
+
     #pragma region Structs
 
         typedef struct Maquina{
@@ -55,12 +57,18 @@ NOTAS:
         extern ListaOperacoes* operacoesHeader;
 
         typedef struct Job{
-            int id;
+            char* id;
             struct ListaOperacoes* operacoes;
             struct Job* nextJob;
-        }Job;
+        }Job, JobHash;
 
-        extern Job* jobsHeader;
+        extern Job jobsHeader;
+        extern JobHash* hashTable[MAX];
+
+        typedef struct HashTable{
+            int max;
+            struct Job* tabela[MAX];
+        }HashTable;
 
         typedef struct JobFile{
             int idJob;
@@ -76,11 +84,16 @@ NOTAS:
         //Assinatura de funções ficheiros
 
         //Assinatura de funções job
-        Job* CriaJob(int id);
-        Job* InsereJob(Job* jobHeader, Job* novoJob);
+        Job* CriaJob(char* id);
+        Job* InsereJob(Job* jobsHeader, Job* novoJob);
+        Job* InsereNodoJob(Job* node, Job* jobsHeader);
         void MostraListaJobs(Job* jobsHeader);
-        bool GravarBinario(char* nomeFicheiro, Job* headJob);
-        Job* LerBinario(char* nomeFicheiro);
+
+        //Assinatura de funções hash table
+        JobHash** IniciaHash(JobHash *hashTable[]);
+        int Key(char* id);
+        JobHash** InsereNodoJobNaHash(JobHash* job, JobHash* hashTable[]);
+        void MostrarHashTable(JobHash *hashTable[]);
 
         //Assinatura de funções máquinas
         bool ExisteMaquina(ListaMaquinas *maquinasHeader, int id);

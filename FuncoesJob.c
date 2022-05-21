@@ -11,6 +11,7 @@
 #include<stdbool.h>
 #include<stdlib.h>
 #include<stdio.h>
+#include<string.h>
 #include"Program.h"
 
 #pragma region FuncoesJobs
@@ -21,11 +22,11 @@
      * @param [in] operacao
      * @param [out] novoJob	//Retorna o job aqui criado
     */
-    Job* CriaJob(int id){
+    Job* CriaJob(char* id){
         Job* novoJob = (Job*)malloc(sizeof(Job));
         if(novoJob == NULL) return NULL; // Se não há memória
             
-        novoJob->id = id;
+        novoJob->id = strcpy(id, id);
         novoJob->operacoes = NULL;
         novoJob->nextJob = NULL;
 
@@ -41,24 +42,47 @@
     Job* InsereJob(Job* jobsHeader, Job* novoJob){
         if (jobsHeader == NULL){
             jobsHeader = novoJob;
-        }
-        else{
-            Job* auxJobs = jobsHeader;
-            Job* auxAnt = NULL;
-            while(auxJobs && auxJobs->id < novoJob->id){
-                auxAnt = auxJobs;
-                auxJobs = auxJobs->nextJob;
-            }
-            if(auxAnt == NULL){
-                novoJob->nextJob = jobsHeader;
-                jobsHeader = novoJob;
-            }
-            else{
-                auxAnt->nextJob = novoJob;
-                novoJob->nextJob = auxJobs;
-            }
+        } else{
+            novoJob->nextJob = jobsHeader;
+            jobsHeader = novoJob;
         }
 
+        return jobsHeader;
+    }
+
+    /**
+     * Insere um nodo da lista jobs
+     * @param [in] jobsHeader 
+     * @param [in] novoJob
+     * @param [out] jobsHeader	//Retorna o header job
+    */
+    Job* InsereNodoJob(Job* node, Job* jobsHeader) {
+        if (!jobsHeader){
+            jobsHeader = InsereJob(node, jobsHeader);
+            return jobsHeader;
+        } else {
+            Job* auxJob = jobsHeader;
+            Job* auxJob2 = auxJob;
+
+            while (auxJob != NULL && strcmp(auxJob->id, node->id)<0){
+                auxJob2 = auxJob;
+                auxJob = auxJob->nextJob;
+            }
+
+            if (auxJob == jobsHeader){
+                jobsHeader = InsereJob(node, jobsHeader);
+            }
+
+            else{
+                if (auxJob == NULL){
+                    auxJob2->nextJob = node;
+                }
+                else{
+                    auxJob2->nextJob = node;
+                    node->nextJob = auxJob;
+                }
+            }
+        }
         return jobsHeader;
     }
 
@@ -70,7 +94,7 @@
         Job* auxJobs = jobsHeader;
         printf("Jobs:\n");
         while(auxJobs != NULL){
-            printf("ID: %d\n", auxJobs->id);
+            printf("ID: %s\n", auxJobs->id);
             MostraListaOperacoes(jobsHeader->operacoes);
             auxJobs = auxJobs->nextJob;
         }
@@ -86,58 +110,58 @@
      * @param [in] jobsHeader
      * @param [out] bool	//Retorna se a ação foi bem sucessida ou não
     */
-    bool GravarBinario(char* nomeFicheiro, Job* jobsHeader){
-        if (jobsHeader == NULL) return false;
-        FILE* fp;
-        if ((fp = fopen(nomeFicheiro, "wb")) == NULL) return false;
+    // bool GravarBinario(char* nomeFicheiro, Job* jobsHeader){
+    //     if (jobsHeader == NULL) return false;
+    //     FILE* fp;
+    //     if ((fp = fopen(nomeFicheiro, "wb")) == NULL) return false;
         
-        Job* auxJob = jobsHeader;
-        JobFile auxFileJob;
+    //     Job* auxJob = jobsHeader;
+    //     JobFile auxFileJob;
 
-        while (auxJob != NULL){
-            auxFileJob.idJob = auxJob->id;
-            ListaOperacoes* auxOperacoes = auxJob->operacoes;
-            while(auxOperacoes != NULL){
-                auxFileJob.idOperacao = auxOperacoes->operacao.id;
-                ListaMaquinas* auxMaquinas = auxOperacoes->operacao.maquinas;
-                while(auxMaquinas != NULL){
-                    auxFileJob.idMaquina = auxMaquinas->maquina.id;
-                    auxFileJob.tempo = auxMaquinas->maquina.tempo;
-                    fwrite(&auxFileJob, sizeof(JobFile), 1, fp);
-                    auxMaquinas = auxMaquinas->nextMaquinas;
-                }
-                auxOperacoes = auxOperacoes->nextOperacoes;
-            }
-            auxJob = auxJob->nextJob;
-        }
-        fclose(fp);
+    //     while (auxJob != NULL){
+    //         auxFileJob.idJob = auxJob->id;
+    //         ListaOperacoes* auxOperacoes = auxJob->operacoes;
+    //         while(auxOperacoes != NULL){
+    //             auxFileJob.idOperacao = auxOperacoes->operacao.id;
+    //             ListaMaquinas* auxMaquinas = auxOperacoes->operacao.maquinas;
+    //             while(auxMaquinas != NULL){
+    //                 auxFileJob.idMaquina = auxMaquinas->maquina.id;
+    //                 auxFileJob.tempo = auxMaquinas->maquina.tempo;
+    //                 fwrite(&auxFileJob, sizeof(JobFile), 1, fp);
+    //                 auxMaquinas = auxMaquinas->nextMaquinas;
+    //             }
+    //             auxOperacoes = auxOperacoes->nextOperacoes;
+    //         }
+    //         auxJob = auxJob->nextJob;
+    //     }
+    //     fclose(fp);
 
-        return true;
-    }
+    //     return true;
+    // }
 
-    Job* LerBinario(char* nomeFicheiro){
-        FILE* fp;
-        Job* jobsHeader = NULL;
-        Maquina* auxMaquina = NULL;
-        Operacao* auxOperacao = NULL;
+    // Job* LerBinario(char* nomeFicheiro){
+    //     FILE* fp;
+    //     Job* jobsHeader = NULL;
+    //     Maquina* auxMaquina = NULL;
+    //     Operacao* auxOperacao = NULL;
 
-        Job* auxJob;
+    //     Job* auxJob;
 
-        if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
-        JobFile auxFileJob;
-        while (fread(&auxFileJob, sizeof(Job), 1, fp)){
-            auxMaquina = CriaMaquina(auxFileJob.idMaquina, auxFileJob.tempo);
-            auxOperacao = CriaOperacao(auxFileJob.idOperacao);
-            auxOperacao->maquinas = InsereNaListaDeMaquinas(auxOperacao->maquinas, auxMaquina);            
-            auxJob = CriaJob(auxFileJob.idJob);
+    //     if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
+    //     JobFile auxFileJob;
+    //     while (fread(&auxFileJob, sizeof(Job), 1, fp)){
+    //         auxMaquina = CriaMaquina(auxFileJob.idMaquina, auxFileJob.tempo);
+    //         auxOperacao = CriaOperacao(auxFileJob.idOperacao);
+    //         auxOperacao->maquinas = InsereNaListaDeMaquinas(auxOperacao->maquinas, auxMaquina);            
+    //         auxJob = CriaJob(auxFileJob.idJob);
 
-            auxJob->operacoes = InsereNaListaDeOperacoes(auxJob->operacoes, auxOperacao);
+    //         auxJob->operacoes = InsereNaListaDeOperacoes(auxJob->operacoes, auxOperacao);
 
-            jobsHeader = InsereJob(jobsHeader, auxJob);
-        }
-        fclose(fp);
+    //         jobsHeader = InsereJob(jobsHeader, auxJob);
+    //     }
+    //     fclose(fp);
 
-        return jobsHeader;
-    }
+    //     return jobsHeader;
+    // }
 
 #pragma endregion

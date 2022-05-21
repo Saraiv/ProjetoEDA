@@ -25,7 +25,7 @@
         if (maquinasHeader == NULL) return false;
 
         ListaMaquinas* aux = maquinasHeader;
-        while (aux != NULL) {
+        while (aux != NULL){
             if (aux->maquina.id == id)
                 return true;
             aux = aux->nextMaquinas;
@@ -124,10 +124,10 @@
      * @param [out] tempoMinimo	//Retorna o tempo mínimo
     */
     int TempoMinimoMaquina(ListaMaquinas* maquinasHeader){
-        if(maquinasHeader == NULL) return -1; //Lista vazia
+        if(maquinasHeader == NULL) return 0; //Lista vazia
 
         ListaMaquinas* auxMaquinas = maquinasHeader;
-        int tempoMinimo = 100;
+        int tempoMinimo = auxMaquinas->maquina.tempo;
         while(auxMaquinas != NULL){
             if(auxMaquinas->maquina.tempo < tempoMinimo){
                 tempoMinimo = auxMaquinas->maquina.tempo;
@@ -144,11 +144,11 @@
      * @param [out] tempoMaximo	//Retorna o tempo maximo
     */
     int TempoMaximoMaquina(ListaMaquinas* maquinasHeader){
-        if(maquinasHeader == NULL) return -1; //Lista vazia
+        if(maquinasHeader == NULL) return 0; //Lista vazia
         int id = 0;
 
         ListaMaquinas* auxMaquinas = maquinasHeader;
-        int tempoMaximo = 0;
+        int tempoMaximo = auxMaquinas->maquina.tempo;
         while(auxMaquinas != NULL){
             if(auxMaquinas->maquina.tempo > tempoMaximo){
                 tempoMaximo = auxMaquinas->maquina.tempo;
@@ -168,7 +168,8 @@
         ListaMaquinas* auxMaquinas = maquinasHeader;
         printf("Maquinas:\n");
         while(auxMaquinas != NULL){
-            printf("ID: %d - Tempo: %d\n", auxMaquinas->maquina.id, auxMaquinas->maquina.tempo);
+            Maquina auxMaquina = auxMaquinas->maquina;
+            printf("ID: %d - Tempo: %d\n", auxMaquina.id, auxMaquina.tempo);
             auxMaquinas = auxMaquinas->nextMaquinas;
         }
     }

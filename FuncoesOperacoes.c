@@ -182,7 +182,7 @@
      * @param [out] operacaoHeader	//Retorna a soma do tempos minimos
     */
     int TempoMinimoOperacao(ListaOperacoes* operacoesHeader){
-        if (operacoesHeader == NULL) return -1;
+        if (operacoesHeader == NULL) return 0;
         int  soma = 0;
 
         ListaOperacoes* auxOperacoes = operacoesHeader;
@@ -200,7 +200,7 @@
      * @param [out] operacaoHeader	//Retorna a soma do tempos máximos
     */
     int TempoMaximoOperacao(ListaOperacoes* operacoesHeader){
-        if (operacoesHeader == NULL) return -1;
+        if (operacoesHeader == NULL) return 0;
         int  soma = 0;
 
         ListaOperacoes* auxOperacoes = operacoesHeader;
@@ -260,8 +260,9 @@
         ListaOperacoes* auxOperacoes = operacoesHeader;
         printf("Operacoes:\n");
         while(auxOperacoes != NULL){
-            printf("ID: %d\n", auxOperacoes->operacao.id);
-            MostraListaMaquinas(operacoesHeader->operacao.maquinas);
+            Operacao auxOperacao = auxOperacoes->operacao;
+            printf("ID: %d\n", auxOperacao.id);
+            MostraListaMaquinas(auxOperacao.maquinas);
             auxOperacoes = auxOperacoes->nextOperacoes;
         }
     }
