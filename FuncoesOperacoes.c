@@ -258,9 +258,9 @@
     */
     void MostraListaOperacoes(ListaOperacoes* operacoesHeader){
         ListaOperacoes* auxOperacoes = operacoesHeader;
-        printf("Operacoes:\n");
         while(auxOperacoes != NULL){
             Operacao auxOperacao = auxOperacoes->operacao;
+            printf("---------------------\n");
             printf("ID: %d\n", auxOperacao.id);
             MostraListaMaquinas(auxOperacao.maquinas);
             auxOperacoes = auxOperacoes->nextOperacoes;

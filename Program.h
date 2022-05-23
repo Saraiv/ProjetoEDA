@@ -60,10 +60,9 @@ NOTAS:
             char* id;
             struct ListaOperacoes* operacoes;
             struct Job* nextJob;
-        }Job, JobHash;
+        }Job;
 
         extern Job jobsHeader;
-        extern JobHash* hashTable[MAX];
 
         typedef struct HashTable{
             int max;
@@ -90,10 +89,10 @@ NOTAS:
         void MostraListaJobs(Job* jobsHeader);
 
         //Assinatura de funções hash table
-        JobHash** IniciaHash(JobHash *hashTable[]);
+        void IniciaHash(Job *hashTable[]);
         int Key(char* id);
-        JobHash** InsereNodoJobNaHash(JobHash* job, JobHash* hashTable[]);
-        void MostrarHashTable(JobHash *hashTable[]);
+        void InsereNodoJobNaHash(Job* job, Job* hashTable[]);
+        void MostrarHashTable(Job *hashTable[]);
 
         //Assinatura de funções máquinas
         bool ExisteMaquina(ListaMaquinas *maquinasHeader, int id);

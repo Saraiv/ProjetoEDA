@@ -56,15 +56,15 @@
      * @param [in] novoJob
      * @param [out] jobsHeader	//Retorna o header job
     */
-    Job* InsereNodoJob(Job* node, Job* jobsHeader) {
-        if (!jobsHeader){
+    Job* InsereNodoJob(Job* node, Job* jobsHeader){
+        if (jobsHeader != NULL){
             jobsHeader = InsereJob(node, jobsHeader);
             return jobsHeader;
-        } else {
+        } else{
             Job* auxJob = jobsHeader;
             Job* auxJob2 = auxJob;
 
-            while (auxJob != NULL && strcmp(auxJob->id, node->id)<0){
+            while (auxJob != NULL && strcmp(auxJob->id, node->id) < 0){
                 auxJob2 = auxJob;
                 auxJob = auxJob->nextJob;
             }
@@ -92,9 +92,9 @@
     */
     void MostraListaJobs(Job* jobsHeader){
         Job* auxJobs = jobsHeader;
-        printf("Jobs:\n");
         while(auxJobs != NULL){
-            printf("ID: %s\n", auxJobs->id);
+            printf("-----------------------------------------\n");
+            printf("ID Job: %s\n", auxJobs->id);
             MostraListaOperacoes(jobsHeader->operacoes);
             auxJobs = auxJobs->nextJob;
         }

@@ -19,16 +19,10 @@
     /**
      * Inicia o ínicio de uma nova hash table
      * @param [in] hashTable
-     * @param [in] jobsHeader
-     * @param [out] hashTable	//Retorna o ínicio da hash table
     */
-    JobHash** IniciaHash(JobHash *hashTable[]){
+    void IniciaHash(Job* hashTable[]){
         for (int i = 0; i < MAX; i++)
-            hashTable[i] = NULL;
-            // hashTable[i]->id = NULL;
-            // hashTable[i]->nextJob = NULL;
-            // hashTable[i]->operacoes = NULL;
-        return hashTable;
+		    hashTable[i] = NULL;
     }
 
     /**
@@ -48,30 +42,26 @@
      * Insere o nodo Job recebido no incio da hash table
      * @param [in] job
      * @param [in] hashTable
-     * @param [out] hashTable	//Retorna o ínicio da hash table
     */
-    JobHash** InsereNodoJobNaHash(JobHash* job, JobHash* hashTable[]){
+    void InsereNodoJobNaHash(Job* job, Job* hashTable[]){
         int key = Key(job->id);
-
         Job *auxHash = hashTable[key];
         if (auxHash == NULL)
             hashTable[key] = job;
         else
             hashTable[key] = InsereNodoJob(job, hashTable[key]);
-
-        return hashTable;
     }
 
     /**
      * Mostra a lista de jobs e operações e máquinas usando a hash table
      * @param [in] hashTable
     */
-    void MostrarHashTable(JobHash *hashTable[]){
-        printf("Hashtable\n");
+    void MostrarHashTable(Job *hashTable[]){
         for (int i = 0; i < MAX; i++){
             if (hashTable[i] != NULL){
-                printf("Index: %d \t", i);
+                printf("Index: %d\n", i);
                 MostraListaJobs(hashTable[i]);
+                printf("\n");
             }
         }
     }
