@@ -267,3 +267,37 @@
     }
 
 #pragma endregion
+
+#pragma region Ficheiros
+
+    /**
+     * Escreve em ficheiros .bin os elementos da hashtable operações
+     * @param [in] operacoesHeader
+     * @param [out] bool	//Retorna se a ação foi bem sucessida ou não
+    */
+    bool GravaOperacoes(ListaOperacoes* operacoesHeader){
+        FILE *file;
+
+        if (operacoesHeader == NULL) return false;
+
+        if ((file = fopen("operacoes.bin", "wb")) == NULL){
+            return false;
+        }
+
+        ListaOperacoes* auxOperacoes = operacoesHeader;
+        ListaOperacoes* nextOperacoes;
+        while (auxOperacoes != NULL) {
+            nextOperacoes = auxOperacoes->nextOperacoes;
+            auxOperacoes->nextOperacoes = NULL;
+            fseek(file, 0, SEEK_END);
+            fwrite(auxOperacoes, sizeof(ListaOperacoes), 1, file);
+            auxOperacoes = nextOperacoes;
+            nextOperacoes = NULL;
+        }
+        
+        fclose(file);
+        file = NULL;
+        return true;
+    }
+
+#pragma endregion

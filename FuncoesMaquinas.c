@@ -171,3 +171,37 @@
     }
 
 #pragma endregion
+
+#pragma region Ficheiros
+
+    /**
+     * Escreve em ficheiros .bin os elementos da hashtable máquinas
+     * @param [in] maquinasHeader
+     * @param [out] bool	//Retorna se a ação foi bem sucessida ou não
+    */
+    bool GravaMaquinas(ListaMaquinas* maquinasHeader){
+        FILE *file;
+
+        if (maquinasHeader == NULL) return false;
+
+        if ((file = fopen("maquinas.bin", "wb")) == NULL){
+            return false;
+        }
+
+        ListaMaquinas* auxMaquinas = maquinasHeader;
+        ListaMaquinas* nextMaquinas;
+        while (auxMaquinas != NULL) {
+            nextMaquinas = auxMaquinas->nextMaquinas;
+            auxMaquinas->nextMaquinas = NULL;
+            fseek(file, 0, SEEK_END);
+            fwrite(auxMaquinas, sizeof(ListaMaquinas), 1, file);
+            auxMaquinas = nextMaquinas;
+            nextMaquinas = NULL;
+        }
+        
+        fclose(file);
+        file = NULL;
+        return true;
+    }
+
+#pragma endregion

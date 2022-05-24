@@ -145,66 +145,36 @@
 
 #pragma endregion
 
-#pragma region FicheirosJobs
+#pragma region Ficheiros
 
     /**
-     * Escreve num ficheiro .bin a estrutura job
-     * @param [in] nomeFicheiro
+     * Escreve em ficheiros .bin os elementos da hashtable jobs
      * @param [in] jobsHeader
      * @param [out] bool	//Retorna se a ação foi bem sucessida ou não
     */
-    // bool GravarBinario(char* nomeFicheiro, Job* jobsHeader){
-    //     if (jobsHeader == NULL) return false;
-    //     FILE* fp;
-    //     if ((fp = fopen(nomeFicheiro, "wb")) == NULL) return false;
+    bool GravaJob(Job* jobsHeader){
+        FILE *file;
+
+        if (jobsHeader == NULL) return false;
+
+        if ((file = fopen("jobs.bin", "wb")) == NULL){
+            return false;
+        }
+
+        Job* auxJob = jobsHeader;
+        Job* nextJob;
+        while (auxJob != NULL) {
+            nextJob = auxJob->nextJob;
+            auxJob->nextJob = NULL;
+            fseek(file, 0, SEEK_END);
+            fwrite(auxJob, sizeof(Job), 1, file);
+            auxJob = nextJob;
+            nextJob = NULL;
+        }
         
-    //     Job* auxJob = jobsHeader;
-    //     JobFile auxFileJob;
-
-    //     while (auxJob != NULL){
-    //         auxFileJob.idJob = auxJob->id;
-    //         ListaOperacoes* auxOperacoes = auxJob->operacoes;
-    //         while(auxOperacoes != NULL){
-    //             auxFileJob.idOperacao = auxOperacoes->operacao.id;
-    //             ListaMaquinas* auxMaquinas = auxOperacoes->operacao.maquinas;
-    //             while(auxMaquinas != NULL){
-    //                 auxFileJob.idMaquina = auxMaquinas->maquina.id;
-    //                 auxFileJob.tempo = auxMaquinas->maquina.tempo;
-    //                 fwrite(&auxFileJob, sizeof(JobFile), 1, fp);
-    //                 auxMaquinas = auxMaquinas->nextMaquinas;
-    //             }
-    //             auxOperacoes = auxOperacoes->nextOperacoes;
-    //         }
-    //         auxJob = auxJob->nextJob;
-    //     }
-    //     fclose(fp);
-
-    //     return true;
-    // }
-
-    // Job* LerBinario(char* nomeFicheiro){
-    //     FILE* fp;
-    //     Job* jobsHeader = NULL;
-    //     Maquina* auxMaquina = NULL;
-    //     Operacao* auxOperacao = NULL;
-
-    //     Job* auxJob;
-
-    //     if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
-    //     JobFile auxFileJob;
-    //     while (fread(&auxFileJob, sizeof(Job), 1, fp)){
-    //         auxMaquina = CriaMaquina(auxFileJob.idMaquina, auxFileJob.tempo);
-    //         auxOperacao = CriaOperacao(auxFileJob.idOperacao);
-    //         auxOperacao->maquinas = InsereNaListaDeMaquinas(auxOperacao->maquinas, auxMaquina);            
-    //         auxJob = CriaJob(auxFileJob.idJob);
-
-    //         auxJob->operacoes = InsereNaListaDeOperacoes(auxJob->operacoes, auxOperacao);
-
-    //         jobsHeader = InsereJob(jobsHeader, auxJob);
-    //     }
-    //     fclose(fp);
-
-    //     return jobsHeader;
-    // }
+        fclose(file);
+        file = NULL;
+        return true;
+    }
 
 #pragma endregion

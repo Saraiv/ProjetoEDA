@@ -256,6 +256,9 @@ void main(){
         //Media
         printf("Tempo Medio: %.2f\n", TempoMedioOperacao(hashTable[2]->operacoes));
 
+        //Gravar em ficheiros
+        bool res = GravarBinario(hashTable);
+
     #pragma endregion
 
 }

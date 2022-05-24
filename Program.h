@@ -84,6 +84,7 @@ NOTAS:
         Job* ProcuraJob(char *id, Job* jobsHeader);
         Job* RemoveJob(Job* jobsHeader, char* id);
         void MostraListaJobs(Job* jobsHeader);
+        bool GravaJob(Job* job);
 
         //Assinatura de funções hash table
         void IniciaHash(Job *hashTable[]);
@@ -91,6 +92,7 @@ NOTAS:
         void InsereNodoJobNaHash(Job* job, Job* hashTable[]);
         Job* ProcuraNode(char* id, Job* hashTable[]);
         void MostrarHashTable(Job *hashTable[]);
+        bool GravarBinario(Job* hashTable[]);
 
         //Assinatura de funções máquinas
         bool ExisteMaquina(ListaMaquinas *maquinasHeader, int id);
@@ -101,6 +103,7 @@ NOTAS:
         int TempoMinimoMaquina(ListaMaquinas* maquinasHeader);
         int TempoMaximoMaquina(ListaMaquinas* maquinasHeader);
         void MostraListaMaquinas(ListaMaquinas* maquinasHeader);
+        bool GravaMaquinas(ListaMaquinas* maquinasHeader);
 
         //Assinatura de funções operações
         bool ExisteOperacao(ListaOperacoes *operacaoHeader, int id);
@@ -115,6 +118,7 @@ NOTAS:
         int CountMaquinasNaOperacao(ListaOperacoes* operacoesHeader);
         float TempoMedioOperacao(ListaOperacoes* operacoesHeader);
         void MostraListaOperacoes(ListaOperacoes* operacoesHeader);
+        bool GravaOperacoes(ListaOperacoes* operacoesHeader);
 
     #pragma endregion
 

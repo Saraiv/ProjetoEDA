@@ -80,3 +80,27 @@
     }
 
 #pragma endregion
+
+#pragma region FicheirosJobs
+
+    /**
+     * Escreve em ficheiros .bin os elementos da hashtable, ou seja jobs, operações e máquinas
+     * @param [in] hashTable
+     * @param [out] bool	//Retorna se a ação foi bem sucessida ou não
+    */
+    bool GravarBinario(Job* hashTable[]){
+        bool jobs, operacoes, maquinas = false;
+        for (int i = 0; i < MAX; i++) {
+            if (hashTable[i] != NULL){
+                //gravar jobs
+                jobs = GravaJob(hashTable[i]);
+                //gravar operações
+                operacoes = GravaOperacoes(hashTable[i]->operacoes);
+                //gravar máquinas
+                maquinas = GravaMaquinas(hashTable[i]->operacoes->operacao.maquinas);
+            }
+        }
+        return true;
+    }
+
+#pragma endregion
