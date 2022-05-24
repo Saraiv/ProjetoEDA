@@ -57,10 +57,10 @@
      * @param [out] jobsHeader	//Retorna o header job
     */
     Job* InsereNodoJob(Job* node, Job* jobsHeader){
-        if (jobsHeader != NULL){
+        if (jobsHeader == NULL)
             jobsHeader = InsereJob(node, jobsHeader);
-            return jobsHeader;
-        } else{
+        else{
+            printf("\n\n\n");
             Job* auxJob = jobsHeader;
             Job* auxJob2 = auxJob;
 
@@ -83,6 +83,49 @@
                 }
             }
         }
+        return jobsHeader;
+    }
+
+    /**
+     * Procura o job por id
+     * @param [in] id
+     * @param [in] jobsHeader
+     * @param [out] jobsHeader	//Retorna o header job
+    */
+    Job* ProcuraJob(char *id, Job* jobsHeader){
+        if (!jobsHeader) return NULL;
+        Job* auxJobs = jobsHeader;
+        while (auxJobs != NULL && strcmp(auxJobs->id, id) != 0) auxJobs = auxJobs->nextJob;
+        return auxJobs;
+    }
+
+    /**
+     * Remover o Job
+     * @param [in] jobsHeader 
+     * @param [in] id 
+     * @param [out] jobsHeader	//Retorna o header da lista de jobs, mas com o job já removido
+    */
+    Job* RemoveJob(Job* jobsHeader, char* id){
+        if (jobsHeader == NULL) return NULL; //Lista vazia
+
+        if (strcmp(jobsHeader->id, id)){		//remove no inicio da lista
+            Job* auxJob = jobsHeader;
+            jobsHeader = jobsHeader->nextJob;
+            free(auxJob);
+        }
+        else{
+            Job* auxJob = jobsHeader;
+            Job* auxAnt = auxJob;
+            while (auxJob && !strcmp(auxJob->id, id)){	//procura para revover
+                auxAnt = auxJob;
+                auxJob = auxJob->nextJob;
+            }
+            if (auxJob != NULL) {					//se encontrou, remove
+                auxAnt->nextJob = auxJob->nextJob;
+                free(auxJob);
+            }
+        }
+        
         return jobsHeader;
     }
 

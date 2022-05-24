@@ -135,7 +135,7 @@
         else{
             ListaOperacoes* auxOperacoes = operacoesHeader;
             ListaOperacoes* auxAnt = auxOperacoes;
-            while (auxOperacoes && auxOperacoes->operacao.id != id) {	//procura para revover
+            while (auxOperacoes && auxOperacoes->operacao.id != id){	//procura para revover
                 auxAnt = auxOperacoes;
                 auxOperacoes = auxOperacoes->nextOperacoes;
             }
@@ -164,9 +164,8 @@
             if(auxOperacoes->operacao.id == idOperacao){
                 ListaMaquinas* auxMaquinas = auxOperacoes->operacao.maquinas;
                 while(auxMaquinas != NULL){
-                    if(auxMaquinas->maquina.id == idMaquina){
+                    if(auxMaquinas->maquina.id == idMaquina)
                         auxMaquinas->maquina.tempo = tempoAMudar;
-                    }
                     auxMaquinas = auxMaquinas->nextMaquinas;
                 }
             }

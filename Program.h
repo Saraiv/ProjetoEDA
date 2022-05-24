@@ -64,11 +64,6 @@ NOTAS:
 
         extern Job jobsHeader;
 
-        typedef struct HashTable{
-            int max;
-            struct Job* tabela[MAX];
-        }HashTable;
-
         typedef struct JobFile{
             int idJob;
             int idOperacao;
@@ -86,12 +81,15 @@ NOTAS:
         Job* CriaJob(char* id);
         Job* InsereJob(Job* jobsHeader, Job* novoJob);
         Job* InsereNodoJob(Job* node, Job* jobsHeader);
+        Job* ProcuraJob(char *id, Job* jobsHeader);
+        Job* RemoveJob(Job* jobsHeader, char* id);
         void MostraListaJobs(Job* jobsHeader);
 
         //Assinatura de funções hash table
         void IniciaHash(Job *hashTable[]);
         int Key(char* id);
         void InsereNodoJobNaHash(Job* job, Job* hashTable[]);
+        Job* ProcuraNode(char* id, Job* hashTable[]);
         void MostrarHashTable(Job *hashTable[]);
 
         //Assinatura de funções máquinas

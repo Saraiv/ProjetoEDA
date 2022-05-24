@@ -21,8 +21,12 @@
      * @param [in] hashTable
     */
     void IniciaHash(Job* hashTable[]){
-        for (int i = 0; i < MAX; i++)
+        for (int i = 0; i < MAX; i++){
 		    hashTable[i] = NULL;
+            // hashTable[i]->id = NULL;
+            // hashTable[i]->nextJob = NULL;
+            // hashTable[i]->operacoes = NULL;
+        }
     }
 
     /**
@@ -45,11 +49,20 @@
     */
     void InsereNodoJobNaHash(Job* job, Job* hashTable[]){
         int key = Key(job->id);
-        Job *auxHash = hashTable[key];
-        if (auxHash == NULL)
-            hashTable[key] = job;
-        else
-            hashTable[key] = InsereNodoJob(job, hashTable[key]);
+        job->nextJob = hashTable[key];
+        hashTable[key] = job;
+    }
+
+    /**
+     * Procura em todos os nodos o job que quer por id
+     * @param [in] id 
+     * @param [in] hashTable
+     * @param [out] Job	//Retorna o job
+    */
+    Job* ProcuraNode(char* id, Job* hashTable[]){
+        int key = Key(id);
+        if (hashTable[key] == NULL) return NULL;
+        return ProcuraJob(id, hashTable[key]);
     }
 
     /**

@@ -129,9 +129,8 @@
         ListaMaquinas* auxMaquinas = maquinasHeader;
         int tempoMinimo = auxMaquinas->maquina.tempo;
         while(auxMaquinas != NULL){
-            if(auxMaquinas->maquina.tempo < tempoMinimo){
+            if(auxMaquinas->maquina.tempo < tempoMinimo)
                 tempoMinimo = auxMaquinas->maquina.tempo;
-            }
             auxMaquinas = auxMaquinas->nextMaquinas;
         }
 
@@ -145,15 +144,12 @@
     */
     int TempoMaximoMaquina(ListaMaquinas* maquinasHeader){
         if(maquinasHeader == NULL) return 0; //Lista vazia
-        int id = 0;
 
         ListaMaquinas* auxMaquinas = maquinasHeader;
         int tempoMaximo = auxMaquinas->maquina.tempo;
         while(auxMaquinas != NULL){
-            if(auxMaquinas->maquina.tempo > tempoMaximo){
+            if(auxMaquinas->maquina.tempo > tempoMaximo)
                 tempoMaximo = auxMaquinas->maquina.tempo;
-                id = auxMaquinas->maquina.id;
-            }
             auxMaquinas = auxMaquinas->nextMaquinas;
         }
 

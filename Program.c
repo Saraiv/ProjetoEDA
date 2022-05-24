@@ -84,9 +84,9 @@ void main(){
         Operacao* o16 = CriaOperacao(5);
         
         //Jobs
-        Job* j1 = CriaJob("123AsdaA321");
-        Job* j2 = CriaJob("123456Adsad9482");
-        Job* j3 = CriaJob("1237ysfasdf61");
+        Job* j1 = CriaJob("1");
+        Job* j2 = CriaJob("2");
+        Job* j3 = CriaJob("3");
 
         //Job1
         o1->maquinas = InsereNaListaDeMaquinas(o1->maquinas, m1);
@@ -189,7 +189,7 @@ void main(){
 
     #pragma endregion
 
-    #pragma region Printfs
+    #pragma region PrintfsFase1
 
         // //Mostrar
         // printf("\n\n-----------------------------------------\n");
@@ -221,17 +221,40 @@ void main(){
 
     #pragma endregion
 
-    #pragma region HashTable
+    #pragma region HashTableFase2
 
         Job* hashTable[MAX];
 
         IniciaHash(hashTable);
         InsereNodoJobNaHash(j1, hashTable);
         InsereNodoJobNaHash(j2, hashTable);
-        // InsereNodoJobNaHash(j3, hashTable);
+        InsereNodoJobNaHash(j3, hashTable);
 
         printf("\nHashtable\n");
         MostrarHashTable(hashTable);
+
+        //Funções
+        //Alterar
+        hashTable[2]->operacoes = AlterarOperacoes(hashTable[2]->operacoes, 6, 6, 8);
+        printf("\nHashtable Alterada\n");
+        MostrarHashTable(hashTable);
+
+        //Remover
+        hashTable[2]->operacoes = RemoveOperacao(hashTable[2]->operacoes, 4);
+        printf("\nHashtable Removida\n");
+        MostrarHashTable(hashTable);
+
+        //Minimo
+        printf("\n\n-----------------------------------------\n");
+        printf("Tempo Minimo: %d\n", TempoMinimoOperacao(hashTable[2]->operacoes));
+        printf("\n\n-----------------------------------------\n");
+
+        //Maximo
+        printf("Tempo Maximo: %d\n", TempoMaximoOperacao(hashTable[2]->operacoes));
+        printf("\n\n-----------------------------------------\n");
+
+        //Media
+        printf("Tempo Medio: %.2f\n", TempoMedioOperacao(hashTable[2]->operacoes));
 
     #pragma endregion
 
