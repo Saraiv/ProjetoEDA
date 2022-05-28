@@ -124,10 +124,10 @@
      * @param [out] operacoesHeader	//Retorna o header da lista de operações, mas com a operação já removida
     */
     ListaOperacoes* RemoveOperacao(ListaOperacoes* operacoesHeader, int id){
-        if (operacoesHeader == NULL) return NULL; //Lista vazia
+        if(operacoesHeader == NULL) return NULL; //Lista vazia
         // if(!ExisteOperacao(operacoesHeader, id)) return NULL; // Se não existir a operação
 
-        if (operacoesHeader->operacao.id == id){		//remove no inicio da lista
+        if(operacoesHeader->operacao.id == id){		//remove no inicio da lista
             ListaOperacoes* auxOperacoes = operacoesHeader;
             operacoesHeader = operacoesHeader->nextOperacoes;
             free(auxOperacoes);
@@ -135,11 +135,11 @@
         else{
             ListaOperacoes* auxOperacoes = operacoesHeader;
             ListaOperacoes* auxAnt = auxOperacoes;
-            while (auxOperacoes && auxOperacoes->operacao.id != id){	//procura para revover
+            while(auxOperacoes && auxOperacoes->operacao.id != id){	//procura para revover
                 auxAnt = auxOperacoes;
                 auxOperacoes = auxOperacoes->nextOperacoes;
             }
-            if (auxOperacoes != NULL) {					//se encontrou, remove
+            if(auxOperacoes != NULL){					//se encontrou, remove
                 auxAnt->nextOperacoes = auxOperacoes->nextOperacoes;
                 free(auxOperacoes);
             }

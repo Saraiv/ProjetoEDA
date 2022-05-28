@@ -66,6 +66,34 @@
     }
 
     /**
+     * Remover o Job
+     * @param [in] id
+     * @param [in] jobsHeader 
+    */
+    void RemoveJobNaHash(char* id, Job* hashTable[]){
+        int key = Key(id);
+        if (hashTable[key] == NULL) return;
+
+        if(strcmp(hashTable[key]->id, id) == 0){ //remove no inicio da lista
+            Job* auxJob = hashTable[key];
+            hashTable[key] = hashTable[key]->nextJob;
+            free(auxJob);
+        }
+        else{
+            Job* auxJob = hashTable[key];
+            Job* auxAnt = auxJob;
+            while(auxJob && strcmp(auxJob->id, id) > 0){ //procura para revover
+                auxAnt = auxJob;
+                auxJob = auxJob->nextJob;
+            }
+            if(auxJob != NULL) { //se encontrou, remove
+                auxAnt->nextJob = auxJob->nextJob;
+                free(auxJob);
+            }
+        }
+    }
+
+    /**
      * Mostra a lista de jobs e operações e máquinas usando a hash table
      * @param [in] hashTable
     */
@@ -90,7 +118,7 @@
     */
     bool GravarBinario(Job* hashTable[]){
         bool jobs, operacoes, maquinas = false;
-        for (int i = 0; i < MAX; i++) {
+        for(int i = 0; i < MAX; i++) {
             if (hashTable[i] != NULL){
                 //gravar jobs
                 jobs = GravaJob(hashTable[i]);
@@ -100,6 +128,39 @@
                 maquinas = GravaMaquinas(hashTable[i]->operacoes->operacao.maquinas);
             }
         }
+        return true;
+    }
+
+    /**
+     * Exporta para um ficheiro .csv os elementos da hashtable, ou seja jobs, operações e máquinas
+     * @param [in] hashTable
+     * @param [out] bool	//Retorna se a ação foi bem sucessida ou não
+    */
+    bool ExportarCsv(Job* hashTable[]){
+        if (hashTable == NULL) return false;
+        FILE* file;
+        int j = 0;
+        if((file = fopen("exportar.csv", "w")) == NULL) return false;
+        for(int i = 0; i < MAX; i++){
+            if (hashTable[i] != NULL){
+                Job* auxJobs = hashTable[i];
+                while(auxJobs != NULL){
+                    ListaOperacoes* auxOperacoes = hashTable[i]->operacoes;
+                    while(auxOperacoes != NULL){
+                        ListaMaquinas* auxMaquinas = auxOperacoes->operacao.maquinas;
+                        while(auxMaquinas != NULL){
+                            fprintf(file, "p%d,Maquina %d, Job %s - Oper %d,,,%d,0,\n", 
+                                    ++j, auxMaquinas->maquina.id, auxJobs->id, auxOperacoes->operacao.id, 
+                                    auxMaquinas->maquina.tempo);
+                            auxMaquinas = auxMaquinas->nextMaquinas;
+                        }
+                        auxOperacoes = auxOperacoes->nextOperacoes;
+                    }
+                    auxJobs = auxJobs->nextJob;
+                }
+            }
+        }
+        fclose(file);
         return true;
     }
 

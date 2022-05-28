@@ -1,0 +1,11 @@
+h2{
+    text-align: center;
+}
+
+#timeline{
+    margin: auto;
+    width: 90%;
+    padding: 10px;
+    height: 200vh;
+    overflow-y: auto;
+}

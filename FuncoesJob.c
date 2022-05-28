@@ -100,36 +100,6 @@
     }
 
     /**
-     * Remover o Job
-     * @param [in] jobsHeader 
-     * @param [in] id 
-     * @param [out] jobsHeader	//Retorna o header da lista de jobs, mas com o job já removido
-    */
-    Job* RemoveJob(Job* jobsHeader, char* id){
-        if (jobsHeader == NULL) return NULL; //Lista vazia
-
-        if (strcmp(jobsHeader->id, id)){		//remove no inicio da lista
-            Job* auxJob = jobsHeader;
-            jobsHeader = jobsHeader->nextJob;
-            free(auxJob);
-        }
-        else{
-            Job* auxJob = jobsHeader;
-            Job* auxAnt = auxJob;
-            while (auxJob && !strcmp(auxJob->id, id)){	//procura para revover
-                auxAnt = auxJob;
-                auxJob = auxJob->nextJob;
-            }
-            if (auxJob != NULL) {					//se encontrou, remove
-                auxAnt->nextJob = auxJob->nextJob;
-                free(auxJob);
-            }
-        }
-        
-        return jobsHeader;
-    }
-
-    /**
      * Mostra a lista de jobs e operações e máquinas
      * @param [in] jobsHeader
     */

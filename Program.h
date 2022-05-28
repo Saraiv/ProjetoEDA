@@ -82,7 +82,6 @@ NOTAS:
         Job* InsereJob(Job* jobsHeader, Job* novoJob);
         Job* InsereNodoJob(Job* node, Job* jobsHeader);
         Job* ProcuraJob(char *id, Job* jobsHeader);
-        Job* RemoveJob(Job* jobsHeader, char* id);
         void MostraListaJobs(Job* jobsHeader);
         bool GravaJob(Job* job);
 
@@ -92,7 +91,9 @@ NOTAS:
         void InsereNodoJobNaHash(Job* job, Job* hashTable[]);
         Job* ProcuraNode(char* id, Job* hashTable[]);
         void MostrarHashTable(Job *hashTable[]);
+        void RemoveJobNaHash(char* id, Job* hashTable[]);
         bool GravarBinario(Job* hashTable[]);
+        bool ExportarCsv(Job* hashTable[]);
 
         //Assinatura de funções máquinas
         bool ExisteMaquina(ListaMaquinas *maquinasHeader, int id);

@@ -233,6 +233,10 @@ void main(){
         printf("\nHashtable\n");
         MostrarHashTable(hashTable);
 
+        //Gravar em ficheiros
+        // bool res = GravarBinario(hashTable);
+        bool resCsv = ExportarCsv(hashTable);
+
         //Funções
         //Alterar
         hashTable[2]->operacoes = AlterarOperacoes(hashTable[2]->operacoes, 6, 6, 8);
@@ -241,7 +245,7 @@ void main(){
 
         //Remover
         hashTable[2]->operacoes = RemoveOperacao(hashTable[2]->operacoes, 4);
-        printf("\nHashtable Removida\n");
+        printf("\nHashtable Operação Removida\n");
         MostrarHashTable(hashTable);
 
         //Minimo
@@ -256,8 +260,9 @@ void main(){
         //Media
         printf("Tempo Medio: %.2f\n", TempoMedioOperacao(hashTable[2]->operacoes));
 
-        //Gravar em ficheiros
-        bool res = GravarBinario(hashTable);
+        RemoveJobNaHash("2", hashTable);
+        printf("\nHashtable Job Removido\n");
+        MostrarHashTable(hashTable);
 
     #pragma endregion
 
