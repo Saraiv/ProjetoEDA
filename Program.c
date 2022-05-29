@@ -235,7 +235,7 @@ void main(){
 
         //Gravar em ficheiros
         // bool res = GravarBinario(hashTable);
-        bool resCsv = ExportarCsv(hashTable);
+        // bool resCsv = ExportarCsv(hashTable);
 
         //Funções
         //Alterar
