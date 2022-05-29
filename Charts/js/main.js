@@ -17,10 +17,10 @@ function drawChart(arrayData){
     var dataTable = new google.visualization.DataTable();
 
     dataTable.addColumn("string", "Task ID");
-    dataTable.addColumn("string", "Task Name");
-    dataTable.addColumn("string", "Resource");
-    dataTable.addColumn("date", "Start");
-    dataTable.addColumn("date", "End");
+    dataTable.addColumn("string", "ID da Máquina");
+    dataTable.addColumn("string", "Job e Operação");
+    dataTable.addColumn("date", "Começo");
+    dataTable.addColumn("date", "Fim");
     dataTable.addColumn("number", "Duração");
     dataTable.addColumn("number", "Percent Complete");
     dataTable.addColumn("string", "Dependencies");
