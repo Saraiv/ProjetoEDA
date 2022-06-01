@@ -266,4 +266,15 @@ void main(){
 
     #pragma endregion
 
+    #pragma region PlaneamentoFase2
+
+        Plano plano[MAX][TEMPO];
+        IniciaPlano(plano, 0, 0);
+        OcupaUm(plano, 0, 0, 3, 1);
+
+        // printf("Planeamento\n");
+        // MostarPlano(plano);
+
+    #pragma endregion
+
 }

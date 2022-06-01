@@ -29,6 +29,7 @@ NOTAS:
 #define FEITO 1
 
 #define MAX 3
+#define TEMPO 10
 
     #pragma region Structs
 
@@ -64,18 +65,24 @@ NOTAS:
 
         extern Job jobsHeader;
 
-        typedef struct JobFile{
+        typedef struct Plano{
             int idJob;
             int idOperacao;
             int idMaquina;
             int tempo;
-        }JobFile;
+        }Plano;
 
     #pragma endregion
 
     #pragma region AssinaturaDeFuncoes
 
         //Assinatura de funções ficheiros
+
+        //Assinatura de função de planeamento
+        void IniciaPlano(Plano plano[][TEMPO], int idJob, int idOperacao);
+        void OcupaUm(Plano plano[][TEMPO], int idMaquina, int tempo, int idJob, int idOperacao);
+        void OcupaVarios(Plano plano[][TEMPO], int idMaquina, int tempoTotal, Plano* headerJobs);
+        void MostarPlano(Plano plano[][TEMPO]);
 
         //Assinatura de funções job
         Job* CriaJob(char* id);
